@@ -1,0 +1,7 @@
+mv -v /Users/cristianespinosa/Documents/UCM_Undergraduate_Research/*_4.pickle /Users/cristianespinosa/Documents/UCM_Undergraduate_Research/MNIST_Datasets/4x4
+
+mv -v /Users/cristianespinosa/Documents/UCM_Undergraduate_Research/*_7.pickle /Users/cristianespinosa/Documents/UCM_Undergraduate_Research/MNIST_Datasets/7x7
+
+mv -v /Users/cristianespinosa/Documents/UCM_Undergraduate_Research/*_14.pickle /Users/cristianespinosa/Documents/UCM_Undergraduate_Research/MNIST_Datasets/14x14
+
+mv -v /Users/cristianespinosa/Documents/UCM_Undergraduate_Research/*_28.pickle /Users/cristianespinosa/Documents/UCM_Undergraduate_Research/MNIST_Datasets/28x28
