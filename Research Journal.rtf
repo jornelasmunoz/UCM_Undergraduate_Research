@@ -1,0 +1,62 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-BoldOblique;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 03/23/2022\
+- Created a CNN class that can build a ConvNet model for every image size\
+- The class has 3 default arguments: \
+	
+\f1\i\b 1. img_size = 28 
+\f0\i0\b0 -> Specifies the image input size\
+	
+\f1\i\b 2. conv_layers = 2
+\f0\i0\b0  -> Specifies the number of convolutional layers in the model\
+	
+\f1\i\b 3. num_classes = 10
+\f0\i0\b0  -> Specifies the number of classes/labels in our training data\
+\
+- The members/attributes of the CNN class are:\
+	
+\f1\i\b 1. img_shape 
+\f0\i0\b0 -> Will keep track of the image size as it goes through both convolution and 			       pooling.
+\f1\i\b \
+	2. num_classes 
+\f0\i0\b0 -> Keeps track of the number of classes in our training data
+\f1\i\b \
+	3. conv_layers
+\f0\i0\b0  -> Keeps track of the desired number of convolutional layers to be added to 			        the model.
+\f1\i\b \
+	4. linear_shape
+\f0\i0\b0  -> This list has a set size of 3, and keeps track of the linear input shape in 			         three dimensions, which are 
+\f1\i\b [num_of_channels, image_width, 			         image_height]\
+	5. conv 
+\f0\i0\b0  -> This array is of size 
+\f1\i\b conv_layers
+\f0\i0\b0  (2 by default). It keeps track of every layer 		        created by the CNN class\
+\
+- To build the convolutional layers, I created a list, called 
+\f1\i\b conv
+\f0\i0\b0 , of size 2 (default 
+\f1\i\b conv_layers
+\f0\i0\b0  argument) that will store 2 convolutional layers.\
+- For every time I created a convolutional layer and added it to my 
+\f1\i\b conv
+\f0\i0\b0  list, I computed the output image size and number of channel outputs after every convolution and pooling by creating two functions (
+\f1\i\b conv_out_size()
+\f0\i0\b0  & 
+\f1\i\b pooling_out_size() 
+\f0\i0\b0 ).\
+- Proceeded to create the Linear (i.e. Fully-connected) layer (So far, I don\'92t know how to compute the output of a Linear layer for the input of a second linear layer).\
+- To figure out the input size for the Linear layer, I implemented a function called 
+\f1\i\b flatten()
+\f0\i0\b0 , which takes as argument the 
+\f1\i\b linear_shape
+\f0\i0\b0  list, and multiplies every entry in it (3 total entries).\
+\
+\
+\
+03/24/2022\
+}
