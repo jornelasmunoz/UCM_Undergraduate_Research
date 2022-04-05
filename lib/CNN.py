@@ -1,8 +1,13 @@
 import torch
 import torch.nn as nn
+import pandas as pd
 from torch.autograd import Variable
 from torchvision import datasets
 import torchvision.transforms as transforms
+from sklearn.metrics import confusion_matrix
+import seaborn as sn
+import numpy as np
+
 
 data_dir = '../data/4x4'
 
@@ -218,18 +223,28 @@ def train(cnn, loaders, num_epochs=10):
     return train_acc_data, loss_data
     
 def test(cnn, loaders):
-    test_acc_data = []
-    cnn.eval()
-        
-    # Test the model
-    correct = 0
-    total = 0
-    for images, labels in loaders['test']:
-        test_output, last_layer = cnn(images)
-        pred_y = torch.max(test_output, 1)[1].data.squeeze()
-        accuracy = (pred_y == labels).sum().item() / float(labels.size(0))
-        test_acc_data.append(accuracy)
-        print("Accuracy: {:.4f}".format(accuracy))
-        
-#     print('Test Accuracy: %.2f' % accuracy)
-    return test_acc_data
+    y_pred = []
+    y_true = []
+
+    for inputs, labels in loaders['test']:
+            output = cnn(inputs) # Feed Network
+
+            output = (torch.max(torch.exp(output[0]), 1)[1]).data.cpu().numpy()
+            y_pred.extend(output) # Save Prediction
+
+            labels = labels.data.cpu().numpy()
+            y_true.extend(labels) # Save Truth
+
+    # constant for classes
+    classes = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
+
+    # Build confusion matrix
+    cf_matrix = confusion_matrix(y_true, y_pred)
+    df_cm = pd.DataFrame(cf_matrix/np.sum(cf_matrix) *10, index = [i for i in classes],
+                         columns = [i for i in classes])
+#     plt.figure(figsize = (12,7))
+#     sn.heatmap(df_cm, annot=True)
+#     plt.savefig('../models/confusion_matrix.png')
+    
+    print("Done testing")
+    return df_cm

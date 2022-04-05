@@ -1,5 +1,6 @@
 {\rtf1\ansi\ansicpg1252\cocoartf2513
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-BoldOblique;}
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-BoldOblique;\f2\fswiss\fcharset0 Helvetica-Bold;
+}
 {\colortbl;\red255\green255\blue255;}
 {\*\expandedcolortbl;;}
 \margl1440\margr1440\vieww10800\viewh8400\viewkind0
@@ -58,5 +59,59 @@
 \
 \
 \
-03/24/2022\
+03/25/2022\
+- Attempted to make the CNN class feasible for ANY input image size by keeping track of the kernel size, input image size after each convolution and number of output channels. I also tried to prevent the case of having 
+\f2\b zero 
+\f0\b0 output size in the fully-connected layer by re-setting the for loop that builds the CNN, and reducing the size of the kernel (and of the padding), but 
+\f1\i\b didn\'92t work
+\f0\i0\b0 . \
+- Got a \'93kernel size should not be greater than the size of the input\'94 error.\
+\
+- For now, I inserted if-else statements into the 
+\f1\i\b CNN.py 
+\f0\i0\b0 script to accommodate for the kernel size and output channels for the 4 image sizes we are working with:\
+	1. 28x28: \
+		out_channels = 16 \
+		kernel_size = 5\
+	2. 14x14:\
+		out_channels = 8 \
+		kernel_size = 3\
+	3. 7x7:\
+		out_channels = 4 \
+		kernel_size = 2\
+	4. 4x4:\
+		out_channels = 4 \
+		kernel_size = 3\
+		padding = 1\
+\
+\
+- Defined the train function OUTSIDE the CNN class due to parameter inconvenience (cnn is a CNN class). This train function returns the accuracy train data and the loss data throughout the training session.\
+- Defined the test function, which evaluates each image batch, and outputs the prediction accuracy per batch.\
+\
+\
+\
+03/27/2022\
+- Re-defined the 
+\f1\i\b test()
+\f0\i0\b0  function to instead build a confusion matrix using sklearn\'92s confusion matrix module, and pandas.\
+- Returns the confusion matrix as a pandas dataframe.\
+- Used the example of building a confusion matrix from a blog from towardsdatascience.com\
+- Wrote the notebook 
+\f1\i\b CNN_Training_Notebook.ipynb
+\f0\i0\b0 \
+- Trained four models using the 
+\f1\i\b CNN.py
+\f0\i0\b0  script\
+- Saved each trained model in a list, and saved the model and its weights within a folder called 
+\f1\i\b models
+\f0\i0\b0 .\
+\
+\
+\
+03/31/2022\
+- I messed around with the creation of the confusion matrix in the notebook where i created the model for images of size 28x28\
+- I followed the turorial by deeplizard on creating the confusion matrix and I was able to figure out why there was a 1.1 in the confusion matrix I previously plotted\
+- The confusion matrix that I previously plotted is dividing the amount of times a prediction happened by 100. It\'92s not expressing some sort of probability. \
+- Therefore, the confusion matrices that I previously plotted are correct. Just need to work on getting the x-axis and y-axis labels working\
+\
 }

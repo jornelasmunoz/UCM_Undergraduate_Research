@@ -4,15 +4,30 @@ import pandas as pd
 from torch.autograd import Variable
 from torchvision import datasets
 import torchvision.transforms as transforms
-from sklearn.metrics import confusion_matrix
+# from sklearn.metrics import confusion_matrix
+import matplotlib.pyplot as plt
 import seaborn as sn
 import numpy as np
+import itertools
 
 
-data_dir = '../data/4x4'
+# data_dir = '../data/4x4'
+
+class AddGaussianNoise(object):
+    def __init__(self, mean=0., std=1.):
+        self.std = std
+        self.mean = mean
+        
+    def __call__(self, tensor):
+        return tensor + torch.randn(tensor.size()) * self.std + self.mean
+    
+    def __repr__(self):
+        return self.__class__.__name__ + '(mean={0}, std={1})'.format(self.mean, self.std)
+
+
 
 class CNN(nn.Module):
-    def __init__(self, img_shape = 28, conv_layers = 2, num_classes = 10):
+    def __init__(self, img_shape = 28, noise = False, conv_layers = 2, num_classes = 10):
         super(CNN, self).__init__()
         
 #         self.conv_count = 0   #keeps track of the number of times a conv layer is added
@@ -25,6 +40,12 @@ class CNN(nn.Module):
         self.out_channels = 0
         self.linear_shape = [1, img_shape, img_shape]
         self.conv = []
+        self.transform = [transforms.ToTensor(),
+                          transforms.Resize(img_shape),
+                          transforms.Normalize(0, 1)
+                         ]
+        if noise:
+            self.transform.append(AddGaussianNoise(1, 1))
         
         
         def conv_out_size(linear_shape, img_shape, conv):
@@ -51,21 +72,13 @@ class CNN(nn.Module):
             train_data = datasets.MNIST(
                 root = root_path,
                 train = True,                         
-                transform = transforms.Compose([
-                                transforms.ToTensor(),
-                                transforms.Resize(img_shape),
-                                transforms.Normalize(0, 1)
-                            ]), 
+                transform = transforms.Compose(self.transform), 
                 download = False,            
             )
             test_data = datasets.MNIST(
-                root = '../data/28x28', 
+                root = root_path, 
                 train = False, 
-                transform = transforms.Compose([
-                                transforms.ToTensor(),
-                                transforms.Resize(img_shape),
-                                transforms.Normalize(0, 1)
-                            ]) 
+                transform = transforms.Compose(self.transform)
             )
             
             return train_data, test_data
@@ -174,6 +187,7 @@ class CNN(nn.Module):
     
 
 def train(cnn, loaders, num_epochs=10):
+    print("Training...")
     loss_func = nn.CrossEntropyLoss()   
     optimizer = torch.optim.Adam(cnn.parameters(), lr= 1e-5)
     
@@ -222,29 +236,71 @@ def train(cnn, loaders, num_epochs=10):
     
     return train_acc_data, loss_data
     
-def test(cnn, loaders):
-    y_pred = []
-    y_true = []
-
-    for inputs, labels in loaders['test']:
-            output = cnn(inputs) # Feed Network
-
-            output = (torch.max(torch.exp(output[0]), 1)[1]).data.cpu().numpy()
-            y_pred.extend(output) # Save Prediction
-
-            labels = labels.data.cpu().numpy()
-            y_true.extend(labels) # Save Truth
-
-    # constant for classes
-    classes = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
-
-    # Build confusion matrix
-    cf_matrix = confusion_matrix(y_true, y_pred)
-    df_cm = pd.DataFrame(cf_matrix/np.sum(cf_matrix) *10, index = [i for i in classes],
-                         columns = [i for i in classes])
-#     plt.figure(figsize = (12,7))
-#     sn.heatmap(df_cm, annot=True)
-#     plt.savefig('../models/confusion_matrix.png')
     
-    print("Done testing")
-    return df_cm
+# FIX ME: Still modifying the test function so that it evaluates the model and returns the confusion matrix data (not the heat map)!!
+
+def test(cnn, loaders):
+    
+    print("Testing...")
+    cnn.eval()
+#     test_acc_data = []
+    pred_data = torch.tensor([])
+    truth_data = torch.tensor([])
+        
+    # Test the model
+    correct = 0
+    total = 0
+    for images, labels in loaders['test']:
+        test_output, last_layer = cnn(images)
+        pred_y = torch.max(test_output, 1)[1].data.squeeze()
+        
+        pred_data = torch.cat((pred_data, pred_y))
+        truth_data = torch.cat((truth_data, labels))
+        
+#         accuracy = (pred_y == labels).sum().item() / float(labels.size(0))
+#         test_acc_data.append(accuracy)
+
+    stacked = torch.stack(
+        (
+            truth_data
+            ,pred_data
+        )
+        ,dim=1
+    ) 
+    
+    cmt = torch.zeros(10,10, dtype=torch.int64)
+    
+    for p in stacked:
+        tl, pl = p.tolist()
+        tl = int(tl)
+        pl = int(pl)
+        cmt[tl, pl] = cmt[tl, pl] + 1
+        
+    
+    return cmt
+
+
+def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix', cmap=plt.cm.Blues):
+    if normalize:
+        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+        print("Normalized confusion matrix")
+    else:
+        print('Confusion matrix, without normalization')
+
+#     print(cm)
+    plt.imshow(cm, interpolation='nearest', cmap=cmap)
+    plt.title(title)
+    plt.colorbar()
+    tick_marks = np.arange(len(classes))
+    plt.xticks(tick_marks, classes, rotation=45)
+    plt.yticks(tick_marks, classes)
+
+    fmt = '.2f' if normalize else 'd'
+    thresh = cm.max() / 2.
+    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(j, i, format(cm[i, j], fmt), horizontalalignment="center", color="white" if cm[i, j] > thresh else "black")
+
+    plt.tight_layout()
+    plt.figure(figsize=(10,10))
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
