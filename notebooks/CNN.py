@@ -27,7 +27,7 @@ class AddGaussianNoise(object):
 
 
 class CNN(nn.Module):
-    def __init__(self, img_shape = 28, noise = False, conv_layers = 2, num_classes = 10):
+    def __init__(self, img_shape = 28, noise = False, mean = 0, sd = 0.005, conv_layers = 2, num_classes = 10):
         super(CNN, self).__init__()
         
 #         self.conv_count = 0   #keeps track of the number of times a conv layer is added
@@ -45,8 +45,8 @@ class CNN(nn.Module):
                           transforms.Normalize(0, 1)
                          ]
         if noise:
-            self.transform.append(AddGaussianNoise(1, 1))
-        
+            self.transform.append(AddGaussianNoise(mean, sd))
+    
         
         def conv_out_size(linear_shape, img_shape, conv):
             linear_shape[0] = conv[0].out_channels
@@ -243,7 +243,7 @@ def test(cnn, loaders):
     
     print("Testing...")
     cnn.eval()
-#     test_acc_data = []
+    test_acc_data = []
     pred_data = torch.tensor([])
     truth_data = torch.tensor([])
         
@@ -257,9 +257,10 @@ def test(cnn, loaders):
         pred_data = torch.cat((pred_data, pred_y))
         truth_data = torch.cat((truth_data, labels))
         
-#         accuracy = (pred_y == labels).sum().item() / float(labels.size(0))
-#         test_acc_data.append(accuracy)
+        accuracy = (pred_y == labels).sum().item() / float(labels.size(0))
+        test_acc_data.append(accuracy)
 
+    # Arranging data in a stack (labels/truth vs predictions made by the model)
     stacked = torch.stack(
         (
             truth_data
@@ -268,6 +269,8 @@ def test(cnn, loaders):
         ,dim=1
     ) 
     
+    
+    #Creating the confusion matrix
     cmt = torch.zeros(10,10, dtype=torch.int64)
     
     for p in stacked:
@@ -277,10 +280,10 @@ def test(cnn, loaders):
         cmt[tl, pl] = cmt[tl, pl] + 1
         
     
-    return cmt
+    return cmt, test_acc_data
 
 
-def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix', cmap=plt.cm.Blues):
+def plot_confusion_matrix(cm, classes, path, normalize=False, title='Confusion matrix', cmap=plt.cm.Blues):
     if normalize:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
         print("Normalized confusion matrix")
@@ -290,6 +293,8 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'
 #     print(cm)
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title(title)
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
     plt.colorbar()
     tick_marks = np.arange(len(classes))
     plt.xticks(tick_marks, classes, rotation=45)
@@ -301,6 +306,7 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'
         plt.text(j, i, format(cm[i, j], fmt), horizontalalignment="center", color="white" if cm[i, j] > thresh else "black")
 
     plt.tight_layout()
-    plt.figure(figsize=(10,10))
-    plt.ylabel('True label')
-    plt.xlabel('Predicted label')
+    plt.figure(figsize=(12,7))
+    plt.savefig(path)
+    plt.show()
+#     path = '../models/April_5th_2022/noisy_data_training/' + str(sizes[i]) + 'x' + str(sizes[i]) + '/sd_' + str(sd[j]) + '/confusion_matrix_heatmap.png'

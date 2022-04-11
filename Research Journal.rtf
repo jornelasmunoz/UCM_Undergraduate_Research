@@ -114,4 +114,60 @@
 - The confusion matrix that I previously plotted is dividing the amount of times a prediction happened by 100. It\'92s not expressing some sort of probability. \
 - Therefore, the confusion matrices that I previously plotted are correct. Just need to work on getting the x-axis and y-axis labels working\
 \
+\
+04/08/2022\
+- I created another notebook where I would now train and test CNNs on 14x14 and 28x28 images with gaussian noise added to them\
+- I added an 
+\f1\i\b AddGaussianNoise()
+\f0\i0\b0  function to the 
+\f1\i\b CNN.py
+\f0\i0\b0  script, whose parameters are mean and standard deviation.\
+- I messed around with the parameters of the noise function, and seems like mean should be set to 0, and standard deviation to any number between 0 and 1\
+- I tested the model on a noisy MNIST dataset with gaussian noise added to it with a standard deviation of 0.005, 0.05, 0.1, 0.25 and 0.5 (total of 10 trained models)\
+Testing accuracies:\
+	
+\f1\i\b 28x28
+\f0\i0\b0 :\
+		
+\f2\b sd = 0.005, 70 epochs:
+\f0\b0  94%, trained in 36.32 minutes\
+
+\f2\b 		sd = 0.05, 90 epochs:
+\f0\b0  93%, trained in 45.35 minutes\
+
+\f2\b 		sd = 0.1, 110 epochs:
+\f0\b0  86%, trained in 45.08 minutes\
+
+\f2\b 		sd = 0.25, 130 epochs:
+\f0\b0  77%, trained in 56.93 minutes\
+
+\f2\b 		sd = 0.5, 150 epochs:
+\f0\b0  62%, trained in 64.52 minutes\
+	
+\f1\i\b 14x14
+\f0\i0\b0 :\
+
+\f2\b 		sd = 0.005, 70 epochs:
+\f0\b0  62%, trained in 19.9 minutes\
+
+\f2\b 		sd = 0.05, 90 epochs: 
+\f0\b0 67%, trained in 25.33 minutes\
+
+\f2\b 		sd = 0.1, 110 epochs:
+\f0\b0  60%, trained in 30.87 minutes\
+
+\f2\b 		sd = 0.25, 130 epochs:
+\f0\b0  52%, trained in 36.48 minutes\
+
+\f2\b 		sd = 0.5, 150 epochs: 
+\f0\b0 36%, trained in 41.02 minutes\
+\
+- Saved the models, their weights, the confusion matrices, training, testing & loss data into 
+\f1\i\b ./models/April_8th_2022\
+
+\f0\i0\b0 - Attempted to save the confusion matrices\'92 figures as png images using 
+\f1\i\b plt.save()
+\f0\i0\b0  using a for loop, but seems like the image is not being exported properly\
+\
+\
 }
