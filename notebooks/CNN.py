@@ -283,7 +283,7 @@ def test(cnn, loaders):
     return cmt, test_acc_data
 
 
-def plot_confusion_matrix(cm, classes, path, normalize=False, title='Confusion matrix', cmap=plt.cm.Blues):
+def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix', cmap=plt.cm.Blues):
     if normalize:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
         print("Normalized confusion matrix")
@@ -307,6 +307,6 @@ def plot_confusion_matrix(cm, classes, path, normalize=False, title='Confusion m
 
     plt.tight_layout()
     plt.figure(figsize=(12,7))
-    plt.savefig(path)
+#     plt.savefig(path)
     plt.show()
 #     path = '../models/April_5th_2022/noisy_data_training/' + str(sizes[i]) + 'x' + str(sizes[i]) + '/sd_' + str(sd[j]) + '/confusion_matrix_heatmap.png'
