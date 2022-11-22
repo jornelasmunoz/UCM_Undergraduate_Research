@@ -1,0 +1,173 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-BoldOblique;\f2\fswiss\fcharset0 Helvetica-Bold;
+}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 03/23/2022\
+- Created a CNN class that can build a ConvNet model for every image size\
+- The class has 3 default arguments: \
+	
+\f1\i\b 1. img_size = 28 
+\f0\i0\b0 -> Specifies the image input size\
+	
+\f1\i\b 2. conv_layers = 2
+\f0\i0\b0  -> Specifies the number of convolutional layers in the model\
+	
+\f1\i\b 3. num_classes = 10
+\f0\i0\b0  -> Specifies the number of classes/labels in our training data\
+\
+- The members/attributes of the CNN class are:\
+	
+\f1\i\b 1. img_shape 
+\f0\i0\b0 -> Will keep track of the image size as it goes through both convolution and 			       pooling.
+\f1\i\b \
+	2. num_classes 
+\f0\i0\b0 -> Keeps track of the number of classes in our training data
+\f1\i\b \
+	3. conv_layers
+\f0\i0\b0  -> Keeps track of the desired number of convolutional layers to be added to 			        the model.
+\f1\i\b \
+	4. linear_shape
+\f0\i0\b0  -> This list has a set size of 3, and keeps track of the linear input shape in 			         three dimensions, which are 
+\f1\i\b [num_of_channels, image_width, 			         image_height]\
+	5. conv 
+\f0\i0\b0  -> This array is of size 
+\f1\i\b conv_layers
+\f0\i0\b0  (2 by default). It keeps track of every layer 		        created by the CNN class\
+\
+- To build the convolutional layers, I created a list, called 
+\f1\i\b conv
+\f0\i0\b0 , of size 2 (default 
+\f1\i\b conv_layers
+\f0\i0\b0  argument) that will store 2 convolutional layers.\
+- For every time I created a convolutional layer and added it to my 
+\f1\i\b conv
+\f0\i0\b0  list, I computed the output image size and number of channel outputs after every convolution and pooling by creating two functions (
+\f1\i\b conv_out_size()
+\f0\i0\b0  & 
+\f1\i\b pooling_out_size() 
+\f0\i0\b0 ).\
+- Proceeded to create the Linear (i.e. Fully-connected) layer (So far, I don\'92t know how to compute the output of a Linear layer for the input of a second linear layer).\
+- To figure out the input size for the Linear layer, I implemented a function called 
+\f1\i\b flatten()
+\f0\i0\b0 , which takes as argument the 
+\f1\i\b linear_shape
+\f0\i0\b0  list, and multiplies every entry in it (3 total entries).\
+\
+\
+\
+03/25/2022\
+- Attempted to make the CNN class feasible for ANY input image size by keeping track of the kernel size, input image size after each convolution and number of output channels. I also tried to prevent the case of having 
+\f2\b zero 
+\f0\b0 output size in the fully-connected layer by re-setting the for loop that builds the CNN, and reducing the size of the kernel (and of the padding), but 
+\f1\i\b didn\'92t work
+\f0\i0\b0 . \
+- Got a \'93kernel size should not be greater than the size of the input\'94 error.\
+\
+- For now, I inserted if-else statements into the 
+\f1\i\b CNN.py 
+\f0\i0\b0 script to accommodate for the kernel size and output channels for the 4 image sizes we are working with:\
+	1. 28x28: \
+		out_channels = 16 \
+		kernel_size = 5\
+	2. 14x14:\
+		out_channels = 8 \
+		kernel_size = 3\
+	3. 7x7:\
+		out_channels = 4 \
+		kernel_size = 2\
+	4. 4x4:\
+		out_channels = 4 \
+		kernel_size = 3\
+		padding = 1\
+\
+\
+- Defined the train function OUTSIDE the CNN class due to parameter inconvenience (cnn is a CNN class). This train function returns the accuracy train data and the loss data throughout the training session.\
+- Defined the test function, which evaluates each image batch, and outputs the prediction accuracy per batch.\
+\
+\
+\
+03/27/2022\
+- Re-defined the 
+\f1\i\b test()
+\f0\i0\b0  function to instead build a confusion matrix using sklearn\'92s confusion matrix module, and pandas.\
+- Returns the confusion matrix as a pandas dataframe.\
+- Used the example of building a confusion matrix from a blog from towardsdatascience.com\
+- Wrote the notebook 
+\f1\i\b CNN_Training_Notebook.ipynb
+\f0\i0\b0 \
+- Trained four models using the 
+\f1\i\b CNN.py
+\f0\i0\b0  script\
+- Saved each trained model in a list, and saved the model and its weights within a folder called 
+\f1\i\b models
+\f0\i0\b0 .\
+\
+\
+\
+03/31/2022\
+- I messed around with the creation of the confusion matrix in the notebook where i created the model for images of size 28x28\
+- I followed the turorial by deeplizard on creating the confusion matrix and I was able to figure out why there was a 1.1 in the confusion matrix I previously plotted\
+- The confusion matrix that I previously plotted is dividing the amount of times a prediction happened by 100. It\'92s not expressing some sort of probability. \
+- Therefore, the confusion matrices that I previously plotted are correct. Just need to work on getting the x-axis and y-axis labels working\
+\
+\
+04/08/2022\
+- I created another notebook where I would now train and test CNNs on 14x14 and 28x28 images with gaussian noise added to them\
+- I added an 
+\f1\i\b AddGaussianNoise()
+\f0\i0\b0  function to the 
+\f1\i\b CNN.py
+\f0\i0\b0  script, whose parameters are mean and standard deviation.\
+- I messed around with the parameters of the noise function, and seems like mean should be set to 0, and standard deviation to any number between 0 and 1\
+- I tested the model on a noisy MNIST dataset with gaussian noise added to it with a standard deviation of 0.005, 0.05, 0.1, 0.25 and 0.5 (total of 10 trained models)\
+Testing accuracies:\
+	
+\f1\i\b 28x28
+\f0\i0\b0 :\
+		
+\f2\b sd = 0.005, 70 epochs:
+\f0\b0  94%, trained in 36.32 minutes\
+
+\f2\b 		sd = 0.05, 90 epochs:
+\f0\b0  93%, trained in 45.35 minutes\
+
+\f2\b 		sd = 0.1, 110 epochs:
+\f0\b0  86%, trained in 45.08 minutes\
+
+\f2\b 		sd = 0.25, 130 epochs:
+\f0\b0  77%, trained in 56.93 minutes\
+
+\f2\b 		sd = 0.5, 150 epochs:
+\f0\b0  62%, trained in 64.52 minutes\
+	
+\f1\i\b 14x14
+\f0\i0\b0 :\
+
+\f2\b 		sd = 0.005, 70 epochs:
+\f0\b0  62%, trained in 19.9 minutes\
+
+\f2\b 		sd = 0.05, 90 epochs: 
+\f0\b0 67%, trained in 25.33 minutes\
+
+\f2\b 		sd = 0.1, 110 epochs:
+\f0\b0  60%, trained in 30.87 minutes\
+
+\f2\b 		sd = 0.25, 130 epochs:
+\f0\b0  52%, trained in 36.48 minutes\
+
+\f2\b 		sd = 0.5, 150 epochs: 
+\f0\b0 36%, trained in 41.02 minutes\
+\
+- Saved the models, their weights, the confusion matrices, training, testing & loss data into 
+\f1\i\b ./models/April_8th_2022\
+
+\f0\i0\b0 - Attempted to save the confusion matrices\'92 figures as png images using 
+\f1\i\b plt.save()
+\f0\i0\b0  using a for loop, but seems like the image is not being exported properly\
+\
+\
+}

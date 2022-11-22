@@ -34,7 +34,7 @@ class CNN(nn.Module):
         self.img_shape = img_shape   
         self.num_classes = num_classes
         self.conv_layers = conv_layers
-        self.root_path = '../data/28x28'
+        self.root_path = '../data/MNIST'#'../data/28x28'
         self.ker_size = 0
         self.padding = 0
         self.out_channels = 0
