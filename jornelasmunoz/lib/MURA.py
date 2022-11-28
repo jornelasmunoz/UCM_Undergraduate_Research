@@ -65,6 +65,7 @@ def FFT_convolve(A, B, p=None):
     '''
     # Check A and B are the same size
     if np.array(A).shape != np.array(B).shape:
+        print(A.shape, B.shape)
         raise Exception("The arrays A and B are not the same shape")
     
     # Define p if it is not given already
