@@ -30,18 +30,18 @@ FullMatrix MURA::create_binary_aperture_arr(){
             int C_j;
               C_i = legendre_symbol(i,get_p());
               C_j = legendre_symbol(j,get_p());
-
+              //cout << C_i << ", " << C_j << endl;
              if (i == 0){
-                 A.add_element(i,j,0.);
+                 A.add_element(i,j,0);
              }
              else if (j == 0){
-                 A.add_element(i,j, 1.);
+                 A.add_element(i,j, 1);
              }
              else if (C_i * C_j == 1){
-                 A.add_element(i,j,1.);
+                 A.add_element(i,j,1);
              }
              else {
-                 A.add_element(i,j,0.);
+                 A.add_element(i,j,0);
              }
         }
     }
@@ -60,13 +60,13 @@ FullMatrix MURA::create_decoding_arr(FullMatrix &A){
     for (int i = 0; i < get_p(); i++){
         for (int j = 0; j < get_p(); j++){
             if (i + j == 0){
-                G.add_element(i,j,1.);
+                G.add_element(i,j,1);
             }
-            else if (A.get_value(i,j) == 1.){
-                G.add_element(i,j,1.);
+            else if (A.get_value(i,j) == 1){
+                G.add_element(i,j,1);
             }
-            else if (A.get_value(i,j) == 0.){
-                G.add_element(i,j,-1.);
+            else if (A.get_value(i,j) == 0){
+                G.add_element(i,j,-1);
             }
         }
     }
@@ -81,6 +81,6 @@ int MURA::legendre_symbol(int a, int p){
     //relatively prime to p (if p divides
     //a, then a|p = 0)
     int ls;
-    ls = int(pow(a, int((p - 1)/2)))%p;
-    return (ls == (p-1)) ? -1. : ls;
+    ls = long(pow(a, int((p - 1)/2))) % p;
+    return (ls == (p-1)) ? -1 : ls;
 }

@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.fft import fft2, ifft2
-
+import torch
 
 def create_binary_aperture_arr(p):
     '''
@@ -143,3 +143,5 @@ def normalize(data):
     normalized_data = (data-np.min(data))/(np.max(data)-np.min(data))
     return normalized_data
 
+def get_D(x):
+    return torch.unsqueeze(torch.tensor(FFT_convolve(np.squeeze(x.numpy()), A,p)), 0)
