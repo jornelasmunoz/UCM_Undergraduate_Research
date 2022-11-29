@@ -1,8 +1,9 @@
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include "FullMatrix.h"
 #include "MURA.h"
-#include "/usr/local/include/fftw3.h"
+//#include "/usr/local/include/fftw3.h"
 #include <complex>
 #include <cmath>
 #include <iterator>
@@ -52,48 +53,63 @@ void fft(Iter_T a, Iter_T b, int log2n)
 int main() {
     std::cout << "Hello, World!" << std::endl;
     // initialize MURA params
-//    int p = 23;
-//    FullMatrix A(p);
-//    FullMatrix G(p);
+    int p = 5;
+    FullMatrix A(p);
+    FullMatrix G(p);
 
     // Create MURA objects
-//    MURA mura(p);
-//    A = mura.create_binary_aperture_arr();
-//    G = mura.create_decoding_arr(A);
-    //A.display();
+    MURA mura(p);
+    A = mura.create_binary_aperture_arr();
+    G = mura.create_decoding_arr(A);
+    A.display();
     //G.display();
 
 
-    int N;
-    fftw_complex *in, *out; fftw_plan my_plan;
-    in = (fftw_complex*) fftw_malloc(sizeof(fftw_complex)*N);
-//    out = (fftw_complex*) fftw_malloc(sizeof(fftw_complex)*N);
-//    my_plan = fftw_plan_dft_1d(N, in, out, FFTW_FORWARD, FFTW_ESTIMATE);
-//    fftw_execute(my_plan);
-//    fftw_destroy_plan(my_plan);
-//    fftw_free(in);
-//    fftw_free(out);
 
-//    typedef complex<double> cx;
-//    cx a[] = { cx(0,0), cx(1,1), cx(3,3), cx(4,4),
-//               cx(4, 4), cx(3, 3), cx(1,1), cx(0,0) };
-//    cx b[8];
-//    fft(a, b, 3);
-////    for (int i=0; i<8; ++i)
-////        cout << b[i] << "\n";
-//
-//    //vector<double> row;
-//    vector<double> fft_res;
-//    //row.resize(mura.get_p());
-//
-//    cx row[] = {};
-//    fft_res.resize(mura.get_p());
-//    int i = 0;
-//    for (int j = 0; j < mura.get_p(); j++){
-//        row[j] = A.get_value(i,j);
-//        cout << row[j] << ",";
+    typedef complex<double> cx;
+    cx a[] = { cx(0,0), cx(1,1), cx(3,3), cx(4,4),
+               cx(4, 4), cx(3, 3), cx(1,1), cx(0,0) };
+    cx b[8];
+    fft(a, b, 3);
+//    for (int i=0; i<8; ++i)
+//        cout << b[i] << "\n";
+
+
+    // Initialize vector of complex values
+    cx cx_A[p*p];
+    cx fft_A[p*p];
+    //cx_A.resize(p * p);
+    //cx_A.assign(p * p, 0.);
+    //fft_A.resize(p * p);
+
+    for (int i = 0; i < p; i++){
+        for (int j = 0; j < p; j++){
+            cx_A[i * p + j ] = cx(A.get_value(i, j), 0.);
+        }
+    }
+
+//    // print complex A as matrix
+//    for (int i = 0; i < p; i++){
+//        for (int j = 0; j < p; j++){
+//            cout << cx_A[i * p + j] << setw(5);
+//            //cout << cx_A[j] << setw(10);
+//        }
+//        cout << endl;
 //    }
+//    cout << endl;
 
+    cx tmp_row[p];
+    int row = 0;
+    for (int j = 0; j < p; j++){
+        tmp_row[j] = cx_A[row * p + j];
+        cout << cx_A[row * p + j] << setw(5);
+
+    }
+    cout << endl;
+    fft(tmp_row,fft_A, 3);
+
+    for (int j = 0; j < p; ++j)
+        cout << fft_A[j] << "\n";
     return 0;
 }
 
