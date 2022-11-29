@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.fft import fft2, ifft2
-
+import torch
 
 def create_binary_aperture_arr(p):
     '''
@@ -65,6 +65,7 @@ def FFT_convolve(A, B, p=None):
     '''
     # Check A and B are the same size
     if np.array(A).shape != np.array(B).shape:
+        print(A.shape, B.shape)
         raise Exception("The arrays A and B are not the same shape")
     
     # Define p if it is not given already
@@ -142,3 +143,5 @@ def normalize(data):
     normalized_data = (data-np.min(data))/(np.max(data)-np.min(data))
     return normalized_data
 
+def get_D(x):
+    return torch.unsqueeze(torch.tensor(FFT_convolve(np.squeeze(x.numpy()), A,p)), 0)
