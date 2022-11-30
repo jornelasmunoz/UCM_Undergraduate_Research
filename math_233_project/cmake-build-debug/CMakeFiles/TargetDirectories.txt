@@ -1,0 +1,3 @@
+/Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/math_233_project/cmake-build-debug/CMakeFiles/math_233_project.dir
+/Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/math_233_project/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/math_233_project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
