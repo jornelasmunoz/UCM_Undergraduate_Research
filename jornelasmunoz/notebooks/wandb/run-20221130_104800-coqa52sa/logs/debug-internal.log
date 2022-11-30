@@ -1,0 +1,93 @@
+2022-11-30 10:48:00,300 INFO    StreamThr :29547 [internal.py:wandb_internal():88] W&B internal server running at pid: 29547, started at: 2022-11-30 10:48:00.298182
+2022-11-30 10:48:00,308 DEBUG   HandlerThread:29547 [handler.py:handle_request():139] handle_request: status
+2022-11-30 10:48:00,308 DEBUG   SenderThread:29547 [sender.py:send_request():317] send_request: status
+2022-11-30 10:48:00,311 DEBUG   SenderThread:29547 [sender.py:send():303] send: header
+2022-11-30 10:48:00,312 INFO    WriterThread:29547 [datastore.py:open_for_write():75] open: /Users/jocelynornelasmunoz/Desktop/Research/coded-aperture/jornelasmunoz/notebooks/wandb/run-20221130_104800-coqa52sa/run-coqa52sa.wandb
+2022-11-30 10:48:00,349 DEBUG   SenderThread:29547 [sender.py:send():303] send: run
+2022-11-30 10:48:00,586 DEBUG   HandlerThread:29547 [handler.py:handle_request():139] handle_request: check_version
+2022-11-30 10:48:00,590 INFO    SenderThread:29547 [dir_watcher.py:__init__():216] watching files in: /Users/jocelynornelasmunoz/Desktop/Research/coded-aperture/jornelasmunoz/notebooks/wandb/run-20221130_104800-coqa52sa/files
+2022-11-30 10:48:00,590 INFO    SenderThread:29547 [sender.py:_start_run_threads():928] run started: coqa52sa with start time 1669834080.289328
+2022-11-30 10:48:00,590 DEBUG   SenderThread:29547 [sender.py:send():303] send: summary
+2022-11-30 10:48:00,590 INFO    SenderThread:29547 [sender.py:_save_file():1171] saving file wandb-summary.json with policy end
+2022-11-30 10:48:00,590 DEBUG   SenderThread:29547 [sender.py:send_request():317] send_request: check_version
+2022-11-30 10:48:00,660 DEBUG   HandlerThread:29547 [handler.py:handle_request():139] handle_request: run_start
+2022-11-30 10:48:00,667 DEBUG   HandlerThread:29547 [system_info.py:__init__():31] System info init
+2022-11-30 10:48:00,668 DEBUG   HandlerThread:29547 [system_info.py:__init__():46] System info init done
+2022-11-30 10:48:00,668 INFO    HandlerThread:29547 [system_monitor.py:start():150] Starting system monitor
+2022-11-30 10:48:00,668 INFO    SystemMonitor:29547 [system_monitor.py:_start():116] Starting system asset monitoring threads
+2022-11-30 10:48:00,669 INFO    HandlerThread:29547 [system_monitor.py:probe():168] Collecting system info
+2022-11-30 10:48:00,669 DEBUG   HandlerThread:29547 [system_info.py:probe():195] Probing system
+2022-11-30 10:48:00,670 INFO    SystemMonitor:29547 [interfaces.py:start():168] Started cpu
+2022-11-30 10:48:00,670 INFO    SystemMonitor:29547 [interfaces.py:start():168] Started disk
+2022-11-30 10:48:00,670 INFO    SystemMonitor:29547 [interfaces.py:start():168] Started memory
+2022-11-30 10:48:00,671 INFO    SystemMonitor:29547 [interfaces.py:start():168] Started network
+2022-11-30 10:48:00,678 DEBUG   HandlerThread:29547 [system_info.py:_probe_git():180] Probing git
+2022-11-30 10:48:00,704 DEBUG   HandlerThread:29547 [system_info.py:_probe_git():188] Probing git done
+2022-11-30 10:48:00,704 DEBUG   HandlerThread:29547 [system_info.py:probe():241] Probing system done
+2022-11-30 10:48:00,705 DEBUG   HandlerThread:29547 [system_monitor.py:probe():177] {'os': 'macOS-10.16-x86_64-i386-64bit', 'python': '3.9.7', 'heartbeatAt': '2022-11-30T18:48:00.669967', 'startedAt': '2022-11-30T18:48:00.278815', 'docker': None, 'cuda': None, 'args': None, 'state': 'running', 'program': 'jornelasmunoz/notebooks/Classification Model.ipynb', 'root': '/Users/jocelynornelasmunoz/Desktop/Research/coded-aperture', 'git': {'remote': 'git@github.com:jornelasmunoz/coded-aperture.git', 'commit': '9c265daaa256a5474c955e57183168b04e9ca12e'}, 'email': 'jornelasmunoz@ucmerced.edu', 'host': 'ucmerced-10-34-0-130.ucmerced.edu', 'username': 'jocelynornelasmunoz', 'executable': '/opt/anaconda3/bin/python', 'cpu_count': 4, 'cpu_count_logical': 4, 'cpu_freq': {'current': 3300, 'min': 3300, 'max': 3300}, 'cpu_freq_per_core': [{'current': 3300, 'min': 3300, 'max': 3300}], 'disk': {'total': 2907.129280090332, 'used': 668.852783203125}, 'memory': {'total': 16.0}}
+2022-11-30 10:48:00,705 INFO    HandlerThread:29547 [system_monitor.py:probe():178] Finished collecting system info
+2022-11-30 10:48:00,705 INFO    HandlerThread:29547 [system_monitor.py:probe():181] Publishing system info
+2022-11-30 10:48:00,705 DEBUG   HandlerThread:29547 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2022-11-30 10:48:00,706 DEBUG   HandlerThread:29547 [system_info.py:_save_pip():67] Saving pip packages done
+2022-11-30 10:48:00,706 DEBUG   HandlerThread:29547 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2022-11-30 10:48:01,596 INFO    Thread-13 :29547 [dir_watcher.py:_on_file_created():275] file/dir created: /Users/jocelynornelasmunoz/Desktop/Research/coded-aperture/jornelasmunoz/notebooks/wandb/run-20221130_104800-coqa52sa/files/requirements.txt
+2022-11-30 10:48:01,597 INFO    Thread-13 :29547 [dir_watcher.py:_on_file_created():275] file/dir created: /Users/jocelynornelasmunoz/Desktop/Research/coded-aperture/jornelasmunoz/notebooks/wandb/run-20221130_104800-coqa52sa/files/conda-environment.yaml
+2022-11-30 10:48:01,597 INFO    Thread-13 :29547 [dir_watcher.py:_on_file_created():275] file/dir created: /Users/jocelynornelasmunoz/Desktop/Research/coded-aperture/jornelasmunoz/notebooks/wandb/run-20221130_104800-coqa52sa/files/wandb-summary.json
+2022-11-30 10:48:05,504 DEBUG   HandlerThread:29547 [system_info.py:_save_conda():86] Saving conda packages done
+2022-11-30 10:48:05,504 INFO    HandlerThread:29547 [system_monitor.py:probe():183] Finished publishing system info
+2022-11-30 10:48:05,508 DEBUG   SenderThread:29547 [sender.py:send():303] send: files
+2022-11-30 10:48:05,509 INFO    SenderThread:29547 [sender.py:_save_file():1171] saving file wandb-metadata.json with policy now
+2022-11-30 10:48:05,522 DEBUG   HandlerThread:29547 [handler.py:handle_request():139] handle_request: stop_status
+2022-11-30 10:48:05,522 DEBUG   SenderThread:29547 [sender.py:send_request():317] send_request: stop_status
+2022-11-30 10:48:05,537 DEBUG   HandlerThread:29547 [handler.py:handle_request():139] handle_request: pause
+2022-11-30 10:48:05,537 INFO    HandlerThread:29547 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2022-11-30 10:48:05,537 INFO    HandlerThread:29547 [system_monitor.py:finish():160] Stopping system monitor
+2022-11-30 10:48:05,548 DEBUG   SystemMonitor:29547 [system_monitor.py:_start():130] Starting system metrics aggregation loop
+2022-11-30 10:48:05,552 DEBUG   SystemMonitor:29547 [system_monitor.py:_start():137] Finished system metrics aggregation loop
+2022-11-30 10:48:05,552 DEBUG   SystemMonitor:29547 [system_monitor.py:_start():141] Publishing last batch of metrics
+2022-11-30 10:48:05,553 INFO    HandlerThread:29547 [interfaces.py:finish():173] Joined cpu
+2022-11-30 10:48:05,553 INFO    HandlerThread:29547 [interfaces.py:finish():173] Joined disk
+2022-11-30 10:48:05,553 INFO    HandlerThread:29547 [interfaces.py:finish():173] Joined memory
+2022-11-30 10:48:05,553 INFO    HandlerThread:29547 [interfaces.py:finish():173] Joined network
+2022-11-30 10:48:05,597 DEBUG   HandlerThread:29547 [handler.py:handle_request():139] handle_request: resume
+2022-11-30 10:48:05,597 INFO    HandlerThread:29547 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2022-11-30 10:48:05,598 DEBUG   HandlerThread:29547 [handler.py:handle_request():139] handle_request: pause
+2022-11-30 10:48:05,598 INFO    HandlerThread:29547 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2022-11-30 10:48:05,609 INFO    Thread-13 :29547 [dir_watcher.py:_on_file_modified():292] file/dir modified: /Users/jocelynornelasmunoz/Desktop/Research/coded-aperture/jornelasmunoz/notebooks/wandb/run-20221130_104800-coqa52sa/files/conda-environment.yaml
+2022-11-30 10:48:05,609 INFO    Thread-13 :29547 [dir_watcher.py:_on_file_created():275] file/dir created: /Users/jocelynornelasmunoz/Desktop/Research/coded-aperture/jornelasmunoz/notebooks/wandb/run-20221130_104800-coqa52sa/files/wandb-metadata.json
+2022-11-30 10:48:05,626 DEBUG   SenderThread:29547 [sender.py:send():303] send: telemetry
+2022-11-30 10:48:05,627 DEBUG   SenderThread:29547 [sender.py:send():303] send: stats
+2022-11-30 10:48:05,647 DEBUG   HandlerThread:29547 [handler.py:handle_request():139] handle_request: resume
+2022-11-30 10:48:05,647 INFO    HandlerThread:29547 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2022-11-30 10:48:05,712 DEBUG   HandlerThread:29547 [handler.py:handle_request():139] handle_request: pause
+2022-11-30 10:48:05,712 INFO    HandlerThread:29547 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2022-11-30 10:48:05,751 DEBUG   HandlerThread:29547 [handler.py:handle_request():139] handle_request: resume
+2022-11-30 10:48:05,751 INFO    HandlerThread:29547 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2022-11-30 10:48:05,752 DEBUG   HandlerThread:29547 [handler.py:handle_request():139] handle_request: pause
+2022-11-30 10:48:05,752 INFO    HandlerThread:29547 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2022-11-30 10:48:05,792 DEBUG   HandlerThread:29547 [handler.py:handle_request():139] handle_request: resume
+2022-11-30 10:48:05,792 INFO    HandlerThread:29547 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2022-11-30 10:48:05,793 DEBUG   HandlerThread:29547 [handler.py:handle_request():139] handle_request: pause
+2022-11-30 10:48:05,794 INFO    HandlerThread:29547 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2022-11-30 10:48:05,989 INFO    Thread-16 :29547 [upload_job.py:push():143] Uploaded file /var/folders/mm/0742r7611k343p9_mwndxzjw0000gq/T/tmpfy61kuqlwandb/2db311zt-wandb-metadata.json
+2022-11-30 10:48:12,337 DEBUG   HandlerThread:29547 [handler.py:handle_request():139] handle_request: resume
+2022-11-30 10:48:12,338 INFO    HandlerThread:29547 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2022-11-30 10:48:12,343 DEBUG   HandlerThread:29547 [handler.py:handle_request():139] handle_request: pause
+2022-11-30 10:48:12,344 INFO    HandlerThread:29547 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2022-11-30 10:48:14,898 DEBUG   HandlerThread:29547 [handler.py:handle_request():139] handle_request: resume
+2022-11-30 10:48:14,898 INFO    HandlerThread:29547 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2022-11-30 10:48:17,342 WARNING StreamThr :29547 [internal.py:is_dead():385] Internal process exiting, parent pid 29536 disappeared
+2022-11-30 10:48:17,342 ERROR   StreamThr :29547 [internal.py:wandb_internal():147] Internal process shutdown.
+2022-11-30 10:48:17,542 INFO    SenderThread:29547 [sender.py:finish():1331] shutting down sender
+2022-11-30 10:48:17,542 INFO    SenderThread:29547 [dir_watcher.py:finish():362] shutting down directory watcher
+2022-11-30 10:48:17,578 INFO    WriterThread:29547 [datastore.py:close():279] close: /Users/jocelynornelasmunoz/Desktop/Research/coded-aperture/jornelasmunoz/notebooks/wandb/run-20221130_104800-coqa52sa/run-coqa52sa.wandb
+2022-11-30 10:48:17,633 INFO    SenderThread:29547 [dir_watcher.py:finish():392] scan: /Users/jocelynornelasmunoz/Desktop/Research/coded-aperture/jornelasmunoz/notebooks/wandb/run-20221130_104800-coqa52sa/files
+2022-11-30 10:48:17,634 INFO    SenderThread:29547 [dir_watcher.py:finish():406] scan save: /Users/jocelynornelasmunoz/Desktop/Research/coded-aperture/jornelasmunoz/notebooks/wandb/run-20221130_104800-coqa52sa/files/requirements.txt requirements.txt
+2022-11-30 10:48:17,634 INFO    SenderThread:29547 [dir_watcher.py:finish():406] scan save: /Users/jocelynornelasmunoz/Desktop/Research/coded-aperture/jornelasmunoz/notebooks/wandb/run-20221130_104800-coqa52sa/files/config.yaml config.yaml
+2022-11-30 10:48:17,634 INFO    SenderThread:29547 [dir_watcher.py:finish():406] scan save: /Users/jocelynornelasmunoz/Desktop/Research/coded-aperture/jornelasmunoz/notebooks/wandb/run-20221130_104800-coqa52sa/files/wandb-summary.json wandb-summary.json
+2022-11-30 10:48:17,638 INFO    SenderThread:29547 [dir_watcher.py:finish():406] scan save: /Users/jocelynornelasmunoz/Desktop/Research/coded-aperture/jornelasmunoz/notebooks/wandb/run-20221130_104800-coqa52sa/files/conda-environment.yaml conda-environment.yaml
+2022-11-30 10:48:17,639 INFO    SenderThread:29547 [dir_watcher.py:finish():406] scan save: /Users/jocelynornelasmunoz/Desktop/Research/coded-aperture/jornelasmunoz/notebooks/wandb/run-20221130_104800-coqa52sa/files/wandb-metadata.json wandb-metadata.json
+2022-11-30 10:48:17,639 INFO    SenderThread:29547 [file_pusher.py:finish():168] shutting down file pusher
+2022-11-30 10:48:17,639 INFO    SenderThread:29547 [file_pusher.py:join():173] waiting for file pusher
+2022-11-30 10:48:17,708 INFO    MainThread:29547 [internal.py:handle_exit():78] Internal process exited
+2022-11-30 10:48:17,709 WARNING MsgRouterThr:29547 [router.py:message_loop():74] EOFError seen in message_loop
