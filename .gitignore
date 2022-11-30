@@ -1,4 +1,5 @@
 cmake-build-debug/*
-*/.DS_Store/*
+.DS_Store
 .ipynb_checkpoints
 rmarcia_matlab_codes/*
+jornelasmunoz/notebooks/wandb/*
