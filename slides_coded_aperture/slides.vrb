@@ -1,0 +1,31 @@
+\frametitle{Numerical Experiments: Padding}
+\begin{enumerate}
+		\item [$\bullet$] Preliminary results suggested that we did not have enough information along the edges and corners of an image
+		\item [$\bullet$] We investigated various types of padding to introduce more information along the edges
+	\end{enumerate}
+	\vspace{\baselineskip}
+	\begin{center}
+		\resizebox{.9\textwidth}{!}{%
+			\begin{figure*}
+				\begin{center}
+					\hspace{-9mm}
+					\begin{tabular}{cccccccc}
+						Original \!\!\!\!\!\! &
+						0-Padding \!\!\!\!\!\! &
+						Edge \!\!\!\!\!\! &
+						Reflection \!\!\!\!\!\! \\
+						\includegraphics[width=2.7cm]{figures/natural.png} \!\!\!\!\!\!
+						&
+						\includegraphics[width=2.7cm]{figures/zero_padding.png} \!\!\!\!\!\!
+						&
+						\includegraphics[width=2.7cm]{figures/edge_padding.png} \!\!\!\!\!\!
+						&
+						\includegraphics[width=2.7cm]{figures/reflective_padding.png} \!\!\!\!\!\!
+					\end{tabular}
+					% 	\caption{
+					% 		CIFAR-10 images used in our numerical experiments.  Images 1-5 and the corresponding results are presented in detail in Fig.\ 3.
+					% 	}
+					% 	\label{fig:images}
+				\end{center}
+		\end{figure*}}
+	\end{center}

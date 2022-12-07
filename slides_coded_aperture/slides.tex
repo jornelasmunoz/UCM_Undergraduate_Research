@@ -1,0 +1,1567 @@
+\documentclass[10pt, t]{beamer}
+\usetheme{Madrid}
+\input{settings}
+
+
+\title[Coded Aperture]{Image Classification from Coded Aperture}
+\author[J. Ornelas Mu\~noz]{\textbf{Jocelyn Ornelas Mu\~noz}, Erica M. Rutter,  Roummel F. Marcia}
+
+\institute[]{\vspace{-4mm} \\ \normalsize{$^*$Department of Applied Mathematics, UC Merced\\
+$^\dagger$ Department of Mathematics California State University, Fresno}\\ 	
+	%\vspace{-2mm} 
+% 	\begin{table}[h!]
+% 		\begin{center}
+% 			%\resizebox{0.6\textwidth}{!}{
+% 			\resizebox{0.4\textwidth}{!}{
+% 				\begin{tabular}{rl}
+% 					Advisor:        	&   Dr.\ Roummel F. Marcia \\
+% 					                    &   Dr.\ Erica Rutter
+% 				% 	Committee Members:  &    Dr.\ Omar DeGuchy (LLNL)\\
+% 				% 	&     Dr.\ Arnold Kim (Applied Math)\\ 
+% 				% 	&     Dr.\ Chrysoula Tsogka (Applied Math) \\
+% 			\end{tabular}}
+% 		\end{center}
+% 	\end{table}
+	\vspace{2mm}
+%	\small{Group Meeting} 
+	\vspace{-3mm}
+}
+
+\date{Wednesday, November 16, 2022}
+
+\titlegraphic{\vspace{-5pt}
+	\includegraphics[width=1.5cm]{images/UCM_Seal.png}
+}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%\AtBeginSection[]{
+%  \begin{frame}\frametitle{Outline}
+%  \tableofcontents[currentsection]
+%  \end{frame}
+%}
+
+% \begin{frame}\frametitle{Overview}
+%  \tableofcontents[]
+% \end{frame}
+%
+%\AtBeginSection[] {
+%\begin{frame}{Outline}
+%		\tableofcontents[currentsection,currentsubsection]
+%\end{frame}}
+%
+%\AtBeginSubsection[] {
+%	\begin{frame}{Outline}
+%		\tableofcontents[currentsection,currentsubsection]
+%\end{frame}}
+
+% \begin{frame}{Overview}
+% \bigskip
+% \textbf{I.} \? \? \? \textbf{Previous Work}\\
+% \bigskip
+% \textbf{II.} \? \? \textbf{Ongoing Work}\\
+% \bigskip
+% \textbf{III.}  \? \textbf{Future Work}\\
+% \bigskip
+% \textbf{IV.} \? \textbf{Accomplishments}\\
+% \bigskip
+% \textbf{V.} \? \? \textbf{Timeline} 
+% \end{frame}
+%-------------------------------------------------------------------
+%                    INTRODUCTION
+%-------------------------------------------------------------------
+\section{Overview}
+\begin{frame}{Overview}
+%Encoded in our DNA are the instructions as to how 
+
+% Genomic disorders are caused by changes in the human genome --e.g. cancer, down syndrome, autism, etc. In particular, \textcolor{blue}{structural variants (SVs)} are 
+% \begin{itemize}
+%     \item Insertions, deletions, inversions, duplications, and transpositions in genomic sequences
+%     \item Large-scale changes in the DNA sequence ($~50-200$ letters)
+%     \item Rare, hard to detect occurrences in the genome
+% \end{itemize}
+
+Goal: Reconstruct signals from noisy measurements as accurately as possible. 
+
+\end{frame}
+
+
+    
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{\phantom{hello}}
+% \null\vfill 
+% \begin{columns}
+% 	\begin{column}{0.7\textwidth}
+% 		\begin{center}
+% 			\font\endfont = cmss10 at 8mm
+% 			\color{black}
+% 			\endfont%
+% 			I. Previous Work
+% 		\end{center}    
+% 	\end{column}
+% \end{columns}
+% \vfill\null
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}[fragile]{I. Image Denoising Using Recurrent Neural Network}
+% 	\only<1>{\textbf{\textcolor{red}{Goal:}} Denoise image using a recurrent neural network (RNN) \textbf{without training data}\footnote[1]{A. Ho, J. Alvarez and R. F. Marcia, ``Convolution Padding in Recurrent Neural Networks for Image Denoising with Limited Data,” Submitted to 2021 Asilomar Conference on Signals, Systems, and Computers.}.}
+% 	\only<2>{\textbf{\textcolor{red}{Goal:}} Denoise image using a recurrent neural network (RNN) \textbf{without training data}\footnote[2]{D. Ulyanov, A. Vedaldi, and V. Lempitsky, ``Deep Image Prior," 2018.}.}
+	
+% 	%\only<1->{\textbf{\textcolor{blue}{Goal:}} Denoise image using a recurrent neural network (RNN) \textbf{without training data}\footnotemark[1].}
+	 
+% 	 \only<1>{
+% 	 	\bigskip
+% 	 	\begin{figure}
+% 	 	\includegraphics[width = .75\textwidth]{figs/denoise.png}
+% 	 \end{figure}}
+	 
+% 	\only<2>{\begin{center}
+% 	\begin{columns}
+% 		\begin{column}{0.3\textwidth}
+% 			\vspace{5mm}
+% 			\scalebox{0.8}{
+% 				\begin{tabular}{cl}
+% 					$z_{noise}$ & = \quad Gaussian noise \\
+% 					$z_t$ & = \quad Current input \\
+% 					$\epsilon$ & = \quad weighted sum parameter \\
+% 					$U_\phi$ & = \quad Encoder with parameters $\phi$ \\
+% 					$V_\theta$ & = \quad Decoder with parameters $\theta$ \\
+% 					$f(z_t)$ & = \quad Reconstruction at time $t$
+% 				\end{tabular}
+% 			}
+% 		\end{column}
+% 		\hspace{5mm}
+% 		\begin{column}{0.65\textwidth}
+% 			\vspace{-5mm}
+% 			\begin{figure}
+% 				\includegraphics[width=.75\linewidth]{figures/rnn_final3.png}
+% 			\end{figure}
+% 		\end{column}
+% 	\end{columns}
+% 	\end{center}}
+
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}[fragile]{I. Results}
+% 	\only<1>{
+% 	\begin{center}
+% 		\resizebox{0.85\textwidth}{!}{%
+% 			\begin{figure*}
+% 				\centering
+% 				\begin{tabular}{ccccccccc}
+% 					&
+% 					Ground Truth &
+% 					Noisy &
+% 					Reconstruction &
+% 					\phantom{Edge Padding} &
+% 					\phantom{Reflection Padding}
+% 					\\[.2cm]
+% 					\parbox[t]{2mm}{\rotatebox[origin=c]{90}{Image 1 \hspace{-3.5cm} }} \!\!\!\!
+% 					&
+% 					\includegraphics[width=3.0cm]{figures/image_1} \!\!\!\!\!
+% 					&
+% 					\includegraphics[width=3.0cm]{figures/noisy_image_1} \!\!\!\!\!
+% 					&
+% 					\includegraphics[width=3.0cm]{figures/unpad_image_1} \!\!\!\!\!
+% 					&
+% 					\phantom{\includegraphics[width=3.0cm]{figures/pad_image_1} \!\!\!\!\!}
+% 					&
+% 					\phantom{\includegraphics[width=3.0cm]{figures/reflect_image_0}}\\
+% 					&
+% 					&
+% 					&
+% 					\phantom{\Red{SSIM$_F = 0.8800$}} &
+% 					\phantom{\Blue{SSIM$_F = 0.9077$}} &
+% 					\phantom{\Blue{SSIM$_F = 0.9018$}} \\
+% 					& 
+% 					&
+% 					&
+% 					\phantom{\Blue{SSIM$_C = 0.8818$}} &
+% 					\phantom{\Red{SSIM$_C = 0.8276$}} &
+% 					\phantom{\Red{SSIM$_C = 0.7996$}} 
+% 					\\[.2cm]
+% 					\parbox[t]{2mm}{\rotatebox[origin=c]{90}{Image 2 \hspace{-3.5cm} }} \!\!\!\!
+% 					&
+% 					\includegraphics[width=3.0cm]{figures/image_13} \!\!\!\!\!
+% 					&
+% 					\includegraphics[width=3.0cm]{figures/noisy_image_13} \!\!\!\!\!
+% 					&
+% 					\includegraphics[width=3.0cm]{figures/unpad_image_13} \!\!\!\!\!
+% 					&
+% 					\phantom{\includegraphics[width=3.0cm]{figures/pad_image_13} \!\!\!\!\!}
+% 					&
+% 					\phantom{\includegraphics[width=3.0cm]{figures/reflect_image_13}}\\
+% 					& 
+% 					&
+% 					&
+% 					\phantom{\Red{SSIM$_F = 0.8162$}}&
+% 					\phantom{\Blue{SSIM$_F = 0.8210$}} &
+% 					\phantom{\Blue{SSIM$_F = 0.8305$}} \\
+% 					& 
+% 					&
+% 					&
+% 					\phantom{\Blue{SSIM$_C = 0.7778$}} &
+% 					\phantom{\Red{SSIM$_C = 0.7434$}} &
+% 					\phantom{\Red{SSIM$_C = 0.7881$}} 			
+% 				\end{tabular}
+% 		\end{figure*}}}
+	
+% 	\only<2->{	\begin{center}
+% 			\resizebox{0.85\textwidth}{!}{%
+% 				\begin{figure*}
+% 					\centering
+% 					\begin{tabular}{ccccccccc}
+% 						&
+% 						Ground Truth &
+% 						Noisy &
+% 						Unpadded &
+% 						Edge Padding &
+% 						Reflection Padding
+% 						\\[.2cm]
+% 						\parbox[t]{2mm}{\rotatebox[origin=c]{90}{Image 1 \hspace{-3.5cm} }} \!\!\!\!
+% 						&
+% 						\includegraphics[width=3.0cm]{figures/image_1} \!\!\!\!\!
+% 						&
+% 						\includegraphics[width=3.0cm]{figures/noisy_image_1} \!\!\!\!\!
+% 						&
+% 						\includegraphics[width=3.0cm]{figures/unpad_image_1} \!\!\!\!\!
+% 						&
+% 						\includegraphics[width=3.0cm]{figures/pad_image_1} \!\!\!\!\!
+% 						&
+% 						\includegraphics[width=3.0cm]{figures/reflect_image_0}\\
+% 						&
+% 						&
+% 						&
+% 						\Red{SSIM$_F = 0.8800$} &
+% 						\Blue{SSIM$_F = 0.9077$} &
+% 						\Blue{SSIM$_F = 0.9018$} \\
+% 						& 
+% 						&
+% 						&
+% 						\Blue{SSIM$_C = 0.8818$} &
+% 						\Red{SSIM$_C = 0.8276$} &
+% 						\Red{SSIM$_C = 0.7996$} 
+% 						\\[.2cm]
+% 						\parbox[t]{2mm}{\rotatebox[origin=c]{90}{Image 2 \hspace{-3.5cm} }} \!\!\!\!
+% 						&
+% 						\includegraphics[width=3.0cm]{figures/image_13} \!\!\!\!\!
+% 						&
+% 						\includegraphics[width=3.0cm]{figures/noisy_image_13} \!\!\!\!\!
+% 						&
+% 						\includegraphics[width=3.0cm]{figures/unpad_image_13} \!\!\!\!\!
+% 						&
+% 						\includegraphics[width=3.0cm]{figures/pad_image_13} \!\!\!\!\!
+% 						&
+% 						\includegraphics[width=3.0cm]{figures/reflect_image_13}\\
+% 						& 
+% 						&
+% 						&
+% 						\Red{SSIM$_F = 0.8162$}&
+% 						\Blue{SSIM$_F = 0.8210$} &
+% 						\Blue{SSIM$_F = 0.8305$} \\
+% 						& 
+% 						&
+% 						&
+% 						\Blue{SSIM$_C = 0.7778$} &
+% 						\Red{SSIM$_C = 0.7434$} &
+% 						\Red{SSIM$_C = 0.7881$} 			
+% 					\end{tabular}
+% 		\end{figure*}}}
+% 	\footnotetext[1]{SSIM: Structural Similarity Index Measure}
+% 	\end{center}
+% \vspace{-3mm}
+%  Conclusions:
+% 	\begin{itemize}
+% 		\only<1->{\item Utilized RNN architecture for image denoising without any information from the true image.}
+% 		\only<2->{\item The overall restoration of the image was improved by adding padding.}
+% 	\end{itemize}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{\phantom{hello}}
+% 	\null\vfill 
+% 	\begin{columns}
+% 		\begin{column}{0.7\textwidth}
+% 			\begin{center}
+% 				\font\endfont = cmss10 at 8mm
+% 				\color{black}
+% 				\endfont%
+% 				II. Ongoing Work
+% 			\end{center}    
+% 		\end{column}
+% 	\end{columns}
+% 	\vfill\null
+% \end{frame}
+% %%%%%%%%%%%%%%%% SAR STUFF %%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{II. Synthetic Aperture Radar (SAR)}
+% \textbf{Setup:} In SAR typically a single transmitter/receiver is used to collect the scattered electromagnetic field over a synthetic aperture that is created by a moving platform\footnote[1]{ M. Cheney, ``A mathematical tutorial on synthetic aperture radar," 2001.}.
+% \vspace{-3mm}
+% \begin{columns}
+% \column{0.5\textwidth}
+% \begin{align*}
+% \mathbf{f}(t) & = \text{broadband pulse} \\
+% t &= \text{fast time parameter} \\
+% \vr(s) &= \text{location of the platform} \\
+% s &= \text{slow time parameter} \\
+% \textcolor{blue}{\brho(\vy)} &= \textcolor{blue}{\text{unknown reflectivity}} \\
+% \textcolor{forestgreen}{\bd(s,t)} &= \textcolor{forestgreen}{\text{SAR observation data}} \\
+% \end{align*}
+
+% \column{0.5\textwidth}
+% \begin{figure}
+% 	\centering
+% 	\includegraphics[width=0.7\textwidth]{images/SAR_edit1}
+% 	\label{fig:saredit1}
+% \end{figure}
+% \end{columns}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{II. Direct Scattering Problem}
+% The SAR process can be modeled using a scalar wave equation, which is discritized and reduces the imaging problem as
+% \begin{equation*}
+% \bA \textcolor{blue}{\brho} = \textcolor{forestgreen}{\bd},
+% \end{equation*}
+% where 
+% \begin{align*}	
+% \bA &\in \CC^{N\times K} \text{is the sensing matrix} \\
+% \textcolor{blue}{\brho} &\in \mathbb{C}^K \text{is the reflectivity vector} \\
+% \textcolor{forestgreen}{\bd} &\in \CC^{N} \text{is the SAR observation data.}
+% \end{align*}
+
+% \pause
+
+% \bigskip
+
+% We assume that $N \gg K$ and $\bA$ has full-column rank.
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{II. Inverse Scattering Problem}
+% 	\textbf{Approximating }$\brho$: The least-squares solution is given by
+	
+% 	\begin{equation*}
+% 	\hbrho_{\ell_2} = (\bA^H\! \bA)^{-1} \bA^H\bd,
+% 	\end{equation*}
+	
+% 	where $\bA$ is full column rank and $\bA^H$ is the complex conjugate-transpose of $\bA$. 
+	
+% 	\bigskip
+	
+% 	\bigskip
+	
+% 	\pause 
+% 	A common choice in discretizing the imaging window leads to the matrix $\bA^H\!\bA$ being close to diagonal\footnote[1]{L.Borcea et al, ``Synthetic aperture imaging of directional and frequency dependent reflectivity," 2016.}, which justifies the SAR inversion formula,
+	
+% 	\begin{equation*}
+% 	\hbrho_{\text {SAR}} = \bA^H \bd.
+% 	\end{equation*}
+	
+% \end{frame}
+
+% %\subsection{Machine Learning for SAR}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}[fragile]{II.A: Machine Learning for SAR}
+% 	Our method\footnotemark[1] is based on the use of a \textbf{neural network} in order to discover a mapping between a set \textcolor{blue}{\textbf{reflectivities} $\{\boldsymbol{\varrho}_p\}$} and a set of \textcolor{forestgreen}{\textbf{measurements} $\{\boldsymbol{d}_p\}$}.
+	
+% 	\only<1>{\begin{center}
+% 		\includegraphics[scale=.3]{images/fc_network2}
+% 	\end{center}}
+	
+% 	\only<2>{\begin{center}
+% 		\includegraphics[scale=.3]{images/fc_network_cross2}
+% 	\end{center}
+% 	\vspace{-2mm}
+% 		\textcolor{blue}{\underline{\textbf{Our Approach:}}}
+% 		\begin{itemize}
+% 			{\item \textcolor{blue}{One} fully connected layer is used.}
+% 			{\item \textcolor{blue}{No activation} function is used.}
+% 			{\item The focus is on the recovery of the \textcolor{blue}{transformation}.}
+% 	\end{itemize}}
+
+% 	\footnotetext[1]{O. DeGuchy, J. Alvarez, A. D. Kim, R. F. Marcia and C. Tsogka, ``Forward and inverse scattering in synthetic aperture radar using machine learning," Proceedings of SPIE 2020, Applications of Machine Learning.}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}[fragile]{II.A: Training Process - Direct Scattering}
+% 	\textbf{Recovering forward mapping:} Given a set of \Blue{\textbf{reflectivities} $\{\boldsymbol{\varrho}_p\}$} and their corresponding \textcolor{forestgreen}{\textbf{measurements} $\{\boldsymbol{d}_p\}$} we recover the sensing matrix $\boldsymbol{A}$ by
+	
+% 	\only<1>{\begin{center}
+% 		\includegraphics[scale=.44]{images/pre-process}
+% 	\end{center}}
+% 	\only<2->{\begin{center}
+% 		\includegraphics[scale=.35]{images/learn_AH}
+% \end{center}}
+% 	\footnotesize
+% 	\begin{enumerate}
+% 		\only<1->{\item \Blue{\textbf{Reshape}} the reflectivity into its vector format and separate the real and imaginary values.} 
+% 		\only<2->{\item Perform a \Blue{\textbf{left multiply}} by the sensing matrix initialized with \Blue{\textbf{random values}}.}
+% 		\only<3->{\item \Blue{\textbf{Compare}} the output measurement with the target measurements using the \Blue{\textbf{Mean Squared Error (MSE)}} and minimize using a variant of \Blue{\textbf{gradient descent}}.}
+% 	\end{enumerate}
+% \end{frame}
+
+% \begin{frame}[fragile]{II.A): Training Process - Inverse Scattering}
+% 	\textbf{Recovering inverse mapping:} Given a set of \textcolor{forestgreen}{\textbf{measurements} $\{\boldsymbol{d}_p\}$}  and their corresponding \Blue{\textbf{reflectivities} $\{\boldsymbol{\varrho}_p\}$} we recover the pseudo-inverse $\boldsymbol{B}$ by
+	
+% 	\begin{center}
+% 		\includegraphics[scale=.35]{images/learn_BL}
+% 	\end{center}
+% 	\footnotesize
+% 	\begin{enumerate}
+% 		\item \Blue{\textbf{Reshape}} the reflectivity into its vector format and separate the real and imaginary values.
+% 		\item Perform a \Blue{\textbf{left multiply}} by the sensing matrix initialized with \Blue{\textbf{random values}}.
+% 		\item \Blue{\textbf{Compare}} the output measurement with the target measurements using the \Blue{\textbf{Mean Squared Error (MSE)} and minimize using a variant of \Blue{\textbf{gradient descent}}.}
+% 	\end{enumerate}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}[fragile]{II.A: Experiment 1}
+% 	Low-resolution training data for low-resolution reconstructions.
+% 	\vspace{-3mm}
+% 	\begin{center}	
+% 		\resizebox{\textwidth}{!}{%
+% 			\begin{tabular}{c}
+% 				Target Image\\
+% 				\includegraphics[width=3.75cm]{figs/extended_clean_true_7000}\\
+% 			\end{tabular}
+% 			\begin{tabular}{ccccccccc}
+% 				&
+% 				$\hat{\boldsymbol{\varrho}}_{\text{SAR}} = \bA^H \bd$ &
+% 				$\boldsymbol{\hat{\varrho}}_{L} = \bA_L^H \bd$ &
+% 				$\boldsymbol{\hat{\varrho}}_{I} = \bB_L \bd$ \\[.2cm]
+% 				\parbox[t]{2mm}{\rotatebox[origin=c]{90}{Noiseless \hspace{-3.25cm} }} \!\!\!\!
+% 				&
+% 				\includegraphics[width=3.75cm]{figs/extended_clean_KM_7000} \!\!\!\!\!\!\!\!
+% 				&
+% 				\includegraphics[width=3.75cm]{figs/extended_clean_AH_7000} \!\!\!\!\!\!\!\!
+% 				&
+% 				\includegraphics[width=3.75cm]{figs/extended_clean_BL_7000}\\
+% 				& \textbf{MSE = 0.01467} &
+% 				\textbf{MSE = 0.01465} &
+% 				\Blue{\textbf{MSE = 0.00143}}
+% 				\\[.2cm]
+% 				\parbox[t]{2mm}{\rotatebox[origin=c]{90}{SNR = 5db \hspace{-3.5cm} }} \!\!\!\!
+% 				&
+% 				\includegraphics[width=3.75cm]{figs/extended_5db_KM_7000} \!\!\!\!\!\!\!\!
+% 				&
+% 				\includegraphics[width=3.75cm]{figs/extended_5db_AH_7000} \!\!\!\!\!\!\!\!
+% 				&
+% 				\includegraphics[width=3.75cm]{figs/extended_5db_BL_7000}\\
+% 				& \textbf{MSE = 0.03069} &
+% 				\textbf{MSE = 0.03009} &
+% 				\Blue{\textbf{MSE = 0.00985}}
+% 				\\[.2cm]
+% 			\end{tabular}
+% 		}
+% 	\end{center}	
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}[fragile]{II.A: Experiment 2}
+% 	Low-resolution training data for high-resolution reconstructions.
+% 	\vspace{-3mm}
+% 	\begin{center}
+% 		\resizebox{\textwidth}{!}{%
+% 			\begin{tabular}{c}
+% 				Target Image\\
+% 				\includegraphics[width=3.75cm]{figs/point_clean_true_1000}\\
+				
+% 			\end{tabular}
+% 			\begin{tabular}{ccccccccc}
+% 				&
+% 				$\hat{\boldsymbol{\varrho}}_{\text{SAR}} = \bA^H \bd$ &
+% 				$\boldsymbol{\hat{\varrho}}_{L} = \bA^H_L \bd$ &
+% 				$\boldsymbol{\hat{\varrho}}_{I} = \bB \bd$ \\[.2cm]
+% 				\parbox[t]{2mm}{\rotatebox[origin=c]{90}{Noiseless \hspace{-3.25cm} }} \!\!\!\!
+% 				&
+% 				\includegraphics[width=3.75cm]{figs/point_clean_KM_1000} \!\!\!\!\!\!\!\!
+% 				&
+% 				\includegraphics[width=3.75cm]{figs/point_clean_AH_1000} \!\!\!\!\!\!\!\!
+% 				&
+% 				\includegraphics[width=3.75cm]{figs/point_clean_BL_1000}\\
+% 				&
+% 				\textbf{MSE = 0.00614} &
+% 				\textbf{MSE = 0.00604} &
+% 				\Blue{\textbf{MSE = 0.00309}}
+% 				\\[.2cm]
+% 				\parbox[t]{2mm}{\rotatebox[origin=c]{90}{SNR - 5db \hspace{-3.5cm} }} \!\!\!\!
+% 				&
+% 				\includegraphics[width=3.75cm]{figs/point_5db_KM_1000}  \!\!\!\!\!\!\!\!
+% 				&
+% 				\includegraphics[width=3.75cm]{figs/point_5db_AH_1000} \!\!\!\!\!\!\!\!
+% 				&
+% 				\includegraphics[width=3.75cm]{figs/point_5db_BL_1000}\\
+% 				&
+% 				\textbf{MSE = 0.00930} &
+% 				\textbf{MSE = 0.00910} &
+% 				\Blue{\textbf{MSE = 0.00479}}
+% 				\\[.2cm]
+% 		\end{tabular}}
+% 	\end{center}
+% \end{frame}
+
+% %\subsection{Image Classification in SAR}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{II.B: Image Classification in SAR}
+% \textcolor{red}{\textbf{Goal:}} Given SAR observation data $\bd$, \textcolor{blue}{\textbf{classify}} the original unknown reflectivities $\brho$ using three different reconstruction methods\footnotemark[1].
+
+% \vspace{-1.5cm}
+% \begin{columns}
+% 	\column{0.2\textwidth}
+% 		\begin{tabular}{l}
+% 			\hspace{-1cm} \includegraphics[width=4cm]{images/cars/SAR_clean.pdf}
+% 		\end{tabular}
+% 	\column{0.8\textwidth}
+% 		\textcolor{blue}{\textbf{Method I:}} Classify using $\bd$ (raw SAR data).
+% \end{columns}
+% \vspace{-3.5cm}
+% \begin{columns}
+% 	\column{0.2\textwidth}
+% 	\begin{tabular}{l}
+% 		 \hspace{-1cm} \includegraphics[width=4cm]{images/cars/AH_clean.pdf}
+% 	\end{tabular}
+% 	\column{0.8\textwidth}
+% 		\textcolor{orange}{\textbf{Method II:}} Classify using reconstructions, $ \hbrho_{\text {SAR}} = \bA^H \bd$.
+% \end{columns}
+% \vspace{-3.5cm}
+% \begin{columns}
+% 	\column{0.2\textwidth}
+% 	\begin{tabular}{l}
+% 		\hspace{-1cm} \includegraphics[width=4cm]{images/cars/BL_clean.pdf}
+% 	\end{tabular}
+% 	\column{0.8\textwidth}
+% 		\textcolor{forestgreen}{\textbf{Method III:}} Classify using reconstructions from the learned approximate inverse, $ \hbrho_{I} =  \bB_L\bd$.
+% \end{columns}
+% \vspace{-2cm}
+% \footnotetext[1]{J. Alvarez, O. DeGuchy and R. F. Marcia, ``Image Classification In Synthetic Aperture Radar Using Reconstruction From Learned Inverse Scattering," 2020 IEEE Geoscience and Remote Sensing Symposium (IGARSS).}
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{II.B: Experiment 1: Multi-Layer Perceptron (MLP)}
+
+% \begin{figure}
+% 	\centering
+% 	\includegraphics[width=.8\linewidth]{images/MLP}
+% \end{figure}
+% Summary:
+% \begin{itemize}
+% 	\item \textcolor{forestgreen}{Method III} (learned inverse) has the highest classification accuracy.
+% 	\item As noise levels increase, \textcolor{forestgreen}{Method III} continues to outperform the other two methods.
+% \end{itemize}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{II.B: Experiment 2: Convolutional Neural Network (CNN) }
+
+% \begin{figure}
+% 	\centering
+% 	\includegraphics[width=.8\linewidth]{images/CNN}
+% \end{figure}
+% Summary:
+% \begin{itemize}
+% 	\item \textcolor{forestgreen}{Method III} has the highest classification accuracy.
+% 	\item CNN achieves a higher classification accuracy over MLP.
+% \end{itemize}
+% \end{frame}
+
+% %\subsection{Exploring Learned ``Inverse" in SAR}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{II.C: SAR Extension (ongoing work)}
+% \textcolor{red}{\textbf{Goal:}} Improve reconstruction of SAR images using information from the learned sensing matrix and convolution neural networks. \\
+% \bigskip
+% \textcolor{blue}{\textbf{Approach:}}
+% \begin{enumerate}
+% 	\item Learn $\bA_L$ and compute $\boldsymbol{\hat{\varrho}}_{L} = \bA^H_L \bd$.
+% 	\item Denoise reconstruction using CNN.
+% \end{enumerate}
+
+% \begin{figure}[H]
+% 	\begin{subfigure}{0.33\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figs/sar_target.png}
+% 	\end{subfigure}%
+% 	\begin{subfigure}{0.33\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figs/sar_input.png}
+% 	\end{subfigure}
+% 	\begin{subfigure}{0.33\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figs/sar_recon.png}
+% 	\end{subfigure}
+% \end{figure}
+% \begin{center}
+% 	\vspace{-1.5mm}
+% 	\small{Figure: Preliminary Results}
+% \end{center}
+
+% \footnotetext[1]{Submitted abstract to 2022 SPIE Optics and Photonics.}
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%% Projection Stuff %%%%%%%%%%%%%%%%%%%
+
+% %\subsection{Motivation: Structural Variants}
+% \begin{frame}{II.D: Structural Variant Genome Detection}
+% 	\begin{figure}
+% 		\includegraphics[width=8cm]{imgs/SV.pdf}
+% 	\end{figure}
+% 	\begin{itemize}
+% 		\item Structural variants (SVs) are deletions, inversions, duplications,
+% 		and  transpositions in genomic sequences
+% 		\item Structural variants are rare occurrences
+% 		\item \textcolor{red}{\textbf{Goal:}} Improve structural variant predictions
+% 	\end{itemize}
+% 	\footnotetext[1]{M. Spence et al, ``Detecting novel structural variants in genomes by leveraging parent-child relatedness," 2018.}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{II.D: Sequencing data}
+% 	\begin{figure}
+% 		\centering
+% 		\includegraphics[width=0.65\textwidth]{imgs/mycov} \quad   
+% 	\end{figure}
+	
+% 	\bigskip
+	
+% 	\begin{center}
+% 		\begin{tabular}{|c|c|}
+% 			\hline 
+% 			\rowcolor{blue} \White{High coverage} & \qquad \White{Low coverage} \qquad \phantom{.} \\
+% 			\hline \hline
+% 			Less susceptible to error & Noisier data \\
+% 			Expensive & Cheaper\\
+% 			\hline
+% 		\end{tabular}
+		
+% 	\end{center}
+	
+% 	\pause
+	
+% 	\textbf{Our regime:} Low-coverage sequencing data from related individuals.
+% 	\footnotetext[1]{M. Spence et al, ``Detecting novel structural variants in genomes by leveraging parent-child relatedness," 2018.}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{II.D: Detection Framework}
+% 	True SV signal for each individual is a binary vector, $\vec{f}$:
+% 	\begin{eqnarray*}
+% 		f_i &=& 1 \text{\ \ if SV is present at location $i$}\\
+% 		f_i &=& 0 \text{\ \ otherwise}
+% 	\end{eqnarray*}
+	
+% 	\pause
+	
+% 	Assume we have sequencing data for two parents and one child:
+% 	\begin{figure}
+% 		\includegraphics[width=4.5cm]{imgs/SV_binary2}
+% 	\end{figure}
+	
+% 	\vspace{-4cm}
+	
+% 	Parent 1
+	
+% 	\vspace{1cm}
+	
+% 	Parent 2
+	
+% 	\vspace{1cm}
+	
+% 	Child 
+% 	\footnotetext[1]{M. Spence et al, ``Detecting novel structural variants in genomes by leveraging parent-child relatedness," 2018.}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{II.D: Relatedness}
+% 	Assumptions:
+% 	\begin{itemize}
+% 		\item If both parents have an SV, the child must have the SV.
+% 		\item If neither parents have an SV, the child cannot have the SV.
+% 		\item If one parent has an SV, the child may have the SV.
+% 	\end{itemize}\pause
+	
+% 	\bigskip
+	
+% 	Mathematically, we write these as constraints:
+% 	\begin{equation*}
+% 	\begin{array}{rcccl}
+% 	\vec{f}_{p_1} + \vec{f}_{p_2}  - \vec{1} & \le & \vec{f}_c & \le & 
+% 	\vec{f}_{p_1} + \vec{f}_{p_2} \\[.1cm]
+% 	\vec{0} & \le & \vec{f}_{p_1} & \le & \vec{1} \\[.1cm]
+% 	\vec{0} & \le & \vec{f}_{p_2} & \le & \vec{1} \\[.1cm]
+% 	\vec{0} & \le & \vec{f}_{c} & \le & \vec{1} \\ 
+% 	\end{array}
+% 	\end{equation*}
+% 	\footnotetext[1]{M. Spence et al, ``Detecting novel structural variants in genomes by leveraging parent-child relatedness," 2018.}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %\subsection{Optimization Problem Formulation}
+% \begin{frame}{II.D: Optimization framework}
+% 	The optimization framework for the SV detection can be written as the following:
+% 	\begin{eqnarray*}
+% 		&& \underset{\vec{f} \in \Re^{3n}}{\text{minimize}} \ \quad F(\vec{f}) + \tau \| \vec{f} \|_1 \\
+% 		&& \text{subject to } \ \ 
+% 		\vec{f}_{p_1} + \vec{f}_{p_2}  - \vec{1} \le  \vec{f}_c  \ \le \
+% 		\vec{f}_{p_1} + \vec{f}_{p_2}\\
+% 		&& \phantom{\text{subject to }} \ \ 
+% 		\vec{0} \ \le \ \vec{f}_{p_1}, \vec{f}_{p_2}, \vec{f}_c \ \le \ \vec{1}
+% 	\end{eqnarray*}
+% 	where 
+% 	\begin{itemize}
+% 		\item $F(\vec{f})$: statistical model for genome mapping
+% 		\item $\tau\| \vec{f} \|_1 $: $\ell_1$ penalty term where $\tau > 0$ is a regularization parameter
+% 	\end{itemize}
+% 	\pause
+% 	\medskip
+% 	\textbf{Approach:}
+% 	\begin{enumerate}
+% 		\item Use second-order Taylor series to approximate $F(\vec{f})$
+% 		\item Write as a sequence of quadratic minimization problems with  linear constraints
+% 	\end{enumerate}
+% 	\footnotetext[1]{M. Spence et al, ``Detecting novel structural variants in genomes by leveraging parent-child relatedness," 2018.}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{II.D: Projection onto Affine Constraints}
+% The sequence of quadratic minimization problems take on the following form:
+% \begin{equation}
+% \begin{aligned}
+% &\underset{x \in \mathbb{R}^n}{\text{minimize}} \quad  \ \frac{1}{2}|| x - \hat x ||_2^2 \\
+% &\text{subject to} \quad Ax \geq b\\
+% \end{aligned}
+% \end{equation}
+% where $\hat x$ might not be feasible. \\
+% \bigskip
+% \only<1>{
+% \begin{figure}
+% 	\includegraphics[width = .4\textwidth]{figs/feasible_region}
+% \end{figure}}
+% \pause
+% \textbf{Goal:} Solve large-scale problems efficiently.
+% \begin{itemize}
+% 	\item Common approaches include interior point and active set methods.
+% 	\item Alternative: Apply simpler method.
+% \end{itemize}
+% \bigskip
+% \pause
+% \textbf{Approach:} 
+% 	\begin{enumerate}
+% 	\item Transform primal problem (Eq. 1) into a different problem with simpler constraints.
+% 	\item Formulate Lagrangian function.
+% \end{enumerate}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+% \begin{frame}{II.D: Lagrangian Function}
+% The \textbf{Lagrangian function} $L : \mathbb{R}^n \times \mathbb{R}^m \rightarrow \mathbb{R}$ associated with the primal problem is given by
+% \begin{equation*} \label{eq:Lagrangian}
+% L(x,\lambda) = \underbrace{\frac{1}{2}|| x - \hat x ||_2^2}_{f(x)} - \ \lambda^T \underbrace{(Ax - b)}_{c(x)},
+% \end{equation*}
+% with Lagrange multipliers $\lambda \in \mathbb{R}^m$ where $\lambda \geq 0$.\\
+% \vspace{\baselineskip}
+% \pause
+% \begin{columns}
+% 	\column{0.6\textwidth}
+% 	\textbf{\textcolor{red}{Intuition:}}
+% 	\begin{itemize}
+% 		\item For $\lambda \geq 0$ and $c(x) \geq 0$: $\lambda^T c(x) \geq 0$.
+% 		\item Thus, $L(x,\lambda) \leq f(x)$.
+% 		\item $\underset{x, \lambda}{\text{Maximize }} L(x,\lambda) \Longleftrightarrow \underset{x}{\text{Minimize }} f(x)$.
+% 	\end{itemize}
+	
+% 	\column{0.4\textwidth}
+% 	\vspace{-11mm}
+% 	\begin{figure}
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figs/primal-dual2}
+% 	\end{figure}
+% \end{columns}
+
+% %\textcolor{red}{Intuition:}
+% %\begin{itemize}
+% %	\item For $\lambda \geq 0$ and feasible $x$, i.e., $c(x) \geq 0$, we have $\lambda^T c(x) \geq 0$.
+% %	\item Thus, $L(x,\lambda) \leq f(x)$.
+% %	\item Maximizing $L(x,\lambda)$ might be easier than minimizing $f(x)$.
+% %\end{itemize}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{II.D: Lagrangian Dual Function}
+% The \textbf{Lagrangian dual function} is defined as $g : \mathbb{R}^m\rightarrow \mathbb{R}$ where
+% \begin{align*}
+% g(\lambda) & = \inf_{x \in \mathbb{R}^n} L(x,\lambda) = \inf_{x \in \mathbb{R}^n} \left(f(x) - \lambda^T c(x)\right)
+% \end{align*}
+% Defining $g(\lambda)$: Setting $\nabla L_x(x,\lambda) = 0$, we obtain
+% $$ x^* = \hat x + A^T \lambda.$$
+% Then substituting $x^*$ into $L(x,\lambda)$, we find 
+% $$g(\lambda) = \inf_{x \in \mathbb{R}^n} L(x,\lambda) = -\frac{1}{2} \lambda^T AA^T\lambda - \lambda^T(A\hat{x} - b).$$
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{II.(d): Dual Problem}
+% 	Maximizing $g(\lambda)$ is equilavent to minimizing $-g(\lambda)$. Thus, the \textbf{dual problem} associated with our primal problem is
+% 	\begin{equation*}
+% 	\begin{aligned}
+% 	&\underset{\lambda \in \mathbb{R}^m}{\text{minimize}} \  \quad \tilde g(\lambda) =  \frac{1}{2} \lambda^T AA^T\lambda + \lambda^T (A \hat x - b)\\
+% 	&\text{subject to} \quad \lambda \geq 0.
+% 	\end{aligned}
+% 	\end{equation*}\\
+% 	Then using the solution $\lambda^*$ we can define $x^*$ from $ x^* = \hat x + A^T \lambda$. \\
+% 	\vspace{8mm}
+% 	\only<1>{The \textbf{duality gap} is the difference between the primal and dual solutions,
+% 	$$f(x^*) - g(\lambda^*)$$
+% 	where $x^*$ and $\lambda^*$ are the minimizers of the primal and dual problems, respectively.}
+% 	\only<2>{\textbf{Approach: }Use projected gradient method where 
+% 	\begin{enumerate}
+% 		\item Perform gradient descent on the current solution
+% 		\item Project it back onto the constraint set
+% 	\end{enumerate}}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{II.D: Proposed Method}
+% 	\only<1->{\textbf{Projected Gradient Method\footnotemark[1]:}
+% 	\begin{figure}
+% 	\includegraphics[width = .5\textwidth]{figs/projected_grad_dual}
+% 	\end{figure}}
+% 	\only<2>{The update on $\lambda$ is given by:
+% 	\vspace{-2mm}
+% 	$$\lambda_{k+1} = [\lambda_k - \alpha \nabla \tilde{g}(\lambda_k)]_+ 	\vspace{-3mm}$$
+% 	where 
+% 	\begin{itemize}
+% 		\item $\alpha$ is the step size and calculated using a backtracking line search
+% 		\item $[ \ \cdot \ ]_+  = \max \{0,\cdot\}$
+% 	\end{itemize}}
+% \footnotetext{J. Nocedal and S. Wright. Numerical optimization.}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{II.D: Numerical Experiment}
+% 	We construct the set of constraints $Ax \geq b$, where $A \in \mathbb{R}^{m \times n}$ and $b \in \mathbb{R}^m$ where 
+% 	\begin{itemize}
+% 		\item $m = 200$
+% 		\item $n = 60$
+% 	\end{itemize}
+% 	\medskip
+% 	\textbf{Stopping criterion:}
+% 		\begin{itemize}
+% 		\item $|| x_k - x_{k-1} ||_2 \ < \epsilon$ where $\epsilon = 10^{-5}$ 
+% 		\item Max number of iterations is $k = 100$
+% 	\end{itemize}
+% 	\medskip
+% 	\textbf{Metrics:}
+% 		\begin{itemize}
+% 		\item Calculate duality gap: $f(x) - g(\lambda)$.
+% 		\item Check infeasibility: Calculate the residual, given by $Ax - b$. Specifically,
+% 		$$\sum_{i \in \{ i: (Ax - b)_i < 0\} }^m (Ax - b)_i.$$
+% 	\end{itemize}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{II.D: Results}
+% \begin{figure}[H]
+% 	\begin{subfigure}{0.5\textwidth}
+% 		\centering
+% 		Duality Gap
+% 		\includegraphics[width=\textwidth]{imgs/method2_dual_2.png}
+% 	\end{subfigure}%
+% 	\begin{subfigure}{0.5\textwidth}
+% 		\centering
+% 		Infeasibility
+% 		\includegraphics[width=\textwidth]{imgs/method2_infeas_2.png}
+% 	\end{subfigure}
+% \end{figure}
+
+% \begin{center}
+% 	\vspace{-1.5mm}
+% 	\small{Figure: $m = 200$ and $n = 60$}
+% \end{center}
+
+% \vspace{-3mm}
+% Summary:
+% \begin{itemize}
+% 	\item Duality gap and infeasibility converged to zero.
+% 	\item Proposed method was able to find a solution for high dimensional problems.
+% \end{itemize}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %\subsection{Future Work}
+% \begin{frame}{II.D: Extensions}
+% 	\textbf{Goal 1:} Solve sparse reconstruction problem\footnotemark[1] given by
+% 	\begin{equation*} \label{eq:gpsr}
+% 		\hspace{-1.8cm}
+% 		\begin{aligned}
+% 			&\underset{x}{\text{minimize}} \quad \ \frac{1}{2} \norm{y - Ax}_2^2 + \tau \norm{x}_1 \\
+% 			&\text{subject to} \quad E x \ge d
+% 		\end{aligned}
+% 	\end{equation*}
+% 	with linear constraints.
+% 	\flushleft{\textbf{Goal 2:} Solve the constrained sparse Poisson inverse problem\footnotemark[2] given by}
+% 	\begin{equation*} \label{eq:gpsr}
+% 		\hspace{-1.8cm}
+% 		\begin{aligned}
+% 			&\underset{f}{\text{minimize}} \quad \ 1^T Af - \sum_{i=1}^m y_i \log (e_i^T Af + \beta) + \tau \norm{x}_1 \\
+% 			&\text{subject to} \quad f \ge 0.
+% 		\end{aligned}
+% 	\end{equation*}
+% 	\flushleft{\textbf{Goal 3:} Apply developed method to structural variant detection framework.}
+% 	\footnotetext[1]{M.A.T. Figueiredo et al, ``Gradient projection for sparse reconstruction: Application to compressed sensing and other inverse problems," 2007.}
+% 	\footnotetext[2]{Z.T. Harmany et al, ``This is spiral-tap: Sparse poisson intensity reconstruction algorithms—theory and practice," 2011.}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{\phantom{hello}}
+% 	\null\vfill 
+% 	\begin{columns}
+% 		\begin{column}{0.7\textwidth}
+% 			\begin{center}
+% 				\font\endfont = cmss10 at 8mm
+% 				\color{black}
+% 				\endfont%
+% 				III. Future Work
+% 			\end{center}    
+% 		\end{column}
+% 	\end{columns}
+% 	\vfill\null
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{III. Trust-region for Machine Learning}
+% Machine learning problems, such as text or image classification, are often nonlinear and nonconvex unconstrained optimization problems given by
+% \begin{align*}
+% \underset{w}{\text{minimize}} \quad & f(w) = \frac{1}{n} \sum_{i=1}^n \mathcal{L}(h(x_i, w), y_i) 
+% \end{align*}
+% where 
+% \begin{align*}	
+% 	n:& \text{ number of training samples} \\
+% 	w:& \text{ parameter of the mapping function} \\
+% 	x_i:& \text{ feature vector of the $i^{th}$ training sample} \\
+% 	y_i:& \text{ corresponding real-valued observation} \\
+% 	\mathcal{L}:& \text{ loss function}
+% \end{align*}
+
+% \textcolor{red}{\textbf{Goal:}} Improve the optimization method and apply to machine learning problem in limited data regimes.
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{III. Common Methods}
+% The most common approaches in machine learning include:
+% \smallskip
+% \begin{enumerate}
+% 	\item Stochastic gradient descent (SGD)
+% 	\begin{itemize}
+% 		\item Approximates the gradient using a \textbf{random subset} of the data.
+% 		\item \Blue{\textbf{Advantage:}}  Computationally inexpensive.
+% 		\item \Red{\textbf{Disadvantage:}} Manual hyperparameter tuning.
+% 	\end{itemize}
+% 	\medskip
+% 	\pause
+% 	\item Quasi-Newton approach using the limited-memory Broyden-Fletcher-Goldfarb-Shannon (L-BFGS) update
+% 	\begin{itemize}
+% 		\item Quasi-Newton methods use first-order information to \textbf{approximate the second derivative}.
+% 		\item The L-BFGS updates generate a sequence of \textbf{positive definite matrices}.
+% 		\item \Blue{\textbf{Advantage:}} Does not require manual parameter tuning. 
+% 		\item \Red{\textbf{Disadvantage:}} Approximate an indefinite matrix as positive definite.
+% 	\end{itemize}
+% \end{enumerate}
+% \smallskip
+% \pause
+% \textbf{Proposed Approach:}
+% \begin{itemize}
+% \item Symmetric Rank-1 Update: Not guaranteed to be positive definite. \\
+% \item Trust-region: Suitable for indefinite approximations.
+% \end{itemize}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{III. Symmetric Rank-1 (SR1) Update}
+% A typical update of a quasi-Newton method is as follows:
+% \begin{align*}
+% w_{k+1} = w_k + \eta_k p_k \quad \text{where} \quad p_k = -B_k^{-1} \nabla f(w_k)
+% \end{align*}
+% \pause
+% The symmetric rank-1 (SR1) update given by 
+% \begin{align*}
+% B_{k+1} = B_k + \frac{(y_k - B_k s_k)(y_k - B_k s_k)^T}{(y_k - B_k s_k)^Ts_k}
+% \end{align*}
+% where $s_k = w_{k+1} - w_k$ and $y_k = \nabla f(w_{k+1}) - \nabla f(w_k)$.
+% \bigskip
+% \begin{itemize}
+% 	\item Unlike BFGS, the update is not guaranteed to be positive definite.
+% 	\item This allows for more accurate approximations of the true Hessian matrix.
+% 	\item Due to the indefinite Hessian approximation, we are not guaranteed a descent direction. 
+% 	\item Thus, we utilize a trust-region framework over a line search framework. 
+% \end{itemize}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{III. Line search vs. Trust-Region}
+% 	Two major techniques for unconstrained optimization.\\
+% 	\bigskip
+% 	\textbf{Line search methods: }
+% 	\begin{enumerate}
+% 		\item Generate a search direction
+% 		\item Find an appropriate step size to move in search direction
+% 	\end{enumerate}
+% 	\bigskip
+% 	\textbf{Trust-region methods: }
+% 	\begin{enumerate}
+% 		\item Define a region in which the quadratic model approximates the objective function well
+% 		\item Choose direction which minimizes the model in this region
+% 	\end{enumerate}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{III. Trust-Region Subproblem}
+% 	At each iteration of the trust-region method, we solve what is know as the trust-region subproblem given by
+% 	\begin{align*} \label{eq:subproblem} 
+% 	&\underset{p}{\text{minimize}} \quad \ Q(p) = g^Tp + \frac{1}{2}p^T B_k p \\
+% 	&\text{subject to} \quad \norm{p} \leq \delta. \nonumber
+% 	\end{align*}
+% 	where $g$ is the gradient of $f$ and $B$ is an approximation of the Hessian.  \\
+% 	\bigskip
+% 	\pause
+% 	\textbf{Formulation using 2-norm:}
+% 	\begin{itemize}
+% 		\item Global minimizer can be characterized \footnote[1]{D.M. Gay, ``Computing optimal locally constrained steps. SIAM Journal on Scientific and Statistical Computing," 1981.}\footnote[2]{J.J. Moré et al, ``Newton’s method," 1984.}.
+% 		\item There is no closed form solution to this subproblem.
+% 	\end{itemize}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{III. SR1 Trust-Region Approach}
+% 	The SR1 trust-region approach has shown to improve performance on MNIST classification\footnote[1]{J.B. Erway, et al, ``Trust-region algorithms for training responses: machine learning methods using indefinite hessian approximations," 2020.}.  \\ 
+% 	\pause
+% 	\medskip
+% 	\textbf{Motivation:}
+% 		\begin{enumerate}
+% 		\item Improving choice of initial $B_0$.
+% 		\item Solving trust-region subproblem efficiently.
+% 	\end{enumerate}
+%  	\pause
+% 	\medskip
+% 	\textbf{Proposed Approaches:}
+% 	\begin{enumerate}
+% 		\item Alternative choice for $B_0$.
+% 		\item Use of a particular norm to obtain closed form solutions to the trust-region subproblem.
+% 	\end{enumerate}
+	
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{Improving L-SR1 Trust-Region Framework}
+% 	\textcolor{forestgreen}{\textbf{Dense Initialization}} \\
+% 	\smallskip
+% 	\only<1-2>{The SR1 update can be written as the following:}
+% 	\only<3-9>{The SR1 update can be written as the following\footnotemark[1]:}
+% 	\begin{align*}
+% 	\only<1>{\hspace{15mm}B_k = & \ B_{k-1} + \underbrace{\frac{(y_{k-1} - B_{k-1} s_{k-1})(y_{k-1} - B_{k-1} s_{k-1})^T}{(y_{k-1} - B_{k-1} s_{k-1})^Ts_{k-1}}}_{\text{rank 1}} \phantom{\underbrace{\sum_{j = 0}^{k-1}}_{\text{rank $k$}} \underbrace{\Bigg[ \Psi_k \Bigg]}_{\text{rank $k$}}}}
+% 	\only<2>{\hspace{-5.9mm} \ B_k = & \ \underbrace{B_0}_{\gamma_k I} + \underbrace{\sum_{j = 0}^{k-1} \frac{(y_j - B_j s_j)(y_j - B_j s_j)^T}{(y_j - B_j s_j)^Ts_j}}_{\text{rank $k$}}\phantom{\underbrace{\sum_{j = 0}^{k-1}}_{\text{rank $k$}} \underbrace{\Bigg[ \Psi_k \Bigg]}_{\text{rank $k$}}}}
+% 	\only<3-4>{\hspace{-12.8mm} \  \ B_k = & \ \underbrace{B_0}_{\gamma_k I} + \underbrace{\Bigg[ \Psi_k \Bigg] [ \ M_k \ ] [ \quad \Psi_k^T \quad ]}_{\text{rank $k$}} \phantom{\underbrace{\sum_{j = 0}^{k-1}}_{\text{rank $k$}} \underbrace{\Bigg[ \Psi_k \Bigg]}_{\text{rank $k$}}}}
+% 	\only<5>{\hspace{19.8mm} B_k = & \ \underbrace{B_0}_{\gamma_k I} + \underbrace{\Bigg[\Psi_k \Bigg] [ \ R^{-1} \ ] [ \ W \ ] }_{P_{\parallel}} [ \ \hat \Lambda \ ] \underbrace{[ \ W^T \ ] [ \ R^{-T} \ ] [ \quad \Psi_k^T \quad ]}_{P_{\parallel}^T} \phantom{\underbrace{\sum_{j = 0}^{k-1}}_{\text{rank $k$}} \underbrace{\Bigg[ \Psi_k \Bigg]}_{\text{rank $k$}}}}
+% 	\only<6>{\hspace{-12.3mm} B_k = & \ \underbrace{B_0}_{\gamma_k I}  +  \hspace{0.7mm} \Bigg[ P_{\parallel} \Bigg] [ \ \hat \Lambda \ ] [ \quad P_{\parallel}^T \quad ] \phantom{\underbrace{\sum_{j = 0}^{k-1}}_{\text{rank $k$}} \underbrace{\Bigg[ \Psi_k \Bigg]}_{\text{rank $k$}}}} 
+% 	\only<7>{\hspace{-8.5mm} B_k = & \ \underbrace{B_0}_{\gamma_k I} +  \begin{bmatrix}  P_{\parallel} & P_{\perp} \end{bmatrix} \begin{bmatrix}  \hat \Lambda & 0 \\  0 & 0 \end{bmatrix} \begin{bmatrix}  P_{\parallel}^T \\ P_{\perp}^T \end{bmatrix} \phantom{\underbrace{\sum_{j = 0}^{k-1}}_{\text{rank $k$}} \underbrace{\Bigg[ \Psi_k \Bigg]}_{\text{rank $k$}}}}
+% 	\only<8->{\hspace{-8mm} B_k = &  \begin{bmatrix}  P_{\parallel} & P_{\perp} \end{bmatrix} \begin{bmatrix}  \hat \Lambda+\gamma_k I & 0 \\  0 & \gamma_k I \end{bmatrix} \begin{bmatrix}  P_{\parallel}^T \\ P_{\perp}^T \end{bmatrix} \phantom{\underbrace{\sum_{j = 0}^{k-1}}_{\text{rank $k$}} \underbrace{\Bigg[ \Psi_k \Bigg]}_{\text{rank $k$}}}}
+% 	\end{align*}
+% 	\only<3-4>{where 
+% 			\vspace{-3mm}
+% 			\begin{align*}
+% 			\Psi_k &= Y_k - B_0 S_k \in \mathbb{R}^{n \times k} \\
+% 			Y_k &= [ \ y_0 \ \ y_1 \ \cdots \ y_{k-1} \ ] \in \mathbb{R}^{n \times k} \\
+% 			S_k &= [ \ s_0 \ \ s_1 \ \cdots \ s_{k-1} \ ] \in \mathbb{R}^{n \times k}\\ 
+% 			M_k &= k \times k \ \text{matrix}
+% 			\end{align*}}
+% 	\only<4>{We compute $\Psi_k = QR$ and $M_k = W \hat \Lambda W^T$.}
+% 	\only<7->{\vspace{-8.5mm} \\ where $P_{\perp}$ is the orthogonal complement of $P_{\parallel}$.}
+% 	\only<9>{
+% 		\smallskip
+% 	\begin{itemize}
+% 		\item Since $P P^T = I$, we write $B_0 = \gamma_k I = \gamma_k P P^T = \gamma_k P_{\parallel}P_{\parallel}^T + \gamma_k P_{\perp}P_{\perp}^T.$
+% 		\item Define two different $\gamma$ parameters\footnotemark[2] such that $$\hat{B_0} = \gamma_k P_{\parallel}P_{\parallel}^T + \gamma_k^{\perp} P_{\perp}P_{\perp}^T.$$
+% 		\item \textcolor{blue}{\textbf{Approach:}} Apply to L-SR1 and investigate alternative approaches to choosing $\gamma_k^{\perp}$.
+% 	\end{itemize}}
+
+% 	\only<3-9>{
+% 	\footnotetext[1]{R.H. Byrd et al, ``Representations of quasi-Newton matrices and their use in limited-memory methods", 1994.}}
+
+% 	\only<9>{\footnotetext[2]{J. Brust et al, ``A dense initialization for limited-memory quasi-newton methods," 2019.}}
+% \end{frame}	
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{III. Improving L-SR1 Trust-Region Framework}
+% 	\textcolor{forestgreen}{\textbf{Shape-changing norm}} \\
+% 	\smallskip
+% 	Solve the trust-region subproblem defined by the shape-changing norm\footnotemark[1]:
+% 	\begin{align*}
+% 	&\underset{p}{\text{minimize}} \quad \ Q(p) = g^Tp + \frac{1}{2}p^T B_k p \\
+% 	&\text{subject to} \quad  \norm{p}_{P,\star} \leq \delta_k \nonumber
+% 	\end{align*}
+% where 
+% 	\begin{equation*}
+% 	\norm{p}_{P,\star} \triangleq \text{max} \left(  \normr{P_{\parallel}^T p}_{\star}, \normr{P_{\perp}^T p}_2  \right)
+% 	\end{equation*}
+% \vspace{-2mm}
+% 	\begin{itemize}
+% 		\item Decouples into two separate problems, each with a closed form solution.
+% 		\item \textcolor{blue}{\textbf{Approach:}} Apply to L-SR1 trust-region framework.
+% 	\end{itemize}
+% \footnotetext[1]{O. Burdakov, et al, ``On efficiently combining limited-memory and trust-region techniques," 2017.}
+% \end{frame}	
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{III. Trust-Region: Example Application}
+% \textcolor{red}{\textbf{Goal:}} Classify MRI images of brains to aid in prevention of Alzheimer’s disease (AD) using deep learning techniques and apply proposed optimization methodology\footnote[1]{A. De Luna, ``Classification of Mild Cognitive Impairment Under Data Limitations Using Deep
+% 	Learning Techniques," 2020.}.
+% \smallskip
+% \begin{itemize}
+% 	\item The images focus on the identification of mild cognitive impairment (MCI).
+% 	\item MCI is divided into early and late MCI (EMCI and LMCI), which are both intermediate stage before the diagnosis of AD.
+% 	\item We want to classify between normal brains and those with EMCI and LMCI.
+% 	\item Moreover, this classification was studied under data limitations.
+% \end{itemize}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{Summary}
+% 	\begin{enumerate}
+% 		\item \textbf{Imaging Denoising Using Recurrent Neural Networks }(complete)
+% 		\smallskip
+% 		\item \textbf{Synthetic Aperture Radar}
+% 		\begin{itemize}
+% 			\item Machine Learning for SAR (complete)
+% 			\item SAR Image Classication (complete)
+% 			\item Extension (ongoing)
+% 		\end{itemize}
+% 		\item \textbf{Projected Gradients}
+% 		\begin{itemize}
+% 			\item Sparse Reconstructions (Goal 1)
+% 			\item Poisson Reconstructions (Goal 2)
+% 			\item SV Detection (Goal 3)
+% 		\end{itemize}
+% 		\item \textbf{Proposed Research}
+% 		\begin{itemize}
+% 			\item Dense Initialization
+% 			\item Shape-Changing Norm
+% 			\item Applications
+% 		\end{itemize}
+% 	\end{enumerate}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{\phantom{hello}}
+% 	\null\vfill 
+% 	\begin{columns}
+% 		\begin{column}{0.7\textwidth}
+% 			\begin{center}
+% 				\font\endfont = cmss10 at 8mm
+% 				\color{black}
+% 				\endfont%
+% 				IV. Accomplishments
+% 			\end{center}    
+% 		\end{column}
+% 	\end{columns}
+% 	\vfill\null
+% \end{frame}	
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{IV. Course  and Special Requirements}
+% 	\begin{figure}
+% 		\includegraphics[width=\textwidth]{figs/all_requirements.png}
+% 	\end{figure}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{IV. Publications}
+% 	\begin{enumerate}
+% 		\item O. DeGuchy, J. Alvarez, A. D. Kim, R. F. Marcia and C. Tsogka, ``Forward and inverse scattering in synthetic aperture radar using machine learning," Proceedings of SPIE 2020, Applications of Machine Learning.
+% 		\vspace{\baselineskip}
+% 		\item J. Alvarez, O. DeGuchy and R. F. Marcia, ``Image Classification In Synthetic Aperture Radar Using Reconstruction From Learned Inverse Scattering," 2020 IEEE Geoscience and Remote Sensing Symposium (IGARSS).
+% 		\vspace{\baselineskip}
+% 		\item A. Ho, J. Alvarez and R. F. Marcia, ``Convolution Padding in Recurrent Neural Networks for Image Denoising with Limited Data,” Submitted to 2021 Asilomar Conference on Signals, Systems, and Computers.
+% 		\vspace{\baselineskip}
+% 		\item J. Alvarez, A. D. Kim, R. F. Marcia and C. Tsogka, ``Convolution Padding in Recurrent Neural Networks for Image Denoising with Limited Data,” Abstract submitted to 2022 SPIE Optics and Phonotics.
+% 	\end{enumerate}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{IV. Presentations}
+% 		\begin{enumerate}
+% 		\item ``Forward and inverse scattering in synthetic aperture radar using machine learning" 
+% 			\begin{itemize}
+% 				\item SPIE Optics + Photonics Conference (August 2020)
+% 			\end{itemize}
+% 		\vspace{\baselineskip}
+% 		\item ``Image Classification In Synthetic Aperture Radar Using Reconstruction From Learned Inverse Scattering"
+% 			\begin{itemize}
+% 				\item SIAM Annual - Workshop Celebrating Diversity (July 2020)
+% 				\item IEEE Geoscience and Remote Sensing Symposium	(September 2020)
+% 				\item ACM Richard Tapia Conference (September 2020)
+% 				\item SACNAS National Diversity in STEM Conference  (October 2020)
+% 				\item SIAM CSE - Broader Engagements Program (March 2021)
+% 			\end{itemize}
+% 		\vspace{\baselineskip}
+% 		\item ``Convolution Padding in Recurrent Neural Networks for Image Denoising with Limited Data”
+% 			\begin{itemize}
+% 				\item ACM Richard Tapia Conference (September 2021)
+% 				\item SACNAS National Diversity in STEM Conference (October 2021)
+% 				\item Asilomar Conference on Signals, Systems, and Computers (November 2021)
+% 			\end{itemize}
+% 	\end{enumerate}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{IV. Accomplishments}
+% 	\textbf{Summer Programs/Internships:}
+% 	\begin{itemize}
+% 		\item 2019 ATR Center Summer Internship 
+% 		\item 2020 ATR Center Summer Internship
+% 		\item 2020 Data Science Challenge
+% 		\item 2021 LLNL Data Science Summer Institute Internship
+% 	\end{itemize}
+% 	\vspace{\baselineskip}
+% 	\textbf{Conference Scholarships:}
+% 	\begin{itemize}
+% 		\item 2020 SACNAS Travel Scholarship
+% 		\item 2020 Tapia Travel Scholarship
+% 		\item 2020 Grace Hopper Celebration Scholar
+% 		\item 2021 SIAM CSE Broader Engagement Program
+% 		\item 2021 SACNAS Travel Scholarship
+% 		\item 2021 Tapia Travel Scholarship
+% 	\end{itemize}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{IV. Accomplishments and Service}
+% 	\begin{tabular}{ll}
+% 		\textbf{2019-2020:}    &   NSF-RTG Fellowship\\
+% 		&   UC Merced SIAM Student Chapter Secretary  \\ 
+% 		& Applied Mathematics Excellence in Service Award \\
+% 		& Applied Mathematics Summer Travel Fellowship \\
+% 		& Cal State Fresno SIAM Grad School Panelist \\ \\
+% 		\textbf{2020-2021:} & UC Merced SIAM Student Chapter Officer Vice President \\ 
+% 		& Applied Mathematics Excellence in Service Award \\
+% 		& Led Machine Learning Mini Course \\
+% 		& Applied Mathematics Internship Recognition Award \\ \\
+% 		\textbf{2021-2022:} & NRT-IAS Fellowship \\
+% 		& UC Merced SIAM Student Chapter Officer President \\
+% 		& Cal State Fresno SIAM Grad School Panelist
+% 	\end{tabular}	
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{\phantom{hello}}
+% 	\null\vfill 
+% 	\begin{columns}
+% 		\begin{column}{0.7\textwidth}
+% 			\begin{center}
+% 				\font\endfont = cmss10 at 8mm
+% 				\color{black}
+% 				\endfont%
+% 				V. Timeline
+% 			\end{center}    
+% 		\end{column}
+% 	\end{columns}
+% 	\vfill\null
+% \end{frame}	
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{V. Timeline}
+% \begin{table}[h!]
+% 	\begin{center}
+% 		\scalebox{0.9}{
+% 		\begin{tabular}{ll}
+% 			\hline
+% 			Time                           &   Tasks  \\
+% 			\hline \\
+% 			Spring 2022         &  Complete Qualifying Exam \hspace{6cm} \\
+% 			&     Write manuscript for SAR Extension \\
+% 			& 	  \ \ - Submit manuscript to SPIE (July 2022) \\ 
+% 			&     Write manuscript for Goal 1 of projected gradients \\
+% 			&     \ \ - Submit manuscript to ICASSP (October 2022)\\ \\
+% 			Summer 2022      &   Summer Internship - Lawrence Livermore National Laboratory \\ \\
+% 			\hline
+% 		\end{tabular}}
+% 	\end{center}
+% \end{table}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{V. Timeline}
+% \begin{table}[h!]
+% 	\begin{center}
+% 		\scalebox{0.9}{
+% 		\begin{tabular}{ll}
+% 			\hline
+% 			Time                           &   Tasks     \\
+% 			\hline \\
+% 			Fall   2022            &   Complete Goal 2 and Goal 3 for projected gradients \hspace{2.3cm} \\ 
+% 			&   \ \ - Write and submit manuscripts for Goals 2 and 3  \\ \\
+% 			Spring 2023         &   Implement SR1 trust-region approach in Python \\
+% 			&    \ \ - Complete initial draft of manuscript \\ \\
+% 			Summer 2023      &   Summer Internship   \\ \\
+% 			\hline
+% 		\end{tabular}}
+% 	\end{center}
+% \end{table}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{V. Timeline}
+% \begin{table}[h!]
+% 	\begin{center}
+% 		\scalebox{0.9}{
+% 		\begin{tabular}{ll}
+% 			\hline
+% 			Time                           &   Tasks     \\
+% 			\hline \\
+% 			Fall   2023            &	Finalize draft of trust-region and submit manuscript \hspace{2.3cm} \\
+% 			&   Apply proposed trust-region method to applications \\
+% 			&   Begin initial draft of dissertation manuscript   \\ \\
+% 			Spring 2024 \hspace{2.5mm}        &   Complete dissertation manuscript  \\
+% 			&   Defend dissertation \\ \\
+% 			\hline
+% 		\end{tabular}}
+% 	\end{center}
+% \end{table}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}
+% \null\vfill 
+%         \begin{columns}
+%             \begin{column}{0.7\textwidth}
+%               \begin{center}
+%                 \font\endfont = cmss10 at 10mm
+%                 \color{black}
+%                 \endfont%
+%                 Thank you!
+%               \end{center}    
+%             \end{column}
+%           \end{columns}
+%           \vfill\null
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}[fragile]{Recurrent Neural Networks}
+% 	\begin{figure}
+% 		\centering
+% 		\includegraphics[width = .9\textwidth]{figures/rnn_unrolled.png}
+% 	\end{figure}
+	
+% 	\begin{itemize}
+% 		\item Use feedback loops
+% 		\item Contain internal states (serves as memory)
+% 		\item Used for tasks with sequential data such as speech recognition, target tracking, etc.
+% 		\item Typically not used for image processing tasks
+% 	\end{itemize}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}[fragile]{Recurrent Neural Networks}
+% 	A typical RNN structure can be described by the following:
+% 	\begin{align*}
+% 	\begin{split}
+% 	\textbf{h}_t &= \text{tanh}(\textbf{\textcolor{dkgreen}{W}}\textbf{h}_{t-1} + \textbf{\textcolor{dkgreen}{U}}\textcolor{blue}{\textbf{x}_t} + \textbf{\textcolor{orange}{b}}) \\
+% 	\textcolor{mauve}{\hat{\textbf{y}}_t} &= \text{softmax}(\textbf{\textcolor{dkgreen}{V}}\textbf{h}_t + \textbf{\textcolor{orange}{c}})
+% 	\end{split}
+% 	\end{align*}
+% 	where $\textbf{\textcolor{dkgreen}{W}}, \textbf{\textcolor{dkgreen}{U}}$ and $\textbf{\textcolor{dkgreen}{V}}$ are weight matrices, $\textbf{\textcolor{orange}{b}}$ and $\textbf{\textcolor{orange}{c}}$ are bias vectors, $\textcolor{blue}{\textbf{x}_t}$ is the input vector and $\textbf{h}_t$ is the current state used to find the predicted output vector $\textcolor{mauve}{\hat{\textbf{y}}_t}$ where time goes from $t = 0$ to $t = T$.
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}[fragile]{Autoencoders}
+% 	A common neural network architecture used for denoising is an autoencoder, which is composed of three parts: encoder, decoder and latent space representation.
+	
+% 	\vspace{\baselineskip}
+% 	\begin{figure}
+% 		\centering
+% 		\includegraphics[width = \textwidth]{figures/denoising_autoencoder.png}
+% 	\end{figure}
+	
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}[fragile]{Evaluation Criterion}
+% 	After recovering the restored image we evaluate the denoising approach using the \textbf{structural similarity index (SSIM)} between the recovered image and the true image, which is given by
+% 	\vspace{3mm}
+% 	\begin{equation*}
+% 	\text{SSIM}(x, y) = \frac{(2\mu_{x}\mu_{y} + c_1)(2\sigma_{xy} +c_2)}{(\mu_{x}^2 + \mu_{y}^2 + c_1)(\sigma_{x}^2 + \sigma_{y}^2 + c_2)}
+% 	\end{equation*} \\
+% 	\vspace{3mm}
+% 	where $\mu_{x}$ and $\mu_{y}$ are the averages of each input respectively, $\sigma_{x}$ and $\sigma_{y}$ are the associated variances, and $c_1$ and $c_2$ are variables used to stabilize the denominator.  
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}[fragile]{Numerical Experiments: Padding}
+% 	\begin{enumerate}
+% 		\item [$\bullet$] Preliminary results suggested that we did not have enough information along the edges and corners of an image
+% 		\item [$\bullet$] We investigated various types of padding to introduce more information along the edges
+% 	\end{enumerate}
+% 	\vspace{\baselineskip}
+% 	\begin{center}
+% 		\resizebox{.9\textwidth}{!}{%
+% 			\begin{figure*}
+% 				\begin{center}
+% 					\hspace{-9mm}
+% 					\begin{tabular}{cccccccc}
+% 						Original \!\!\!\!\!\! &
+% 						0-Padding \!\!\!\!\!\! &
+% 						Edge \!\!\!\!\!\! &
+% 						Reflection \!\!\!\!\!\! \\
+% 						\includegraphics[width=2.7cm]{figures/natural.png} \!\!\!\!\!\!
+% 						&
+% 						\includegraphics[width=2.7cm]{figures/zero_padding.png} \!\!\!\!\!\!
+% 						&
+% 						\includegraphics[width=2.7cm]{figures/edge_padding.png} \!\!\!\!\!\!
+% 						&
+% 						\includegraphics[width=2.7cm]{figures/reflective_padding.png} \!\!\!\!\!\!
+% 					\end{tabular}
+% 					% 	\caption{
+% 					% 		CIFAR-10 images used in our numerical experiments.  Images 1-5 and the corresponding results are presented in detail in Fig.\ 3.
+% 					% 	}
+% 					% 	\label{fig:images}
+% 				\end{center}
+% 		\end{figure*}}
+% 	\end{center}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{Optimization framework}
+% 	Solve
+% 	\begin{eqnarray*}
+% 		&& \underset{\vec{f} \in \Re^{3n}}{\text{minimize}} \ \quad F_{\text{NegBin}}(\vec{f}) + \tau \| \vec{f} \|_1 \\
+% 		&& \text{subject to } \ \ 
+% 		\vec{f}_{p_1} + \vec{f}_{p_2}  - \vec{1} \le  \vec{f}_c  \ \le \
+% 		\vec{f}_{p_1} + \vec{f}_{p_2}\\
+% 		&& \phantom{\text{subject to }} \ \ 
+% 		\vec{0} \ \le \ \vec{f}_{p_1}, \vec{f}_{p_2}, \vec{f}_c \ \le \ \vec{1}
+% 	\end{eqnarray*}
+% 	Use a second-order Taylor series expansion to approximate $F_{\text{NegBin}}(\vec{f})$ at iterate $\vec{f}^k$: \\ 
+% 	$F^k(\vec{f}) \approx F(\vec{f}^k) + (\vec{f} - \vec{f}^k)^T \nabla F(\vec{f}^k) + \frac{\alpha_k}{2} \| \vec{f} - \vec{f}^k  \|_2^2$ \\
+% 	\vspace{\baselineskip}
+% 	Solve the quadratic subproblem,
+% 	\begin{eqnarray*}
+% 		\vec{f}^{k+1}
+% 		&=& \underset{\vec{f} \in \Re^{3n}}{\text{arg min}} \quad \ \  \frac{1}{2} \| \vec{f} - \vec{s}^k \|_2^2 
+% 		+ \frac{\tau}{\alpha_k} \| \vec{f} \|_1 \\
+% 		&& \text{subject to } \ \ 
+% 		\vec{f}_{p_1} + \vec{f}_{p_2}  - \vec{1} \le  \vec{f}_c  \ \le \
+% 		\vec{f}_{p_1} + \vec{f}_{p_2}\\
+% 		&& \phantom{\text{subject to }} \ \ 
+% 		\vec{0} \ \le \ \vec{f}_{p_1}, \vec{f}_{p_2}, \vec{f}_c \ \le \ \vec{1}		
+% 	\end{eqnarray*}
+% 	where $\vec{s}^k = \vec{f}^k - \frac{1}{\alpha_k} \nabla F_{\text{NegBin}}(\vec{f}^k)$ and 
+% 	$\alpha_k$ is the learning rate.
+% 	\flushright{\scriptsize{(Banuelos et al, 2018)}}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{Optimization framework}
+% 	Solve
+% 	\vspace{-.8cm}
+% 	\begin{eqnarray*}
+% 		&&\underset{\vec{f} \in \Re^{3n}}{\text{arg min}} \quad \ \  \frac{1}{2} \| \vec{f} - \vec{s}^k \|_2^2 
+% 		+ \frac{\tau}{\alpha_k} \| \vec{f} \|_1 \\
+% 		&& \text{subject to } \ \ 
+% 		\vec{f}_{p_1} + \vec{f}_{p_2}  - \vec{1} \le  \vec{f}_c  \ \le \
+% 		\vec{f}_{p_1} + \vec{f}_{p_2}\\
+% 		&& \phantom{\text{subject to }} \ \ 
+% 		\vec{0} \ \le \ \vec{f}_{p_1}, \vec{f}_{p_2}, \vec{f}_c \ \le \ \vec{1}		
+% 	\end{eqnarray*}
+% 	Separating the objective function, 
+% 	\begin{eqnarray*}
+% 		&&\underset{{f_{p_1}}, {f_{p_2}}, {f_{c}}\in \Re}{\text{minimize}} \quad \ \ \frac{1}{2} (f_{p_1} - s_{p_1})^2 + \frac{1}{2} (f_{p_2} - s_{p_2})^2 + \frac{1}{2} (f_{c} - s_{c})^2 \\ 
+% 		&& \phantom{\underset{{f_{p_1}}, {f_{p_2}}, {f_{c}}\in \Re^{n}}{\text{minimize}}} \quad \ \ + \frac{\tau}{\alpha_k}|f_{p_1}| + \frac{\tau}{\alpha_k}|f_{p_2}| + \frac{\tau}{\alpha_k}|f_c|
+% 		%	&& \text{subject to } \quad \ \ \vec{f}_{p_1} + \vec{f}_{p_2}  - \vec{1} \le  \vec{f}_c  \ \le \
+% 		%	\vec{f}_{p_1} + \vec{f}_{p_2}\\
+% 		%	&& \phantom{\text{subject to }} \quad \ \ \vec{0} \ \le \ \vec{f}_{p_1}, \vec{f}_{p_2}, \vec{f}_c \ \le \ \vec{1}		
+% 	\end{eqnarray*}
+% 	Completing the squares, 
+% 	\begin{eqnarray*}
+% 		&&\underset{{f_{p_1}}, {f_{p_2}}, {f_{c}}\in \Re}{\text{minimize}} \quad \ \ \frac{1}{2} (f_{p_1} - a)^2 + \frac{1}{2} (f_{p_2} - b)^2 + \frac{1}{2} (f_{c} - d)^2
+% 		%	&& \text{subject to } \quad \ \ \vec{f}_{p_1} + \vec{f}_{p_2}  - \vec{1} \le  \vec{f}_c  \ \le \
+% 		%	\vec{f}_{p_1} + \vec{f}_{p_2}\\
+% 		%	&& \phantom{\text{subject to }} \quad \ \ \vec{0} \ \le \ \vec{f}_{p_1}, \vec{f}_{p_2}, \vec{f}_c \ \le \ \vec{1}		
+% 	\end{eqnarray*}
+% 	where $a = s_{p_1} - \frac{\tau}{\alpha_k}$,  $b = s_{p_2} - \frac{\tau}{\alpha_k}$ and $d = s_{c} - \frac{\tau}{\alpha_k}$
+% 	\flushright{\scriptsize{(Banuelos et al, 2018)}}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{Strong Duality}
+% \textbf{Theorem:} \\
+% If the objective function is quadratic convex, and the constraints are all affine, then the duality gap is always zero, provided that one of the primal or dual problems is feasible.
+
+% \bigskip
+% Our problem:
+% \begin{equation*}
+% \begin{aligned}
+% &\underset{x \in \mathbb{R}^n}{\text{minimize}} \quad  \ \frac{1}{2}|| x - \hat x ||_2^2 \\
+% &\text{subject to} \quad Ax \geq b\\
+% \end{aligned}
+% \end{equation*}
+
+% \bigskip
+% We meet the two conditions that guarantee the duality gap is zero. Therefore, finding a solution to the dual problems ensures we have found the solution to the primal problem.
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{Backtracking Linesearch}
+% 	Let $\alpha \in (0, 1/2), \beta \in (0,1)$. Starting at $t = 1$, repeat with $t = \beta t$ until 
+% 	$$ f(x + t \Delta x) < f(x) + \alpha t \nabla f(x)^T \Delta x $$
+
+% \bigskip
+% Graphical Representation:
+% 	\begin{figure}
+% 		\includegraphics[width = .6\textwidth]{figs/linesearch2}
+% 	\end{figure}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%
+% \begin{frame}{Proposed Method}
+% 	\begin{algorithm}[H]
+% 		\SetAlgoNoLine % No outside lines around blocks 
+% 		\SetKwInput{init}{Initialize} % Initialization
+% 		\SetNlSty{}{}{} % Linenumbering style {<font>}{<txt before>}{<txt after>}
+% 		\init{ $  \lambda_0; \mu = 0.1; \beta = 0.5; k = 0$} %\;
+% 		\While{not converged} 
+% 		{
+% 			$\nabla \tilde{g} = AA^T \lambda + r$\;
+% 			$\alpha = \dfrac{||\nabla \tilde{g}(\lambda_k)||_2^2}{||A \nabla \tilde{g}(\lambda_k)||_2^2}$
+% 			\nllabel{alg1:eqs} \tcc*[r]{Initialze step size} 
+			
+% 			\While(\tcc*[f]{Backtracking Linesearch}){true}
+% 			{
+% 				$\tilde \lambda = [\lambda_k - \alpha \nabla \tilde{g}(\lambda_k)]_+$\;	
+% 				\If{$\tilde{g}(\tilde \lambda) \leq \tilde{g}(\lambda_{k}) - \mu \nabla \tilde{g}(\lambda_{k} - \tilde \lambda)$}{
+% 					break
+% 				}
+% 				$\alpha = \beta * \alpha$
+% 			}
+% 			$\lambda_{k+1} =  \tilde \lambda$; \tcc*[f]{Accept step}
+			
+% 			$x_{k+1} = \hat x + A^T \lambda_{k+1}$\;
+% 		}
+% 		\caption{Projected Gradinet Method with Backtracking Linesearch}
+% 		\label{alg1}
+% 	\end{algorithm}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{Compact Representation}
+% Recall the SR1 update, given by
+% \begin{align*}
+% B_{k+1} = B_k + \frac{(y_k - B_k s_k)(y_k - B_k s_k)^T}{(y_k - B_k s_k)^Ts_k}.
+% \end{align*}
+% The SR1 update can be written as using the following the compact representation:
+% \begin{equation*}
+% B_k = B_0 + \Psi_k M_k \Psi_k^T.
+% \end{equation*}
+% \bigskip
+% Then, given $B_0 = \gamma_k I$ and the eigendecomposition of $\Psi_k M_k \Psi_k^T$, we can write
+% \begin{equation*}
+% B_k = \gamma_k I + \Psi_k M_k \Psi_k^T = P\Lambda P^T
+% \end{equation*}
+% where
+% \begin{equation*}
+% P \triangleq 
+% \begin{bmatrix}  
+% P_{\parallel} & P_{\perp}
+% \end{bmatrix}
+% , \quad \hat{\Lambda} \triangleq
+% \begin{bmatrix}
+% \hat{\Lambda} + \gamma_k I_r & \\
+% & \gamma_k I_{n-r}
+% \end{bmatrix}
+% \end{equation*}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{Shape Changing Norm}
+% 	Given the compact representation, we now consider the trust-region subproblem defined by the shape-changing infinity norm:
+% 	\begin{equation*}
+% 	\norm{p}_{P,\infty} \triangleq \text{max} \left(  \normr{P_{\parallel}^T p}_{\infty}, \normr{P_{\perp}^T p}_2  \right).
+% 	\end{equation*}
+% 	\flushright{\scriptsize{(Burdakov et al, 2017)}}
+% 	\bigskip
+% 	\begin{itemize}
+% 		\item This norm depends on the eigenvectors of $B_k$, thus the shape of the trust region changes each time the quasi-Newton matrix is updated.
+% 		\item Defining the subproblem with this norm decouples into two separate problems, each with a closed form solution.
+% 		\item Recall, when the trust region subproblem is formulated using the 2-norm, we do not have a closed form solution.
+% 	\end{itemize}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{Dense Initialization}
+% We introduced the compact representation of SR1, where the recursive formulation depends on an initialization $B_0$. \\
+% \medskip
+% A common choice for $B_0$ is the solution to a generalized eigenvalue problem.\\
+% \medskip
+% In (Brust et al, 2019), an, one that spans the columns of $P_{\parallel}$ and the other which spans the columns of $P_{\perp}$, i.e., 
+% \begin{equation*}
+% \hat{B_0} = \gamma_k PP^T = \gamma_k P_{\parallel}P_{\parallel}^T + \gamma_k^{\perp} P_{\perp}P_{\perp}^T.
+% \end{equation*}
+% The choices for $\gamma_k$ are the same as before, whereas the choice of $\gamma_k^{\perp}$ is given by 
+% \begin{equation*} \label{eq:gamma_perp}
+% \gamma_k^{\perp}(c,\lambda) = \lambda c \gamma_k^{\text{max}} + (1 - \lambda)\gamma_k
+% \end{equation*}
+% where $c \geq 1, \lambda \in [0,1],$ and
+% \begin{equation*}
+% \gamma_k^{\text{max}} \triangleq \underset{1\leq i \leq k}{\text{max}} \; \gamma_i.
+% \end{equation*}
+% \end{frame}
+
+\end{document}
+
+
+
