@@ -6,8 +6,7 @@
 \title[Coded Aperture]{Image Classification from Coded Aperture}
 \author[J. Ornelas Mu\~noz]{\textbf{Jocelyn Ornelas Mu\~noz}, Erica M. Rutter,  Roummel F. Marcia}
 
-\institute[]{\vspace{-4mm} \\ \normalsize{$^*$Department of Applied Mathematics, UC Merced\\
-$^\dagger$ Department of Mathematics California State University, Fresno}\\ 	
+\institute[]{\vspace{-4mm} \\ \normalsize{Department of Applied Mathematics, UC Merced}}
 	%\vspace{-2mm} 
 % 	\begin{table}[h!]
 % 		\begin{center}
@@ -22,12 +21,12 @@ $^\dagger$ Department of Mathematics California State University, Fresno}\\
 % 			\end{tabular}}
 % 		\end{center}
 % 	\end{table}
-	\vspace{2mm}
-%	\small{Group Meeting} 
-	\vspace{-3mm}
-}
+%	\vspace{2mm}
+%	\small{MATH 233 Final Presentation} 
+%	\vspace{-3mm}
+%}
 
-\date{Wednesday, November 16, 2022}
+\date{Thursday, December 8, 2022}
 
 \titlegraphic{\vspace{-5pt}
 	\includegraphics[width=1.5cm]{images/UCM_Seal.png}
@@ -71,26 +70,195 @@ $^\dagger$ Department of Mathematics California State University, Fresno}\\
 % \bigskip
 % \textbf{V.} \? \? \textbf{Timeline} 
 % \end{frame}
+
 %-------------------------------------------------------------------
 %                    INTRODUCTION
 %-------------------------------------------------------------------
 \section{Overview}
-\begin{frame}{Overview}
-%Encoded in our DNA are the instructions as to how 
+\begin{frame}{Motivation}
+	In medical imaging, radiography typically uses apertures to modulate the radiation emitted by an x-ray source. \\ \smallskip \pause
+	\only<2->{\textcolor{red}{\textbf{Problem:}} With more complicated apertures, a decoding procedure is necessary to reconstruct the image.
+	\bigskip 
+	\begin{figure}
+		\includegraphics[width = .9\textwidth]{images/x_ray_schematic.png}
+	\end{figure}
+	}
+\only<3->{
+	\medskip
+	\textcolor{forestgreen}{\textbf{Goal:}} Classify images from coded observations without reconstructing the image.  
+}
+\end{frame}
 
-% Genomic disorders are caused by changes in the human genome --e.g. cancer, down syndrome, autism, etc. In particular, \textcolor{blue}{structural variants (SVs)} are 
-% \begin{itemize}
-%     \item Insertions, deletions, inversions, duplications, and transpositions in genomic sequences
-%     \item Large-scale changes in the DNA sequence ($~50-200$ letters)
-%     \item Rare, hard to detect occurrences in the genome
-% \end{itemize}
+\begin{frame}{Aperture Imaging}
+	\only<1>{
+	\vspace{-1.5em}
+	\begin{figure}
+		\includegraphics[width = .8\textwidth]{images/aperture_imaging_1.png}
+	\end{figure}
+\bigskip \bigskip \bigskip \bigskip
+\centering
+\textcolor{blue}{\textbf{Small}} pinholes allow little light $\implies$ \textcolor{red}{\textbf{faint}} observatons}
 
-Goal: Reconstruct signals from noisy measurements as accurately as possible. 
+\only<2>{\vspace{-1.5em}
+	\begin{figure}
+		\includegraphics[width = .8\textwidth]{images/aperture_imaging_2.png}
+	\end{figure}
+	\bigskip \bigskip \bigskip 
+	\centering
+\textcolor{blue}{\textbf{Larger}} pinholes allow more light, but decrease resolution $\implies$ \textcolor{red}{\textbf{blurry}} observations}
 
+\only<3>{\vspace{-1.5em}
+	\begin{figure}
+		\includegraphics[width = .8\textwidth]{images/aperture_imaging.png}
+	\end{figure}
+	\vspace{-0.5em}
+	\centering
+	\textcolor{blue}{\textbf{Multiple}} small pinholes  $\implies$ \textcolor{red}{\textbf{overlapping}} observations
+	}
 \end{frame}
 
 
+\begin{frame}{Modified Uniformly Redundant Array (MURA)}
+	A MURA pattern $A$ consists of specified openings that has a corresponding decoding pattern $G$\footnote[1]{Gottesman and Fenimore (1989)}. \\ \pause
+	\bigskip
+	\only<2>{
+		\begin{columns}
+			 		\begin{column}{0.65\textwidth}
+				 			Let $p$ be a prime number and $A = \{A_{ij}\}_{i,j=0}^{p-1}$ be the binary aperture array.  Set 
+				 		\begin{equation*}
+				 			A_{ij} = 
+				 			\begin{cases}
+				 				0 & \text{if } i =0 \\
+				 				1 & \text{if } j =0, i \neq 0 \\
+				 				1 & \text{if } C_iC_j = +1 \\
+				 				0              & \text{otherwise}
+				 			\end{cases}
+				 		\end{equation*}
+				 		where 
+				 		\begin{equation*}
+				 			C_{i} = 
+				 			\begin{cases}
+				 				+1 & \text{if } i \text{ is a quadratic residue modulo } p\\ % i.e. x^2 \equiv i (mod p)
+				 				-1 & \text{otherwise } 
+				 			\end{cases}
+				 		\end{equation*}
+				 		\end{column}
+			 		\begin{column}{0.35\textwidth}
+				 			\vspace{0mm}
+				 			\begin{figure}
+					 				\includegraphics[width=.7\linewidth]{images/encoder.png}
+					 			\end{figure}
+				 		\end{column}
+			 	\end{columns}
+
+	}
+	\only<3>{
+			\begin{columns}
+			\begin{column}{0.65\textwidth}
+				The decoding function $G$ is constructed as follows:
+				\begin{equation*}
+					G_{ij} = 
+					\begin{cases}
+						+1 & \text{if } i+j =0 \\
+						+1 & \text{if } A_{ij} =1 , i+j  \neq 0 \\
+						-1 & \text{if } A_{ij} =1 , i+j  \neq 0 
+					\end{cases}
+				\end{equation*}
+			\end{column}
+			\begin{column}{0.35\textwidth}
+				\vspace{0mm}
+				\begin{figure}
+					\includegraphics[width=.7\linewidth]{images/decoder.png}
+				\end{figure}
+			\end{column}
+		\end{columns}
+	}
+\only<4>{
+			\begin{figure}
+			\includegraphics[width = 0.96\textwidth]{images/conv_delta.png}
+			\end{figure}
+	}
+\end{frame}
+\begin{frame}{Modified Uniformly Redundant Array (MURA)}
+	\only<1>{
+	\begin{figure}
+		\includegraphics[width = 0.96\textwidth]{images/encode_decode.png}
+	\end{figure}
+	}
+
+	\only<2>{
+	\begin{figure}
+		\includegraphics[width = 0.96\textwidth]{images/encode_decode_all.png}
+	\end{figure}
+\vspace{-1em}
+	Coded observations appear irrecognizable, but MURAs are $50\%$ open patterns\footnote[1]{Gottesman and Fenimore (1989)} $\implies$ decoded observations are much brighter than those from small pinhole cameras.
+}
+\end{frame}
+\begin{frame}{MURA aperture imaging}
+	\begin{figure}
+		\includegraphics[width = 0.96\textwidth]{images/mura_imaging.png}
+	\end{figure}
+The observation $D$ is given by 
+$$D = S * A + B$$
+where $B$ is background noise. The MURA reconstruction is given by
+$$\hat{S} = D * G$$
+where $G$ is the decoding pattern.
+\end{frame}
+\begin{frame}{Proposed Method}
+	\textcolor{forestgreen}{\textbf{Goal:}} Classify handwritten digits from coded observations using a convolutional neural network (CNN) \textcolor{blue}{\textbf{without reconstructing the image}}.
+	\bigskip
+		\begin{figure}
+		\includegraphics[width = 0.96\textwidth]{images/task_diagram.png}
+	\end{figure}
+\end{frame}
+\begin{frame}{Training pipeline}
+	\textbf{Dataset:} MNIST Handwritten Digits 
+		\begin{itemize}
+		\item 28$\times$28 pixels (grayscale)
+		\item $60,000$ training images
+		\item $10,000$ testing images 
+	\end{itemize}
+    \medskip
+	\pause
+	\textbf{Approach:}
+	\begin{enumerate}
+		\item Resize MNIST digits to $23 \times 23$ pixels \pause
+		\item Generate aperture of size $23 \times 23$  (in C++)\pause
+		\item Convolve images with aperture using series of $1D$ Fast Fourier Transforms (FFT) and $1D$ inverse FFT to get coded observations (in C++) \pause
+		\item Train  a $2$-layer CNN 
+	\end{enumerate}
+	
+\end{frame}
     
+\begin{frame}{Results}
+	CNN performance on coded observations test set.\\
+	Accuracy: $\mathbf{95.35\%}$
+		\begin{figure}
+		\includegraphics[width = 0.7\textwidth]{images/conf_mat.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Results}
+	\vspace{-6mm}
+	\begin{figure}
+		\includegraphics[width = 0.8\textwidth]{images/misclassifications_counts.png}
+	\end{figure}
+\vspace{-1mm}
+Digits $3,5$ and $7$ were the most common misclassifications.
+\end{frame}
+
+\begin{frame}{Results}
+	Most common misclassifications:
+	\medskip
+	\begin{figure}
+		\includegraphics[width = 0.96\textwidth]{images/misclassifications.png}
+	\end{figure}
+\end{frame}
+\begin{frame}
+	\centering
+	\vspace{0.3\framewidth}
+	\Large{Gracias!}
+\end{frame}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{frame}{\phantom{hello}}
 % \null\vfill 
@@ -307,7 +475,7 @@ Goal: Reconstruct signals from noisy measurements as accurately as possible.
 % \vr(s) &= \text{location of the platform} \\
 % s &= \text{slow time parameter} \\
 % \textcolor{blue}{\brho(\vy)} &= \textcolor{blue}{\text{unknown reflectivity}} \\
-% \textcolor{forestgreen}{\bd(s,t)} &= \textcolor{forestgreen}{\text{SAR observation data}} \\
+% \textcolor{forest}{\bd(s,t)} &= \textcolor{forestgreen}{\text{SAR observation data}} \\
 % \end{align*}
 
 % \column{0.5\textwidth}
