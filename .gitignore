@@ -3,3 +3,4 @@ cmake-build-debug/*
 .ipynb_checkpoints
 rmarcia_matlab_codes/*
 jornelasmunoz/notebooks/wandb/*
+jornelasmunoz/data/*
