@@ -4,3 +4,5 @@ cmake-build-debug/*
 rmarcia_matlab_codes/*
 jornelasmunoz/notebooks/wandb/*
 jornelasmunoz/data/*
+jornelasmunoz/models/*
+*.pkl
