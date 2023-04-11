@@ -41,68 +41,78 @@ class CNN(nn.Module):
         x = self.fc5(x)
         return x
     
-    def _get_dataset(self, A):
-        size = A.shape[0]
+    def _get_dataset(self, A,encoded=True):
+        size = A.shape[0] # images will be the size of encoder
+        transform_list = [
+                        transforms.ToTensor(),
+                        transforms.Resize(size),
+                        transforms.Normalize(0, 1),
+                        ]
+        # select whether to get encoded data or original data
+        if encoded:
+            transform_list.append(transforms.Lambda(lambda x: torch.unsqueeze(torch.tensor(
+                 mura.FFT_convolve(np.squeeze(x.numpy()), A,size), dtype= torch.float), 0)))
+            
         train_data = datasets.MNIST(
         root = '../data/',
         train = True,                         
-        transform = transforms.Compose([
-                        transforms.ToTensor(),
-                        transforms.Resize(size),
-                        #transforms.Normalize(mean=0., std=(1/255.)),
-                        # Apply MURA encoder
-                        transforms.Lambda(lambda x: torch.unsqueeze(torch.tensor(
-                            mura.FFT_convolve(np.squeeze(x.numpy()), A,size), dtype= torch.float), 0)),
-                        transforms.Normalize(0, 1)
-                    ]), 
+        transform = transforms.Compose(transform_list),
+                    #     [transforms.ToTensor(),
+                    #     transforms.Resize(size),
+                    #     #transforms.Normalize(mean=0., std=(1/255.)),
+                    #     # Apply MURA encoder
+                    #     transforms.Lambda(lambda x: torch.unsqueeze(torch.tensor(
+                    #         mura.FFT_convolve(np.squeeze(x.numpy()), A,size), dtype= torch.float), 0)),
+                    #     transforms.Normalize(0, 1)
+                    # ]), 
         download = False,            
         )
         
         test_data = datasets.MNIST(
             root = '../data/', 
             train = False, 
-            transform = transforms.Compose([
-                            transforms.ToTensor(),
-                            transforms.Resize(size),
-                            #transforms.Normalize(mean=0., std=(1/255.)),
-                            # Apply MURA encoder
-                            transforms.Lambda(lambda x: torch.unsqueeze(torch.tensor(
-                                mura.FFT_convolve(np.squeeze(x.numpy()), A,size), dtype= torch.float), 0)),
-                            transforms.Normalize(0, 1)
-                        ]) 
+            transform = transforms.Compose(transform_list),
+            #                 [transforms.ToTensor(),
+            #                 transforms.Resize(size),
+            #                 #transforms.Normalize(mean=0., std=(1/255.)),
+            #                 # Apply MURA encoder
+            #                 transforms.Lambda(lambda x: torch.unsqueeze(torch.tensor(
+            #                     mura.FFT_convolve(np.squeeze(x.numpy()), A,size), dtype= torch.float), 0)),
+            #                 transforms.Normalize(0, 1)
+            #             ]) 
         )
         
         return train_data, test_data
     
     
 
-# Creating a DeepAutoencoder class
-class DeepAutoencoder(torch.nn.Module):
-    def __init__(self, img_size):
-        super().__init__()  
-        self.img_size = img_size
-        self.encoder = torch.nn.Sequential(
-            torch.nn.Linear(self.img_size * self.img_size, 256),
-            torch.nn.ReLU(),
-            torch.nn.Linear(256, 128),
-            torch.nn.ReLU(),
-            torch.nn.Linear(128, 64),
-            torch.nn.ReLU(),
-            torch.nn.Linear(64, 10)
-        )
+# # Creating a DeepAutoencoder class
+# class DeepAutoencoder(torch.nn.Module):
+#     def __init__(self, img_size):
+#         super().__init__()  
+#         self.img_size = img_size
+#         self.encoder = torch.nn.Sequential(
+#             torch.nn.Linear(self.img_size * self.img_size, 256),
+#             torch.nn.ReLU(),
+#             torch.nn.Linear(256, 128),
+#             torch.nn.ReLU(),
+#             torch.nn.Linear(128, 64),
+#             torch.nn.ReLU(),
+#             torch.nn.Linear(64, 10)
+#         )
           
-        self.decoder = torch.nn.Sequential(
-            torch.nn.Linear(10, 64),
-            torch.nn.ReLU(),
-            torch.nn.Linear(64, 128),
-            torch.nn.ReLU(),
-            torch.nn.Linear(128, 256),
-            torch.nn.ReLU(),
-            torch.nn.Linear(256, self.img_size * self.img_size),
-            torch.nn.Sigmoid()
-        )
+#         self.decoder = torch.nn.Sequential(
+#             torch.nn.Linear(10, 64),
+#             torch.nn.ReLU(),
+#             torch.nn.Linear(64, 128),
+#             torch.nn.ReLU(),
+#             torch.nn.Linear(128, 256),
+#             torch.nn.ReLU(),
+#             torch.nn.Linear(256, self.img_size * self.img_size),
+#             torch.nn.Sigmoid()
+#         )
   
-    def forward(self, x):
-        encoded = self.encoder(x)
-        decoded = self.decoder(encoded)
-        return decoded
+#     def forward(self, x):
+#         encoded = self.encoder(x)
+#         decoded = self.decoder(encoded)
+#         return decoded

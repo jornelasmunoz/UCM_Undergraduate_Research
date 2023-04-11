@@ -3,6 +3,20 @@ import matplotlib.pyplot as plt
 from scipy.fft import fft2, ifft2
 import torch
 
+
+# def load_data():
+#     # Load encoded data 
+#     filename_train = "../data/training_MNIST_mura"
+#     filename_eval  = "../data/validation_MNIST_mura"
+#     filename_test  = "../data/testing_MNIST_mura"
+
+#     mura_train_data = torch.load(filename_train)
+#     mura_eval_data = torch.load(filename_eval)
+#     mura_test_data = torch.load(filename_test)
+#     print(f"Number of elements in each dataset \nTraining: {len(mura_train_data)} \nValidation: {len(mura_eval_data)} \nTesting: {len(mura_test_data)}")
+    
+#     return mura_train_data, mura_eval_data, mura_test_data
+
 def create_binary_aperture_arr(p):
     '''
     Inputs

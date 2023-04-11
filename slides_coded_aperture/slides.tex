@@ -6,7 +6,7 @@
 \title[Coded Aperture]{Image Classification from Coded Aperture}
 \author[J. Ornelas Mu\~noz]{\textbf{Jocelyn Ornelas Mu\~noz}, Erica M. Rutter,  Roummel F. Marcia}
 
-\institute[]{\vspace{-4mm} \\ \normalsize{Department of Applied Mathematics, UC Merced}}
+\institute[]{\vspace{-4mm} \\ \normalsize{Department of Applied Mathematics, UC Merced} \\ \small{Imaging and Sensing Seminar}}
 	%\vspace{-2mm} 
 % 	\begin{table}[h!]
 % 		\begin{center}
@@ -22,11 +22,11 @@
 % 		\end{center}
 % 	\end{table}
 %	\vspace{2mm}
-%	\small{MATH 233 Final Presentation} 
+%	\small{Imaging and Sensing Seminar} 
 %	\vspace{-3mm}
 %}
 
-\date{Thursday, December 8, 2022}
+\date{Monday, April 3, 2023}
 
 \titlegraphic{\vspace{-5pt}
 	\includegraphics[width=1.5cm]{images/UCM_Seal.png}
@@ -76,8 +76,9 @@
 %-------------------------------------------------------------------
 \section{Overview}
 \begin{frame}{Motivation}
-	In medical imaging, radiography typically uses apertures to modulate the radiation emitted by an x-ray source. \\ \smallskip \pause
-	\only<2->{\textcolor{red}{\textbf{Problem:}} With more complicated apertures, a decoding procedure is necessary to reconstruct the image.
+	In medical imaging, radiography typically uses apertures to modulate the radiation emitted by an x-ray source and produce high-resolution images. \\ \smallskip \pause
+	%Coded aperture imaging is a novel imaging technique that has been gaining popularity in the medical field due to its ability to capture high-resolution images with reduced radiation exposure. 
+	\only<2->{\textcolor{red}{\textbf{Problem:}} Complicated apertures require a decoding procedure to reconstruct the image. %With more complicated apertures, a decoding procedure is necessary to reconstruct the image.
 	\bigskip 
 	\begin{figure}
 		\includegraphics[width = .9\textwidth]{images/x_ray_schematic.png}
@@ -211,49 +212,94 @@ where $G$ is the decoding pattern.
 		\includegraphics[width = 0.96\textwidth]{images/task_diagram.png}
 	\end{figure}
 \end{frame}
-\begin{frame}{Training pipeline}
+\begin{frame}{Experiment Set Up}
 	\textbf{Dataset:} MNIST Handwritten Digits 
 		\begin{itemize}
 		\item 28$\times$28 pixels (grayscale)
-		\item $60,000$ training images
-		\item $10,000$ testing images 
+		\item $70,000$ total images
+		\item $80\%$ training, $10\%$ validation, $10\%$ testing images 
 	\end{itemize}
     \medskip
 	\pause
-	\textbf{Approach:}
-	\begin{enumerate}
-		\item Resize MNIST digits to $23 \times 23$ pixels \pause
-		\item Generate aperture of size $23 \times 23$  (in C++)\pause
-		\item Convolve images with aperture using series of $1D$ Fast Fourier Transforms (FFT) and $1D$ inverse FFT to get coded observations (in C++) \pause
-		\item Train  a $2$-layer CNN 
-	\end{enumerate}
+%	\textbf{Approach:}
+%	\begin{enumerate}
+%		\item Resize MNIST digits to $23 \times 23$ pixels \pause
+%		\item Generate aperture of size $23 \times 23$  \pause
+%		\item Convolve images with aperture using $2D$ Fast Fourier Transforms (FFT) and $2D$ inverse FFT to get coded observations  \pause
+%		\item Train  a $2$-layer CNN 
+%	\end{enumerate}
+	\begin{figure}
+		\includegraphics[width = 0.96\textwidth]{images/encoded_original_examples.png}
+	\end{figure}
+\end{frame}
+\begin{frame}{Experiments}
+	\only<1->{\textbf{Experiment 1:} Classify original MNIST images\\}
+	\only<1>{
+	\vspace{3em}
+	\begin{figure}
+		\includegraphics[width = 0.8\textwidth]{images/classify_original.png}
+	\end{figure}
+	}
+	\only<2->{\textbf{Experiment 2:} Classify encoded MNIST images\\}
+	\only<2>{
+	\vspace{3em}
+	\begin{figure}
+		\includegraphics[width = 0.8\textwidth]{images/classify_encoded.png}
+	\end{figure}
+	}
+	\only<3->{\textbf{Experiment 3:} Reconstruct encoded MNIST images, then classify from reconstructions\\}
+	\only<3>{
+	\vspace{3em}
+	\begin{figure}
+		\includegraphics[width = 0.9\textwidth]{images/reconstruct.png}
+	\end{figure}
+	}
 	
 \end{frame}
     
-\begin{frame}{Results}
-	CNN performance on coded observations test set.\\
-	Accuracy: $\mathbf{95.35\%}$
+\begin{frame}{Preliminary Results: Classification of original images}
+%	CNN performance on coded observations test set.\\
+%	Accuracy: $\mathbf{95.35\%}$
+%		\begin{figure}
+%		\includegraphics[width = 0.7\textwidth]{images/conf_mat.png}
+%	\end{figure}
+Classification accuracy of \textbf{original images}: $98.99\%$ \\
+\pause 
+\begin{figure}
+	\includegraphics[width = 0.8\textwidth]{images/misclassifications_counts_original_mnist.png}
+\end{figure}
+The most common misclassified digits: $9,4,6,7, 3$
+
+\end{frame}
+\begin{frame}{Preliminary Results: Misclassification of original images}
+	\begin{figure}
+		\includegraphics[width = 0.96\textwidth]{images/misclass_original_mnist_examples.png}
+		\caption{Examples of misclassified original MNIST images}
+	\end{figure}
+\end{frame}
+\begin{frame}{Preliminary Results: Classification of encoded images}
+	Classification accuracy of \textbf{encoded images}: $95.35\%$\\
+	\pause 
+	\begin{figure}
+		\includegraphics[width = 0.8\textwidth]{images/misclassifications_counts_encoded_mnist.png}
+	\end{figure}
+	The most common misclassified digits: $5,7,3,8,9$
+\end{frame}
+
+\begin{frame}{Preliminary Results: Misclassification of encoded MNIST images}
 		\begin{figure}
-		\includegraphics[width = 0.7\textwidth]{images/conf_mat.png}
-	\end{figure}
+			\includegraphics[width = 0.96\textwidth]{images/misclass_encoded_mnist_examples.png}
+			\caption{Examples of misclassified encoded images}
+		\end{figure}
 \end{frame}
 
-\begin{frame}{Results}
-	\vspace{-6mm}
-	\begin{figure}
-		\includegraphics[width = 0.8\textwidth]{images/misclassifications_counts.png}
-	\end{figure}
-\vspace{-1mm}
-Digits $3,5$ and $7$ were the most common misclassifications.
+\begin{frame}{Preliminary Results: Classification from reconstructed images}
+	\centering
+	\vspace{0.2\framewidth}
+	\Large{COMING SOON}
 \end{frame}
 
-\begin{frame}{Results}
-	Most common misclassifications:
-	\medskip
-	\begin{figure}
-		\includegraphics[width = 0.96\textwidth]{images/misclassifications.png}
-	\end{figure}
-\end{frame}
+
 \begin{frame}
 	\centering
 	\vspace{0.3\framewidth}
