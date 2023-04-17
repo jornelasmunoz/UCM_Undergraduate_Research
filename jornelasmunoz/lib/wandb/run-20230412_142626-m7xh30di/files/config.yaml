@@ -1,0 +1,60 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.13.11
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.8.5
+    start_time: 1681334786.930416
+    t:
+      1:
+      - 1
+      - 5
+      - 41
+      - 53
+      - 55
+      2:
+      - 1
+      - 5
+      - 41
+      - 53
+      - 55
+      3:
+      - 2
+      - 13
+      - 16
+      - 23
+      4: 3.8.5
+      5: 0.13.11
+      8:
+      - 5
+batch_size:
+  desc: null
+  value: 100
+dataset:
+  desc: null
+  value: encoded_MNIST
+epochs:
+  desc: null
+  value: 50
+image_size:
+  desc: null
+  value: 23
+kernel_size:
+  desc: null
+  value: 23
+learning_rate:
+  desc: null
+  value: 0.001
+model:
+  desc: null
+  value: recon_l_1_pen_lambda_5e-01
+p:
+  desc: null
+  value: 23
+suffix:
+  desc: null
+  value: ''

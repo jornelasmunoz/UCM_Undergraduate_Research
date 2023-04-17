@@ -1,0 +1,42 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.8.5",
+    "heartbeatAt": "2023-04-12T18:02:50.517317",
+    "startedAt": "2023-04-12T18:02:49.944536",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "train_recon.py",
+    "codePath": "jornelasmunoz/lib/train_recon.py",
+    "git": {
+        "remote": "git@github.com:jornelasmunoz/coded-aperture.git",
+        "commit": "24e81bf659807135db8c66768750ac0c434a0d56"
+    },
+    "email": "jornelasmunoz@ucmerced.edu",
+    "root": "/Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture",
+    "host": "Jocelyns-MacBook-Pro.local",
+    "username": "jocelynornelas",
+    "executable": "/opt/anaconda3/bin/python",
+    "cpu_count": 4,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 1400,
+        "min": 1400,
+        "max": 1400
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1400,
+            "min": 1400,
+            "max": 1400
+        }
+    ],
+    "disk": {
+        "total": 465.62699127197266,
+        "used": 272.03558349609375
+    },
+    "memory": {
+        "total": 8.0
+    }
+}

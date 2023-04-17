@@ -18,7 +18,7 @@ class CNN(torch.nn.Module):
         self.kernel_size = self.params['kernel_size']
         self.criterion = torch.nn.MSELoss()
         # self.optimizer = torch.optim.Adam(self.parameters(), lr = self.params['learning_rate']) 
-        self.params['model_save_path'] = f'../models/{params["kind"]}_{params["suffix"]}_recon.pth'
+        self.params['model_save_path'] = f'../models/{params["kind"]}/{params["model"]}.pth'
         
         # Define model architecture elements
         self.conv = torch.nn.Conv2d(1,1,kernel_size=self.kernel_size, padding=(self.kernel_size-1)//2)
@@ -29,7 +29,8 @@ class CNN(torch.nn.Module):
         
     def forward(self, x):
         #output = torch.sigmoid(self.conv(x))
-        # 03.20.23 Trying out a model with no activation function -- update 03.28.23 Didnt work :(
+        # 03.20.23 Trying out a model with no activation function -- update 03.28.23 Didnt work if it's just no activation :( 
+        # 04.12.23 Trying no activation function with l_1 penalty
         output = self.conv(x)
         return output
     

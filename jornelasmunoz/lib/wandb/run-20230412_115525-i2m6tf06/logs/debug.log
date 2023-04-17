@@ -1,0 +1,32 @@
+2023-04-12 11:55:25,855 INFO    MainThread:3262 [wandb_setup.py:_flush():76] Configure stats pid to 3262
+2023-04-12 11:55:25,856 INFO    MainThread:3262 [wandb_setup.py:_flush():76] Loading settings from /Users/jocelynornelas/.config/wandb/settings
+2023-04-12 11:55:25,856 INFO    MainThread:3262 [wandb_setup.py:_flush():76] Loading settings from /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/settings
+2023-04-12 11:55:25,856 INFO    MainThread:3262 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-04-12 11:55:25,856 INFO    MainThread:3262 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'jornelasmunoz/lib/train_recon.py', 'program': 'train_recon.py'}
+2023-04-12 11:55:25,856 INFO    MainThread:3262 [wandb_init.py:_log_setup():506] Logging user logs to /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230412_115525-i2m6tf06/logs/debug.log
+2023-04-12 11:55:25,856 INFO    MainThread:3262 [wandb_init.py:_log_setup():507] Logging internal logs to /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230412_115525-i2m6tf06/logs/debug-internal.log
+2023-04-12 11:55:25,856 INFO    MainThread:3262 [wandb_init.py:init():546] calling init triggers
+2023-04-12 11:55:25,856 INFO    MainThread:3262 [wandb_init.py:init():552] wandb.init called with sweep_config: {}
+config: {'dataset': 'encoded_MNIST', 'model': 'recon_l_1_pen_lambda_1e-04', 'learning_rate': 0.001, 'batch_size': 100, 'epochs': 50, 'kernel_size': 23, 'p': 23, 'image_size': 23, 'suffix': ''}
+2023-04-12 11:55:25,856 INFO    MainThread:3262 [wandb_init.py:init():602] starting backend
+2023-04-12 11:55:25,856 INFO    MainThread:3262 [wandb_init.py:init():606] setting up manager
+2023-04-12 11:55:25,858 INFO    MainThread:3262 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=spawn,fork,forkserver, using: spawn
+2023-04-12 11:55:25,862 INFO    MainThread:3262 [wandb_init.py:init():613] backend started and connected
+2023-04-12 11:55:25,865 INFO    MainThread:3262 [wandb_init.py:init():701] updated telemetry
+2023-04-12 11:55:25,938 INFO    MainThread:3262 [wandb_init.py:init():741] communicating run to backend with 60.0 second timeout
+2023-04-12 11:55:26,567 INFO    MainThread:3262 [wandb_run.py:_on_init():2131] communicating current version
+2023-04-12 11:55:26,771 INFO    MainThread:3262 [wandb_run.py:_on_init():2140] got version response upgrade_message: "wandb version 0.14.2 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2023-04-12 11:55:26,772 INFO    MainThread:3262 [wandb_init.py:init():789] starting run threads in backend
+2023-04-12 11:55:36,183 INFO    MainThread:3262 [wandb_run.py:_console_start():2112] atexit reg
+2023-04-12 11:55:36,183 INFO    MainThread:3262 [wandb_run.py:_redirect():1967] redirect: SettingsConsole.WRAP_RAW
+2023-04-12 11:55:36,183 INFO    MainThread:3262 [wandb_run.py:_redirect():2032] Wrapping output streams.
+2023-04-12 11:55:36,184 INFO    MainThread:3262 [wandb_run.py:_redirect():2057] Redirects installed.
+2023-04-12 11:55:36,184 INFO    MainThread:3262 [wandb_init.py:init():831] run started, returning control to user process
+2023-04-12 13:40:26,435 INFO    MainThread:3262 [wandb_run.py:_finish():1852] finishing run jocelynornelasmunoz/coded-aperture-MNIST/i2m6tf06
+2023-04-12 13:40:26,447 INFO    MainThread:3262 [wandb_run.py:_atexit_cleanup():2081] got exitcode: 0
+2023-04-12 13:40:26,458 INFO    MainThread:3262 [wandb_run.py:_restore():2064] restore
+2023-04-12 13:40:26,464 INFO    MainThread:3262 [wandb_run.py:_restore():2070] restore done
+2023-04-12 13:40:32,013 INFO    MainThread:3262 [wandb_run.py:_footer_history_summary_info():3429] rendering history
+2023-04-12 13:40:32,015 INFO    MainThread:3262 [wandb_run.py:_footer_history_summary_info():3461] rendering summary
+2023-04-12 13:40:32,052 INFO    MainThread:3262 [wandb_run.py:_footer_sync_info():3387] logging synced files
