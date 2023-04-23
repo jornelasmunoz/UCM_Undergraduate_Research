@@ -5,7 +5,7 @@ import numpy as np
 
 
 
-class CNN(torch.nn.Module):
+class reconstruction_cnn(torch.nn.Module):
     '''
     Define a model with only one convolutional layer and sigmoid activation function
     '''
@@ -16,22 +16,27 @@ class CNN(torch.nn.Module):
         self.params = params
         self.img_size = self.params['image_size']
         self.kernel_size = self.params['kernel_size']
-        self.criterion = torch.nn.MSELoss()
+        self.criterion = torch.nn.MSELoss() if self.params.get('loss') is None else torch.nn.L1Loss() #
         # self.optimizer = torch.optim.Adam(self.parameters(), lr = self.params['learning_rate']) 
         self.params['model_save_path'] = f'../models/{params["kind"]}/{params["model"]}.pth'
         
         # Define model architecture elements
-        self.conv = torch.nn.Conv2d(1,1,kernel_size=self.kernel_size, padding=(self.kernel_size-1)//2)
-        
+        self.conv  = torch.nn.Conv2d(1,1,kernel_size=self.kernel_size, padding=(self.kernel_size-1)//2)
+        self.convT = torch.nn.ConvTranspose2d(1,1,kernel_size=self.kernel_size,padding=(self.kernel_size-1)//2) 
         print("Using the following parameters:")
         for key, val in self.params.items():
             print(f"{key}: {val}")
         
     def forward(self, x):
-        #output = torch.sigmoid(self.conv(x))
-        # 03.20.23 Trying out a model with no activation function -- update 03.28.23 Didnt work if it's just no activation :( 
-        # 04.12.23 Trying no activation function with l_1 penalty
-        output = self.conv(x)
+        if "activation" in self.params['model']:
+            output = torch.sigmoid(self.conv(x))
+        else:
+            # 03.20.23 Trying out a model with no activation function -- update 03.28.23 Didnt work if it's just no activation :( 
+            # 04.12.23 Trying no activation function with l_1 penalty
+            #output = self.conv(x)
+            
+            # Trying convolution transpose as test
+            output = self.conv(x)
         return output
     
     @staticmethod

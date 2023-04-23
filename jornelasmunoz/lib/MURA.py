@@ -94,27 +94,58 @@ def FFT_convolve(A, B, p=None):
     
     return conv_AB
 
-def add_Gaussian_noise(image, mean=0, var=0.1):
-    """
+def add_Gaussian_noise(og_image, desired_snr):
+    '''
+    Given an image and a desired Signal to Noise Ratio (in decibels, dB)
+    returns a noisy image
+    
     Inputs:
-        image: np.array of size [height, width]. Image to which Gaussian filter will be added
-        mean:  Mean for Gaussian distribution
-        var:   Variance for Gaussian distribution
+        og_image: Tensor. Original (noiseless) image normalized to pixel values [0,1]
+        desired_snr: Integer. Signal to noise ration in decibels
         
-    Outputs:
-        noisy: Image with added Gaussian noise
-    """
+    Outputs: 
+        noisy_image: Tensor. Noisy version of original image. Values are between 0 and 1.  
+    '''
+    # Calculate the variance of the image pixels
+    signal_power = torch.var(og_image)
+
+    # # Set the desired SNR
+    # desired_snr = 30
+
+    # Calculate the noise power
+    noise_power = signal_power / (10**(desired_snr/10))
+
+    # Generate random noise matrix
+    noise = torch.normal(0,torch.sqrt(noise_power), size=og_image.shape)
+
+    # Add the noise to the image
+    noisy_image = og_image + noise
+
+    noisy_image = torch.clip(noisy_image, 0, 1)#.astype(torch.float32)
     
-    row,col = image.shape
+    return noisy_image
+
+# def add_Gaussian_noise(image, mean=0, var=0.1):
+#     """
+#     Inputs:
+#         image: np.array of size [height, width]. Image to which Gaussian filter will be added
+#         mean:  Mean for Gaussian distribution
+#         var:   Variance for Gaussian distribution
+        
+#     Outputs:
+#         noisy: Image with added Gaussian noise
+#     """
     
-    # Calculate Gaussian filter
-    sigma = var**0.5
-    gauss = np.random.normal(mean,sigma,(row,col))
-    gauss = gauss.reshape(row,col)
+#     row,col = image.shape
     
-    # Add Gaussian filter to image
-    noisy = image + gauss
-    return noisy
+#     # Calculate Gaussian filter
+#     sigma = var**0.5
+#     gauss = np.random.normal(mean,sigma,(row,col))
+#     gauss = gauss.reshape(row,col)
+    
+#     # Add Gaussian filter to image
+#     noisy = image + gauss
+#     return noisy
 
 def get_Gaussian_filter(image, mean=0, var=0.1):
     """
