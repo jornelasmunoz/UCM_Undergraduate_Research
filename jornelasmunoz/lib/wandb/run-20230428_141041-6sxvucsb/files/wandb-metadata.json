@@ -1,0 +1,42 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.8.5",
+    "heartbeatAt": "2023-04-28T21:10:42.005880",
+    "startedAt": "2023-04-28T21:10:41.253656",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "train_classification.py",
+    "codePath": "jornelasmunoz/lib/train_classification.py",
+    "git": {
+        "remote": "git@github.com:jornelasmunoz/coded-aperture.git",
+        "commit": "ecd126a1da64bcc740e412ea155ec5e0c6caae09"
+    },
+    "email": "jornelasmunoz@ucmerced.edu",
+    "root": "/Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture",
+    "host": "Jocelyns-MBP.attlocal.net",
+    "username": "jocelynornelas",
+    "executable": "/opt/anaconda3/bin/python",
+    "cpu_count": 4,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 1400,
+        "min": 1400,
+        "max": 1400
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1400,
+            "min": 1400,
+            "max": 1400
+        }
+    ],
+    "disk": {
+        "total": 465.62699127197266,
+        "used": 295.3992462158203
+    },
+    "memory": {
+        "total": 8.0
+    }
+}

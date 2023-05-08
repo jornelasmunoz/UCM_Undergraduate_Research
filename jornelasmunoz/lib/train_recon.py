@@ -215,8 +215,6 @@ fontsize = 30
 fig, axs = plt.subplots(1,1)
 axs.plot(range(1,params['epochs']+1), train_loss, label="Training Loss")
 axs.plot(range(1,params['epochs']+1), val_loss, label="Validation Loss")
-# axs.plot(range(1,40+1), train_loss, label="Training Loss")
-# axs.plot(range(1,40+1), val_loss, label="Validation Loss")
 
 axs.set_xlabel("Number of epochs", fontsize = fontsize-2)
 axs.set_ylabel("MSE", fontsize = fontsize-2)

@@ -1,0 +1,645 @@
+2023-04-28 13:57:20,625 INFO    StreamThr :10365 [internal.py:wandb_internal():86] W&B internal server running at pid: 10365, started at: 2023-04-28 13:57:20.624416
+2023-04-28 13:57:20,626 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status
+2023-04-28 13:57:20,632 INFO    WriterThread:10365 [datastore.py:open_for_write():85] open: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/run-sjls4gio.wandb
+2023-04-28 13:57:20,633 DEBUG   SenderThread:10365 [sender.py:send():375] send: header
+2023-04-28 13:57:20,709 DEBUG   SenderThread:10365 [sender.py:send():375] send: run
+2023-04-28 13:57:21,290 INFO    SenderThread:10365 [dir_watcher.py:__init__():219] watching files in: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files
+2023-04-28 13:57:21,291 INFO    SenderThread:10365 [sender.py:_start_run_threads():1124] run started: sjls4gio with start time 1682715440.623324
+2023-04-28 13:57:21,291 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 13:57:21,291 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 13:57:21,294 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: check_version
+2023-04-28 13:57:21,295 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: check_version
+2023-04-28 13:57:21,482 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: run_start
+2023-04-28 13:57:21,484 DEBUG   HandlerThread:10365 [system_info.py:__init__():31] System info init
+2023-04-28 13:57:21,484 DEBUG   HandlerThread:10365 [system_info.py:__init__():46] System info init done
+2023-04-28 13:57:21,484 INFO    HandlerThread:10365 [system_monitor.py:start():181] Starting system monitor
+2023-04-28 13:57:21,485 INFO    SystemMonitor:10365 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-04-28 13:57:21,486 INFO    HandlerThread:10365 [system_monitor.py:probe():201] Collecting system info
+2023-04-28 13:57:21,486 DEBUG   HandlerThread:10365 [system_info.py:probe():195] Probing system
+2023-04-28 13:57:21,486 INFO    SystemMonitor:10365 [interfaces.py:start():190] Started cpu monitoring
+2023-04-28 13:57:21,487 INFO    SystemMonitor:10365 [interfaces.py:start():190] Started disk monitoring
+2023-04-28 13:57:21,487 INFO    SystemMonitor:10365 [interfaces.py:start():190] Started memory monitoring
+2023-04-28 13:57:21,488 INFO    SystemMonitor:10365 [interfaces.py:start():190] Started network monitoring
+2023-04-28 13:57:21,498 DEBUG   HandlerThread:10365 [system_info.py:_probe_git():180] Probing git
+2023-04-28 13:57:21,547 DEBUG   HandlerThread:10365 [system_info.py:_probe_git():188] Probing git done
+2023-04-28 13:57:21,547 DEBUG   HandlerThread:10365 [system_info.py:probe():240] Probing system done
+2023-04-28 13:57:21,547 DEBUG   HandlerThread:10365 [system_monitor.py:probe():210] {'os': 'macOS-10.16-x86_64-i386-64bit', 'python': '3.8.5', 'heartbeatAt': '2023-04-28T20:57:21.486648', 'startedAt': '2023-04-28T20:57:20.604207', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'train_classification.py', 'codePath': 'jornelasmunoz/lib/train_classification.py', 'git': {'remote': 'git@github.com:jornelasmunoz/coded-aperture.git', 'commit': 'ecd126a1da64bcc740e412ea155ec5e0c6caae09'}, 'email': 'jornelasmunoz@ucmerced.edu', 'root': '/Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture', 'host': 'Jocelyns-MBP.attlocal.net', 'username': 'jocelynornelas', 'executable': '/opt/anaconda3/bin/python', 'cpu_count': 4, 'cpu_count_logical': 8, 'cpu_freq': {'current': 1400, 'min': 1400, 'max': 1400}, 'cpu_freq_per_core': [{'current': 1400, 'min': 1400, 'max': 1400}], 'disk': {'total': 465.62699127197266, 'used': 294.391170501709}, 'memory': {'total': 8.0}}
+2023-04-28 13:57:21,547 INFO    HandlerThread:10365 [system_monitor.py:probe():211] Finished collecting system info
+2023-04-28 13:57:21,547 INFO    HandlerThread:10365 [system_monitor.py:probe():214] Publishing system info
+2023-04-28 13:57:21,547 DEBUG   HandlerThread:10365 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-04-28 13:57:21,549 DEBUG   HandlerThread:10365 [system_info.py:_save_pip():67] Saving pip packages done
+2023-04-28 13:57:21,549 DEBUG   HandlerThread:10365 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-04-28 13:57:22,297 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_created():278] file/dir created: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/requirements.txt
+2023-04-28 13:57:22,297 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_created():278] file/dir created: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 13:57:22,298 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_created():278] file/dir created: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/conda-environment.yaml
+2023-04-28 13:57:30,315 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/conda-environment.yaml
+2023-04-28 13:57:30,378 DEBUG   HandlerThread:10365 [system_info.py:_save_conda():86] Saving conda packages done
+2023-04-28 13:57:30,379 INFO    HandlerThread:10365 [system_monitor.py:probe():216] Finished publishing system info
+2023-04-28 13:57:30,385 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:57:30,385 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: keepalive
+2023-04-28 13:57:30,386 DEBUG   SenderThread:10365 [sender.py:send():375] send: files
+2023-04-28 13:57:30,386 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-04-28 13:57:30,395 DEBUG   SenderThread:10365 [sender.py:send():375] send: telemetry
+2023-04-28 13:57:30,397 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 13:57:30,397 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 13:57:31,080 INFO    wandb-upload_0:10365 [upload_job.py:push():137] Uploaded file /var/folders/00/mn_mr29n7s37xcf_4vdv1sc40000gn/T/tmp3zg2l063wandb/e11qlhg1-wandb-metadata.json
+2023-04-28 13:57:31,316 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_created():278] file/dir created: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 13:57:31,316 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_created():278] file/dir created: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-metadata.json
+2023-04-28 13:57:31,541 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:57:33,323 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 13:57:36,548 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:57:39,946 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 13:57:39,948 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 13:57:39,948 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 13:57:39,950 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 13:57:40,332 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 13:57:41,951 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:57:43,334 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 13:57:45,396 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 13:57:45,397 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 13:57:47,490 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:57:49,405 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 13:57:49,406 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 13:57:49,406 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 13:57:49,408 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 13:57:50,354 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 13:57:51,357 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 13:57:53,415 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:57:54,364 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/config.yaml
+2023-04-28 13:57:58,694 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:57:59,003 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 13:57:59,004 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 13:57:59,005 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 13:57:59,007 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 13:57:59,381 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 13:58:00,399 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 13:58:00,400 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 13:58:01,385 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 13:58:04,490 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:58:08,898 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 13:58:08,900 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 13:58:08,900 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 13:58:08,901 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 13:58:09,407 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 13:58:09,902 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:58:11,409 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 13:58:14,910 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:58:15,402 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 13:58:15,403 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 13:58:18,521 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 13:58:18,522 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 13:58:18,522 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 13:58:18,526 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 13:58:19,423 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 13:58:20,532 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:58:21,430 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 13:58:21,490 DEBUG   SystemMonitor:10365 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-04-28 13:58:21,491 DEBUG   SenderThread:10365 [sender.py:send():375] send: stats
+2023-04-28 13:58:26,498 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:58:28,170 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 13:58:28,171 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 13:58:28,171 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 13:58:28,172 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 13:58:28,446 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 13:58:30,402 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 13:58:30,402 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 13:58:30,454 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 13:58:32,499 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:58:37,505 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:58:38,030 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 13:58:38,031 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 13:58:38,031 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 13:58:38,032 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 13:58:38,474 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 13:58:38,474 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 13:58:43,048 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:58:45,403 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 13:58:45,404 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 13:58:47,637 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 13:58:47,638 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 13:58:47,638 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 13:58:47,639 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 13:58:48,492 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 13:58:48,492 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 13:58:48,640 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:58:51,496 DEBUG   SenderThread:10365 [sender.py:send():375] send: stats
+2023-04-28 13:58:54,501 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:58:57,228 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 13:58:57,229 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 13:58:57,229 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 13:58:57,230 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 13:58:57,513 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 13:58:58,515 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 13:59:00,237 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:59:00,402 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 13:59:00,402 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 13:59:05,482 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:59:07,033 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 13:59:07,034 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 13:59:07,034 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 13:59:07,035 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 13:59:07,528 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 13:59:08,528 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 13:59:11,047 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:59:15,404 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 13:59:15,404 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 13:59:16,491 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:59:16,565 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 13:59:16,566 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 13:59:16,566 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 13:59:16,567 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 13:59:17,552 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 13:59:18,554 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 13:59:21,495 DEBUG   SenderThread:10365 [sender.py:send():375] send: stats
+2023-04-28 13:59:21,496 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:59:26,165 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 13:59:26,166 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 13:59:26,166 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 13:59:26,167 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 13:59:26,567 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 13:59:26,567 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 13:59:27,168 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:59:30,404 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 13:59:30,404 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 13:59:32,498 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:59:36,135 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 13:59:36,136 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 13:59:36,136 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 13:59:36,138 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 13:59:36,590 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 13:59:36,591 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 13:59:38,140 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:59:43,141 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:59:45,407 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 13:59:45,407 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 13:59:45,416 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 13:59:45,500 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 13:59:45,500 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 13:59:45,501 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 13:59:45,610 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 13:59:46,613 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 13:59:48,508 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:59:51,496 DEBUG   SenderThread:10365 [sender.py:send():375] send: stats
+2023-04-28 13:59:54,501 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 13:59:54,957 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 13:59:54,959 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 13:59:54,959 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 13:59:54,959 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 13:59:55,625 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 13:59:56,626 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 13:59:59,974 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:00:00,408 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:00:00,408 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:00:04,540 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:00:04,542 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:00:04,542 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:00:04,543 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:00:04,643 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:00:05,547 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:00:06,648 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:00:10,558 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:00:14,575 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:00:14,576 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:00:14,576 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:00:14,576 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:00:14,659 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:00:15,412 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:00:15,412 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:00:16,501 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:00:16,661 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:00:21,497 DEBUG   SenderThread:10365 [sender.py:send():375] send: stats
+2023-04-28 14:00:22,498 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:00:24,124 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:00:24,125 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:00:24,125 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:00:24,125 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:00:24,679 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:00:24,679 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:00:28,129 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:00:30,412 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:00:30,413 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:00:33,519 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:00:34,026 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:00:34,027 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:00:34,027 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:00:34,028 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:00:34,695 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:00:34,695 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:00:39,035 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:00:44,092 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:00:44,100 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:00:44,101 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:00:44,102 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:00:44,103 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:00:44,759 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:00:44,759 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:00:45,468 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:00:45,468 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:00:49,559 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:00:51,553 DEBUG   SenderThread:10365 [sender.py:send():375] send: stats
+2023-04-28 14:00:53,640 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:00:53,640 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:00:53,641 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:00:53,641 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:00:53,775 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:00:54,646 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:00:54,779 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:00:59,653 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:01:00,472 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:01:00,472 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:01:03,229 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:01:03,229 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:01:03,230 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:01:03,230 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:01:03,799 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:01:04,800 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:01:05,234 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:01:10,249 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:01:13,037 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:01:13,038 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:01:13,038 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:01:13,039 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:01:13,812 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:01:14,813 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:01:15,473 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:01:15,473 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:01:15,549 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:01:20,556 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:01:21,554 DEBUG   SenderThread:10365 [sender.py:send():375] send: stats
+2023-04-28 14:01:22,601 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:01:22,602 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:01:22,602 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:01:22,603 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:01:22,829 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:01:24,835 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:01:25,609 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:01:30,475 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:01:30,476 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:01:31,566 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:01:32,080 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:01:32,081 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:01:32,081 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:01:32,082 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:01:32,852 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:01:32,853 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:01:37,083 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:01:41,951 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:01:41,953 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:01:41,954 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:01:41,956 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:01:42,872 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:01:42,872 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:01:42,959 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:01:45,477 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:01:45,477 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:01:48,571 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:01:51,477 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:01:51,478 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:01:51,478 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:01:51,479 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:01:51,557 DEBUG   SenderThread:10365 [sender.py:send():375] send: stats
+2023-04-28 14:01:51,882 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:01:52,883 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:01:54,563 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:01:59,584 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:02:00,479 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:02:00,480 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:02:01,093 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:02:01,094 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:02:01,094 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:02:01,095 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:02:01,902 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:02:02,908 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:02:05,096 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:02:10,108 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:02:10,870 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:02:10,871 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:02:10,872 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:02:10,872 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:02:10,922 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:02:12,930 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:02:15,480 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:02:15,480 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:02:15,568 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:02:20,414 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:02:20,415 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:02:20,415 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:02:20,416 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:02:20,941 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:02:21,418 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:02:21,561 DEBUG   SenderThread:10365 [sender.py:send():375] send: stats
+2023-04-28 14:02:22,946 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:02:26,571 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:02:29,951 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:02:29,952 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:02:29,952 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:02:29,953 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:02:29,955 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:02:30,484 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:02:30,484 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:02:30,957 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:02:31,580 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:02:36,594 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:02:39,773 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:02:39,773 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:02:39,774 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:02:39,774 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:02:39,971 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:02:40,974 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:02:41,776 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:02:45,484 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:02:45,484 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:02:47,573 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:02:49,343 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:02:49,344 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:02:49,344 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:02:49,346 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:02:50,001 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:02:51,001 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:02:51,561 DEBUG   SenderThread:10365 [sender.py:send():375] send: stats
+2023-04-28 14:02:53,562 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:02:58,572 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:02:58,895 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:02:58,896 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:02:58,896 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:02:58,896 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:02:59,018 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:03:00,487 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:03:00,488 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:03:01,026 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:03:03,591 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:03:08,596 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:03:08,778 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:03:08,780 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:03:08,780 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:03:08,780 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:03:09,036 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:03:11,040 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:03:13,792 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:03:15,487 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:03:15,488 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:03:18,327 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:03:18,328 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:03:18,329 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:03:18,330 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:03:19,061 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:03:19,062 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:03:19,332 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:03:21,563 DEBUG   SenderThread:10365 [sender.py:send():375] send: stats
+2023-04-28 14:03:24,565 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:03:27,867 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:03:27,868 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:03:27,869 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:03:27,869 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:03:28,082 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:03:29,083 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:03:29,874 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:03:30,491 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:03:30,491 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:03:35,579 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:03:37,611 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:03:37,611 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:03:37,612 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:03:37,612 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:03:38,095 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:03:39,099 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:03:40,619 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:03:45,496 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:03:45,496 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:03:46,586 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:03:47,214 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:03:47,215 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:03:47,215 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:03:47,216 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:03:48,115 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:03:49,116 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:03:51,565 DEBUG   SenderThread:10365 [sender.py:send():375] send: stats
+2023-04-28 14:03:52,565 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:03:56,788 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:03:56,789 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:03:56,789 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:03:56,789 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:03:57,134 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:03:57,790 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:03:59,137 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:04:00,496 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:04:00,497 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:04:03,592 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:04:06,665 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:04:06,667 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:04:06,667 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:04:06,668 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:04:07,163 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:04:07,163 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:04:08,673 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:04:13,682 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:04:15,497 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:04:15,497 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:04:16,237 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:04:16,238 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:04:16,238 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:04:16,239 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:04:17,185 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:04:17,186 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:04:19,248 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:04:21,567 DEBUG   SenderThread:10365 [sender.py:send():375] send: stats
+2023-04-28 14:04:24,574 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:04:25,772 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:04:25,772 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:04:25,773 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:04:25,773 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:04:26,200 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:04:27,204 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:04:29,777 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:04:30,500 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:04:30,501 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:04:35,590 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:04:35,591 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:04:35,592 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:04:35,592 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:04:35,593 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:04:36,229 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:04:37,232 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:04:40,596 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:04:44,746 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:04:44,747 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:04:44,747 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:04:44,748 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:04:45,239 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:04:45,502 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:04:45,503 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:04:46,582 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:04:47,244 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:04:51,568 DEBUG   SenderThread:10365 [sender.py:send():375] send: stats
+2023-04-28 14:04:52,569 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:04:54,229 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:04:54,231 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:04:54,231 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:04:54,232 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:04:54,260 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:04:55,263 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:04:58,238 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:05:00,505 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:05:00,506 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:05:03,606 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:05:03,760 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:05:03,761 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:05:03,761 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:05:03,762 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:05:04,282 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:05:05,283 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:05:08,770 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:05:13,450 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:05:13,451 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:05:13,451 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:05:13,452 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:05:14,300 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:05:14,456 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:05:15,303 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:05:15,508 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:05:15,508 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:05:19,600 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:05:21,570 DEBUG   SenderThread:10365 [sender.py:send():375] send: stats
+2023-04-28 14:05:23,007 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:05:23,008 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:05:23,009 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:05:23,009 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:05:23,318 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:05:25,011 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:05:25,324 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:05:30,021 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:05:30,509 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: stop_status
+2023-04-28 14:05:30,509 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: stop_status
+2023-04-28 14:05:32,513 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: partial_history
+2023-04-28 14:05:32,515 DEBUG   SenderThread:10365 [sender.py:send():375] send: history
+2023-04-28 14:05:32,515 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: summary_record
+2023-04-28 14:05:32,516 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:05:32,516 DEBUG   SenderThread:10365 [sender.py:send():375] send: telemetry
+2023-04-28 14:05:32,519 DEBUG   SenderThread:10365 [sender.py:send():375] send: exit
+2023-04-28 14:05:32,520 INFO    SenderThread:10365 [sender.py:send_exit():598] handling exit code: 0
+2023-04-28 14:05:32,521 INFO    SenderThread:10365 [sender.py:send_exit():600] handling runtime: 491
+2023-04-28 14:05:32,522 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:05:32,522 INFO    SenderThread:10365 [sender.py:send_exit():606] send defer
+2023-04-28 14:05:32,523 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: defer
+2023-04-28 14:05:32,523 INFO    HandlerThread:10365 [handler.py:handle_request_defer():170] handle defer: 0
+2023-04-28 14:05:32,523 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: defer
+2023-04-28 14:05:32,523 INFO    SenderThread:10365 [sender.py:send_request_defer():622] handle sender defer: 0
+2023-04-28 14:05:32,523 INFO    SenderThread:10365 [sender.py:transition_state():626] send defer: 1
+2023-04-28 14:05:32,523 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: defer
+2023-04-28 14:05:32,523 INFO    HandlerThread:10365 [handler.py:handle_request_defer():170] handle defer: 1
+2023-04-28 14:05:32,524 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: defer
+2023-04-28 14:05:32,524 INFO    SenderThread:10365 [sender.py:send_request_defer():622] handle sender defer: 1
+2023-04-28 14:05:32,524 INFO    SenderThread:10365 [sender.py:transition_state():626] send defer: 2
+2023-04-28 14:05:32,524 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: defer
+2023-04-28 14:05:32,524 INFO    HandlerThread:10365 [handler.py:handle_request_defer():170] handle defer: 2
+2023-04-28 14:05:32,524 INFO    HandlerThread:10365 [system_monitor.py:finish():190] Stopping system monitor
+2023-04-28 14:05:32,524 DEBUG   SystemMonitor:10365 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-04-28 14:05:32,525 DEBUG   SystemMonitor:10365 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-04-28 14:05:32,526 INFO    HandlerThread:10365 [interfaces.py:finish():202] Joined cpu monitor
+2023-04-28 14:05:32,526 INFO    HandlerThread:10365 [interfaces.py:finish():202] Joined disk monitor
+2023-04-28 14:05:32,526 INFO    HandlerThread:10365 [interfaces.py:finish():202] Joined memory monitor
+2023-04-28 14:05:32,526 INFO    HandlerThread:10365 [interfaces.py:finish():202] Joined network monitor
+2023-04-28 14:05:32,527 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: defer
+2023-04-28 14:05:32,527 INFO    SenderThread:10365 [sender.py:send_request_defer():622] handle sender defer: 2
+2023-04-28 14:05:32,527 INFO    SenderThread:10365 [sender.py:transition_state():626] send defer: 3
+2023-04-28 14:05:32,527 DEBUG   SenderThread:10365 [sender.py:send():375] send: stats
+2023-04-28 14:05:32,527 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: defer
+2023-04-28 14:05:32,527 INFO    HandlerThread:10365 [handler.py:handle_request_defer():170] handle defer: 3
+2023-04-28 14:05:32,528 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: defer
+2023-04-28 14:05:32,528 INFO    SenderThread:10365 [sender.py:send_request_defer():622] handle sender defer: 3
+2023-04-28 14:05:32,528 INFO    SenderThread:10365 [sender.py:transition_state():626] send defer: 4
+2023-04-28 14:05:32,528 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: defer
+2023-04-28 14:05:32,528 INFO    HandlerThread:10365 [handler.py:handle_request_defer():170] handle defer: 4
+2023-04-28 14:05:32,528 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: defer
+2023-04-28 14:05:32,528 INFO    SenderThread:10365 [sender.py:send_request_defer():622] handle sender defer: 4
+2023-04-28 14:05:32,529 INFO    SenderThread:10365 [sender.py:transition_state():626] send defer: 5
+2023-04-28 14:05:32,529 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: defer
+2023-04-28 14:05:32,529 INFO    HandlerThread:10365 [handler.py:handle_request_defer():170] handle defer: 5
+2023-04-28 14:05:32,530 DEBUG   SenderThread:10365 [sender.py:send():375] send: summary
+2023-04-28 14:05:32,530 INFO    SenderThread:10365 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-04-28 14:05:32,530 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: defer
+2023-04-28 14:05:32,530 INFO    SenderThread:10365 [sender.py:send_request_defer():622] handle sender defer: 5
+2023-04-28 14:05:32,530 INFO    SenderThread:10365 [sender.py:transition_state():626] send defer: 6
+2023-04-28 14:05:32,531 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: defer
+2023-04-28 14:05:32,531 INFO    HandlerThread:10365 [handler.py:handle_request_defer():170] handle defer: 6
+2023-04-28 14:05:32,531 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: defer
+2023-04-28 14:05:32,531 INFO    SenderThread:10365 [sender.py:send_request_defer():622] handle sender defer: 6
+2023-04-28 14:05:32,536 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: status_report
+2023-04-28 14:05:32,738 INFO    SenderThread:10365 [sender.py:transition_state():626] send defer: 7
+2023-04-28 14:05:32,738 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: defer
+2023-04-28 14:05:32,739 INFO    HandlerThread:10365 [handler.py:handle_request_defer():170] handle defer: 7
+2023-04-28 14:05:32,739 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: defer
+2023-04-28 14:05:32,739 INFO    SenderThread:10365 [sender.py:send_request_defer():622] handle sender defer: 7
+2023-04-28 14:05:33,116 INFO    SenderThread:10365 [sender.py:transition_state():626] send defer: 8
+2023-04-28 14:05:33,116 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: defer
+2023-04-28 14:05:33,116 INFO    HandlerThread:10365 [handler.py:handle_request_defer():170] handle defer: 8
+2023-04-28 14:05:33,117 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: defer
+2023-04-28 14:05:33,117 INFO    SenderThread:10365 [sender.py:send_request_defer():622] handle sender defer: 8
+2023-04-28 14:05:33,140 INFO    SenderThread:10365 [sender.py:transition_state():626] send defer: 9
+2023-04-28 14:05:33,141 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: defer
+2023-04-28 14:05:33,141 INFO    HandlerThread:10365 [handler.py:handle_request_defer():170] handle defer: 9
+2023-04-28 14:05:33,141 DEBUG   SenderThread:10365 [sender.py:send():375] send: artifact
+2023-04-28 14:05:33,348 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/config.yaml
+2023-04-28 14:05:33,349 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:05:33,349 INFO    Thread-12 :10365 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:05:33,524 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: poll_exit
+2023-04-28 14:05:34,326 INFO    wandb-upload_1:10365 [upload_job.py:push():95] Uploaded file /Users/jocelynornelas/Library/Application Support/wandb/artifacts/staging/tmpk9n1blk5
+2023-04-28 14:05:34,345 INFO    wandb-upload_0:10365 [upload_job.py:push():95] Uploaded file /Users/jocelynornelas/Library/Application Support/wandb/artifacts/staging/tmpkoiq8b9x
+2023-04-28 14:05:35,444 INFO    SenderThread:10365 [sender.py:send_artifact():1474] sent artifact job-git_github.com_jornelasmunoz_coded-aperture.git_jornelasmunoz_lib_train_classification.py - {'id': 'QXJ0aWZhY3Q6NDM2MDI1Nzk0', 'digest': 'ee160967121c5237b3c9257a051daf78', 'state': 'PENDING', 'aliases': [], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjY1Mjk4MDUz', 'latestArtifact': None}, 'version': 'latest'}
+2023-04-28 14:05:35,445 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: defer
+2023-04-28 14:05:35,445 INFO    SenderThread:10365 [sender.py:send_request_defer():622] handle sender defer: 9
+2023-04-28 14:05:35,445 INFO    SenderThread:10365 [dir_watcher.py:finish():365] shutting down directory watcher
+2023-04-28 14:05:36,355 INFO    SenderThread:10365 [dir_watcher.py:finish():395] scan: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files
+2023-04-28 14:05:36,356 INFO    SenderThread:10365 [dir_watcher.py:finish():409] scan save: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/requirements.txt requirements.txt
+2023-04-28 14:05:36,356 INFO    SenderThread:10365 [dir_watcher.py:finish():409] scan save: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log output.log
+2023-04-28 14:05:36,361 INFO    SenderThread:10365 [dir_watcher.py:finish():409] scan save: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/config.yaml config.yaml
+2023-04-28 14:05:36,366 INFO    SenderThread:10365 [dir_watcher.py:finish():409] scan save: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json wandb-summary.json
+2023-04-28 14:05:36,370 INFO    SenderThread:10365 [dir_watcher.py:finish():409] scan save: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/conda-environment.yaml conda-environment.yaml
+2023-04-28 14:05:36,375 INFO    SenderThread:10365 [dir_watcher.py:finish():409] scan save: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-metadata.json wandb-metadata.json
+2023-04-28 14:05:36,376 INFO    SenderThread:10365 [sender.py:transition_state():626] send defer: 10
+2023-04-28 14:05:36,376 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: poll_exit
+2023-04-28 14:05:36,376 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: defer
+2023-04-28 14:05:36,377 INFO    HandlerThread:10365 [handler.py:handle_request_defer():170] handle defer: 10
+2023-04-28 14:05:36,380 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: defer
+2023-04-28 14:05:36,381 INFO    SenderThread:10365 [sender.py:send_request_defer():622] handle sender defer: 10
+2023-04-28 14:05:36,381 INFO    SenderThread:10365 [file_pusher.py:finish():168] shutting down file pusher
+2023-04-28 14:05:36,881 INFO    wandb-upload_2:10365 [upload_job.py:push():137] Uploaded file /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/config.yaml
+2023-04-28 14:05:37,083 INFO    wandb-upload_1:10365 [upload_job.py:push():137] Uploaded file /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/requirements.txt
+2023-04-28 14:05:37,100 INFO    wandb-upload_0:10365 [upload_job.py:push():137] Uploaded file /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/output.log
+2023-04-28 14:05:37,107 INFO    wandb-upload_4:10365 [upload_job.py:push():137] Uploaded file /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/conda-environment.yaml
+2023-04-28 14:05:37,113 INFO    wandb-upload_3:10365 [upload_job.py:push():137] Uploaded file /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/files/wandb-summary.json
+2023-04-28 14:05:37,318 INFO    Thread-11 :10365 [sender.py:transition_state():626] send defer: 11
+2023-04-28 14:05:37,318 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: defer
+2023-04-28 14:05:37,318 INFO    HandlerThread:10365 [handler.py:handle_request_defer():170] handle defer: 11
+2023-04-28 14:05:37,319 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: defer
+2023-04-28 14:05:37,319 INFO    SenderThread:10365 [sender.py:send_request_defer():622] handle sender defer: 11
+2023-04-28 14:05:37,319 INFO    SenderThread:10365 [file_pusher.py:join():173] waiting for file pusher
+2023-04-28 14:05:37,319 INFO    SenderThread:10365 [sender.py:transition_state():626] send defer: 12
+2023-04-28 14:05:37,320 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: defer
+2023-04-28 14:05:37,320 INFO    HandlerThread:10365 [handler.py:handle_request_defer():170] handle defer: 12
+2023-04-28 14:05:37,320 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: defer
+2023-04-28 14:05:37,320 INFO    SenderThread:10365 [sender.py:send_request_defer():622] handle sender defer: 12
+2023-04-28 14:05:37,727 INFO    SenderThread:10365 [sender.py:transition_state():626] send defer: 13
+2023-04-28 14:05:37,727 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: defer
+2023-04-28 14:05:37,727 INFO    HandlerThread:10365 [handler.py:handle_request_defer():170] handle defer: 13
+2023-04-28 14:05:37,727 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: defer
+2023-04-28 14:05:37,727 INFO    SenderThread:10365 [sender.py:send_request_defer():622] handle sender defer: 13
+2023-04-28 14:05:37,728 INFO    SenderThread:10365 [sender.py:transition_state():626] send defer: 14
+2023-04-28 14:05:37,728 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: defer
+2023-04-28 14:05:37,728 INFO    HandlerThread:10365 [handler.py:handle_request_defer():170] handle defer: 14
+2023-04-28 14:05:37,728 DEBUG   SenderThread:10365 [sender.py:send():375] send: final
+2023-04-28 14:05:37,728 DEBUG   SenderThread:10365 [sender.py:send():375] send: footer
+2023-04-28 14:05:37,728 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: defer
+2023-04-28 14:05:37,728 INFO    SenderThread:10365 [sender.py:send_request_defer():622] handle sender defer: 14
+2023-04-28 14:05:37,729 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: poll_exit
+2023-04-28 14:05:37,730 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: poll_exit
+2023-04-28 14:05:37,730 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: server_info
+2023-04-28 14:05:37,730 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: get_summary
+2023-04-28 14:05:37,731 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: sampled_history
+2023-04-28 14:05:37,732 DEBUG   SenderThread:10365 [sender.py:send_request():402] send_request: server_info
+2023-04-28 14:05:37,809 DEBUG   HandlerThread:10365 [handler.py:handle_request():144] handle_request: shutdown
+2023-04-28 14:05:37,809 INFO    HandlerThread:10365 [handler.py:finish():845] shutting down handler
+2023-04-28 14:05:38,731 INFO    WriterThread:10365 [datastore.py:close():298] close: /Users/jocelynornelas/iCloud Drive (Archive)/Desktop/UC Merced/Research/coded-aperture/jornelasmunoz/lib/wandb/run-20230428_135720-sjls4gio/run-sjls4gio.wandb
+2023-04-28 14:05:38,811 INFO    SenderThread:10365 [sender.py:finish():1550] shutting down sender
+2023-04-28 14:05:38,812 INFO    SenderThread:10365 [file_pusher.py:finish():168] shutting down file pusher
+2023-04-28 14:05:38,812 INFO    SenderThread:10365 [file_pusher.py:join():173] waiting for file pusher

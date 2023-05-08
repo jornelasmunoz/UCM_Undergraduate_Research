@@ -22,7 +22,7 @@ class reconstruction_cnn(torch.nn.Module):
         
         # Define model architecture elements
         self.conv  = torch.nn.Conv2d(1,1,kernel_size=self.kernel_size, padding=(self.kernel_size-1)//2)
-        self.convT = torch.nn.ConvTranspose2d(1,1,kernel_size=self.kernel_size,padding=(self.kernel_size-1)//2) 
+        #self.convT = torch.nn.ConvTranspose2d(1,1,kernel_size=self.kernel_size,padding=(self.kernel_size-1)//2) 
         print("Using the following parameters:")
         for key, val in self.params.items():
             print(f"{key}: {val}")
@@ -41,10 +41,10 @@ class reconstruction_cnn(torch.nn.Module):
     
     @staticmethod
     def load_data(params):
-        # Load encoded data 
-        filename_train = "../data/training_MNIST_mura"
-        filename_eval  = "../data/validation_MNIST_mura"
-        filename_test  = "../data/testing_MNIST_mura"
+        # Load reconstructed data 
+        filename_train = f"../data/MNIST/training_{params['dataset']}"
+        filename_eval = f"../data/MNIST/validation_{params['dataset']}"
+        filename_test = f"../data/MNIST/testing_{params['dataset']}"
 
         mura_train_data = torch.load(filename_train)
         mura_eval_data = torch.load(filename_eval)
