@@ -186,7 +186,7 @@ class classification_cnn(nn.Module):
                 predicted_all.append(predicted.tolist())
                 labels_all.append(labels.tolist())
 
-        print(f'Accuracy of the network on the {total} test images: {100 * correct / total} %')
+        print(f'Accuracy: {100 * (correct / total):.3f} %')
 
         predicted_all = list(np.concatenate(predicted_all).flat) 
         labels_all = list(np.concatenate(labels_all).flat) 

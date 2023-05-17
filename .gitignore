@@ -6,3 +6,4 @@ jornelasmunoz/notebooks/wandb/*
 jornelasmunoz/data/*
 jornelasmunoz/models/*
 *.pkl
+references/*
