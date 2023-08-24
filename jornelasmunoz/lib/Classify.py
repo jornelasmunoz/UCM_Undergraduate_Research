@@ -1,5 +1,6 @@
- import sys
+import sys
 import numpy as np
+import random
 from torchvision import datasets
 import torchvision.transforms as transforms
 import torch
@@ -54,20 +55,24 @@ class classification_cnn(nn.Module):
         x = self.fc5(x)
         return x
     
-    def _get_dataset(self, params,encoded=True):
+    def _get_clean_dataset(self, params):
+        dataset_name = params['dataset'].split("_")[0]
+        data_mapper = datasets.MNIST if "MNIST".upper() in dataset_name else datasets.CIFAR10
+        data_root = '../data/' if "MNIST".upper() in dataset_name else '../data/CIFAR10'
         size = params['image_size'] # images will be the size of encoder
         transform_list = [
                         transforms.ToTensor(),
                         transforms.Resize(size),
                         transforms.Normalize(0, 1),
                         ]
-        # select whether to get encoded data or original data
-        if encoded:
-            transform_list.append(transforms.Lambda(lambda x: torch.unsqueeze(torch.tensor(
-                 mura.FFT_convolve(np.squeeze(x.numpy()), params['A'],size), dtype= torch.float), 0)))
+        if "CIFAR".upper() in dataset_name: transform_list.append(transforms.Grayscale())
+#         # select whether to get encoded data or original data
+#         if encoded:
+#             transform_list.append(transforms.Lambda(lambda x: torch.unsqueeze(torch.tensor(
+#                  mura.FFT_convolve(np.squeeze(x.numpy()), params['A'],size), dtype= torch.float), 0)))
             
-        train_data = datasets.MNIST(
-        root = '../data/',
+        train_data = data_mapper(
+        root = data_root,
         train = True,                         
         transform = transforms.Compose(transform_list),
                     #     [transforms.ToTensor(),
@@ -81,8 +86,8 @@ class classification_cnn(nn.Module):
         download = False,            
         )
         
-        test_data = datasets.MNIST(
-            root = '../data/', 
+        test_data = data_mapper(
+            root = data_root, 
             train = False, 
             transform = transforms.Compose(transform_list),
             #                 [transforms.ToTensor(),
@@ -95,7 +100,35 @@ class classification_cnn(nn.Module):
             #             ]) 
         )
         
-        return train_data, test_data
+        # split data into train, validation, test
+        data_len = len(train_data + test_data)
+        all_data = train_data + test_data
+        random_indices = [*range(data_len)]
+        random.shuffle(random_indices)
+        split_idx_1 = int(0.8 * data_len)
+        split_idx_2 = int(0.9 * data_len)
+        
+        # split into 80 train, 10, validation, 10 test
+        train_data = torch.utils.data.Subset(all_data, random_indices[:split_idx_1])
+        validation_data = torch.utils.data.Subset(all_data, random_indices[split_idx_1:split_idx_2])
+        test_data = torch.utils.data.Subset(all_data, random_indices[split_idx_2:])
+        
+        # Create DataLoaders for each set
+        loaders = {
+            'train' : torch.utils.data.DataLoader(train_data, 
+                                                  batch_size=params['batch_size'], 
+                                                  shuffle=True, 
+                                                  num_workers=0),
+            'eval' : torch.utils.data.DataLoader(validation_data, 
+                                                  batch_size=params['batch_size'], 
+                                                  shuffle=True, 
+                                                  num_workers=0),
+            'test'  : torch.utils.data.DataLoader(test_data, 
+                                                  batch_size=params['batch_size'], 
+                                                  shuffle=False, 
+                                                  num_workers=0),
+        }
+        return train_data, test_data, validation_data, loaders
     
     @staticmethod
     def load_encoded_data(params):
@@ -113,11 +146,12 @@ class classification_cnn(nn.Module):
             loaders            - dictionary with PyTorch Dataloaders as values
         
         '''
+        dataset = 'MNIST' if 'MNIST'.upper() in params['dataset'] else 'CIFAR10'
         # Load reconstructed data 
-        filename_train = f"../data/MNIST/training_{params['dataset']}"
-        filename_eval = f"../data/MNIST/validation_{params['dataset']}"
-        filename_test = f"../data/MNIST/testing_{params['dataset']}"
-
+        filename_train = f"../data/{dataset}/training_{params['dataset']}"
+        filename_eval = f"../data/{dataset}/validation_{params['dataset']}"
+        filename_test = f"../data/{dataset}/testing_{params['dataset']}"
+        print(f"Loading dataset from: {filename_train}")
         recon_train_data = torch.load(filename_train)
         recon_eval_data = torch.load(filename_eval)
         recon_test_data = torch.load(filename_test)
@@ -169,7 +203,11 @@ class classification_cnn(nn.Module):
                 elif len(data) == 4:
                     # MNIST_mura_{SNR}dB dataset: [encoded (noisy or noiseless) image, original image, digit, noise level]
                     images, _, labels, _ = data
-                else: raise Exception("Make sure you are loading the correct data")
+                elif len(data) == 2: 
+                    # Clean data -- out of the box
+                    images, labels = data
+                else: 
+                    raise Exception("Make sure you are loading the correct data")
 
                 # ----------- calculate outputs/preds -----------
                 # calculate outputs by running images through the network (done in batches)

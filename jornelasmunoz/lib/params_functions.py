@@ -17,8 +17,9 @@ def model_params_defaults(params, kind = ''):
     # the second arg replaces any common elements with the first
     params = {**defaults, **params}
     
+    dataset_name = params['dataset'].split("_")[0]
     params['model'] = params['kind']+'_' + params['suffix'] 
-    params['model_save_path'] = f'../models/{params["kind"]}/{params["model"]}.pth'
+    params['model_save_path'] = f'../models/{params["kind"]}/{dataset_name.upper()}/{params["model"]}.pth'
 
     # Compute MURA encoder and decoder
     params['A'] = mura.create_binary_aperture_arr(params['p'])

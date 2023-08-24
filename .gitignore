@@ -5,5 +5,7 @@ rmarcia_matlab_codes/*
 jornelasmunoz/notebooks/wandb/*
 jornelasmunoz/data/*
 jornelasmunoz/models/*
+jornelasmunoz/figs/*
 *.pkl
 references/*
+slides_coded_aperture/*
