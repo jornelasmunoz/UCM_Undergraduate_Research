@@ -39,37 +39,37 @@ class reconstruction_cnn(torch.nn.Module):
             output = self.conv(x)
         return output
     
-    @staticmethod
-    def load_data(params):
-        # Load reconstructed data 
-        filename_train = f"../data/MNIST/training_{params['dataset']}"
-        filename_eval = f"../data/MNIST/validation_{params['dataset']}"
-        filename_test = f"../data/MNIST/testing_{params['dataset']}"
+#     @staticmethod
+#     def load_data(params):
+#         # Load reconstructed data 
+#         filename_train = f"../data/MNIST/training_{params['dataset']}"
+#         filename_eval = f"../data/MNIST/validation_{params['dataset']}"
+#         filename_test = f"../data/MNIST/testing_{params['dataset']}"
 
-        mura_train_data = torch.load(filename_train)
-        mura_eval_data = torch.load(filename_eval)
-        mura_test_data = torch.load(filename_test)
-        print(f"Number of elements in each dataset \nTraining: {len(mura_train_data)} \nValidation: {len(mura_eval_data)} \nTesting: {len(mura_test_data)}")
+#         mura_train_data = torch.load(filename_train)
+#         mura_eval_data = torch.load(filename_eval)
+#         mura_test_data = torch.load(filename_test)
+#         print(f"Number of elements in each dataset \nTraining: {len(mura_train_data)} \nValidation: {len(mura_eval_data)} \nTesting: {len(mura_test_data)}")
 
-        # Create DataLoaders for each set
-        loaders = {
-            'train' : torch.utils.data.DataLoader(mura_train_data, 
-                                                  batch_size=params['batch_size'], 
-                                                  shuffle=True, 
-                                                  num_workers=0),
+#         # Create DataLoaders for each set
+#         loaders = {
+#             'train' : torch.utils.data.DataLoader(mura_train_data, 
+#                                                   batch_size=params['batch_size'], 
+#                                                   shuffle=True, 
+#                                                   num_workers=0),
 
-            'eval'  : torch.utils.data.DataLoader(mura_eval_data, 
-                                                  batch_size=params['batch_size'], 
-                                                  shuffle=True, 
-                                                  num_workers=0),
+#             'eval'  : torch.utils.data.DataLoader(mura_eval_data, 
+#                                                   batch_size=params['batch_size'], 
+#                                                   shuffle=True, 
+#                                                   num_workers=0),
 
-            'test'  : torch.utils.data.DataLoader(mura_test_data, 
-                                                  batch_size=params['batch_size'], 
-                                                  shuffle=False, 
-                                                  num_workers=0),
-        }
+#             'test'  : torch.utils.data.DataLoader(mura_test_data, 
+#                                                   batch_size=params['batch_size'], 
+#                                                   shuffle=False, 
+#                                                   num_workers=0),
+#         }
         
-        return mura_train_data, mura_eval_data, mura_test_data, loaders
+#         return mura_train_data, mura_eval_data, mura_test_data, loaders
 
 
 #     def _get_dataset():

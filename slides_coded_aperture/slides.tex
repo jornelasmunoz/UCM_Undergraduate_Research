@@ -3,7 +3,7 @@
 \input{settings}
 
 
-\title[Coded Aperture]{Image Classification from Coded Aperture}
+\title[Coded Aperture]{Decoding the Hidden: Direct Image Classification using Coded Aperture Imaging}
 \author[J. Ornelas Mu\~noz]{\textbf{Jocelyn Ornelas Mu\~noz}, Erica M. Rutter,  Roummel F. Marcia}
 
 \institute[]{\vspace{-4mm} \\ \normalsize{Department of Applied Mathematics, UC Merced} \\ \small{Imaging and Sensing Seminar}}
@@ -26,10 +26,10 @@
 %	\vspace{-3mm}
 %}
 
-\date{Monday, April 3, 2023}
+\date{Tuesday, October 10, 2023}
 
 \titlegraphic{\vspace{-5pt}
-	\includegraphics[width=1.5cm]{images/UCM_Seal.png}
+	\includegraphics[width=2cm]{images/UCM_Seal.png}
 }
 
 \begin{document}
@@ -75,20 +75,7 @@
 %                    INTRODUCTION
 %-------------------------------------------------------------------
 \section{Overview}
-\begin{frame}{Motivation}
-	In medical imaging, radiography typically uses apertures to modulate the radiation emitted by an x-ray source and produce high-resolution images. \\ \smallskip \pause
-	%Coded aperture imaging is a novel imaging technique that has been gaining popularity in the medical field due to its ability to capture high-resolution images with reduced radiation exposure. 
-	\only<2->{\textcolor{red}{\textbf{Problem:}} Complicated apertures require a decoding procedure to reconstruct the image. %With more complicated apertures, a decoding procedure is necessary to reconstruct the image.
-	\bigskip 
-	\begin{figure}
-		\includegraphics[width = .9\textwidth]{images/x_ray_schematic.png}
-	\end{figure}
-	}
-\only<3->{
-	\medskip
-	\textcolor{forestgreen}{\textbf{Goal:}} Classify images from coded observations without reconstructing the image.  
-}
-\end{frame}
+
 
 \begin{frame}{Aperture Imaging}
 	\only<1>{
@@ -118,16 +105,30 @@
 	}
 \end{frame}
 
+\begin{frame}{Motivation}
+	In medical imaging, radiography typically uses complex apertures to modulate the radiation emitted by a high energy source and produce high-resolution images. \\ \smallskip \pause
+	%Coded aperture imaging is a novel imaging technique that has been gaining popularity in the medical field due to its ability to capture high-resolution images with reduced radiation exposure. 
+	\only<2->{\textcolor{red}{\textbf{Problem:}} Complicated apertures require a decoding procedure to reconstruct the image. %With more complicated apertures, a decoding procedure is necessary to reconstruct the image.
+		\bigskip 
+		\begin{figure}
+			\includegraphics[width = .9\textwidth]{images/ca_diagram_schematic.png}
+		\end{figure}
+	}
+	\only<3->{
+		\medskip
+		\textcolor{forestgreen}{\textbf{Goal:}} Classify images from coded observations without reconstructing the image.  
+	}
+\end{frame}
 
 \begin{frame}{Modified Uniformly Redundant Array (MURA)}
-	A MURA pattern $A$ consists of specified openings that has a corresponding decoding pattern $G$\footnote[1]{Gottesman and Fenimore (1989)}. \\ \pause
+	A MURA pattern $\mathbf{A}$ consists of specified openings that has a corresponding decoding pattern $\mathbf{G}$\footnote[1]{Gottesman and Fenimore (1989)}. \\ \pause
 	\bigskip
 	\only<2>{
 		\begin{columns}
 			 		\begin{column}{0.65\textwidth}
-				 			Let $p$ be a prime number and $A = \{A_{ij}\}_{i,j=0}^{p-1}$ be the binary aperture array.  Set 
+				 			Let $p$ be a prime number and $\mathbf{A} = \{\mathbf{A}_{ij}\}_{i,j=0}^{p-1}$ be the binary aperture array.  Set 
 				 		\begin{equation*}
-				 			A_{ij} = 
+				 			\mathbf{A}_{ij} = 
 				 			\begin{cases}
 				 				0 & \text{if } i =0 \\
 				 				1 & \text{if } j =0, i \neq 0 \\
@@ -156,13 +157,13 @@
 	\only<3>{
 			\begin{columns}
 			\begin{column}{0.65\textwidth}
-				The decoding function $G$ is constructed as follows:
+				The decoding function $\mathbf{G}$ is constructed as follows:
 				\begin{equation*}
-					G_{ij} = 
+					\mathbf{G}_{ij} = 
 					\begin{cases}
 						+1 & \text{if } i+j =0 \\
-						+1 & \text{if } A_{ij} =1 , i+j  \neq 0 \\
-						-1 & \text{if } A_{ij} =1 , i+j  \neq 0 
+						+1 & \text{if } \mathbf{A}_{ij} =1 , i+j  \neq 0 \\
+						-1 & \text{if } \mathbf{A}_{ij} =1 , i+j  \neq 0 
 					\end{cases}
 				\end{equation*}
 			\end{column}
@@ -199,28 +200,67 @@
 	\begin{figure}
 		\includegraphics[width = 0.96\textwidth]{images/mura_imaging.png}
 	\end{figure}
-The observation $D$ is given by 
-$$D = S * A + B$$
-where $B$ is background noise. The MURA reconstruction is given by
-$$\hat{S} = D * G$$
-where $G$ is the decoding pattern.
+The observation $\mathbf{D}$ is given by 
+$$\mathbf{D = S * A + B}$$
+where $\mathbf{B}$ is background noise. The MURA reconstruction is given by
+$$\mathbf{\hat{S} = D * G}$$
+where $\mathbf{G}$ is the decoding pattern.
 \end{frame}
+
 \begin{frame}{Proposed Method}
-	\textcolor{forestgreen}{\textbf{Goal:}} Classify handwritten digits from coded observations using a convolutional neural network (CNN) \textcolor{blue}{\textbf{without reconstructing the image}}.
-	\bigskip
-		\begin{figure}
-		\includegraphics[width = 0.96\textwidth]{images/task_diagram.png}
+\textcolor{forestgreen}{\textbf{Goal:}} Given coded observation data $\mathbf{D}$, \textcolor{blue}{\textbf{classify}} the original unknown image $\mathbf{S}$ using two different  methods.
+
+\vspace{1cm}
+\begin{columns}
+	\column{0.2\textwidth}
+	\begin{tabular}{l}
+		 \includegraphics[width=2cm]{images/2_coded.png}
+	\end{tabular}
+	\column{0.8\textwidth}
+	\textcolor{forestgreen}{\textbf{Method I:}} Classify  raw coded data $\mathbf{D}$\ using a  \\ \phantom{Method I:  } convolutional neural network (CNN).
+\end{columns}
+%\vspace{-3.5cm}
+\begin{columns}
+	\column{0.2\textwidth}
+	\begin{tabular}{l}
+		 \includegraphics[width=2cm]{images/2_ex.png}
+	\end{tabular}
+	\column{0.8\textwidth}
+	\textcolor{red}{\textbf{Method II:}} Classify  reconstructions, $\mathbf{\hat{S} = D*G}$\\ \phantom{Method II: } (Used for comparison with \textcolor{forestgreen}{\textbf{Method I}}). 
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Why classify coded observations?}
+	\centering
+	\begin{figure}
+		\includegraphics[width = 0.96\textwidth]{images/t-sne_all.png}
+		\caption{t-SNE visualizations for encoded MNIST (left) and the original MNIST (right) dataset.}
 	\end{figure}
 \end{frame}
+
 \begin{frame}{Experiment Set Up}
-	\textbf{Dataset:} MNIST Handwritten Digits 
-		\begin{itemize}
+	\textbf{Datasets:}\\
+	\medskip
+	MNIST Handwritten Digits 
+	\begin{itemize}
 		\item 28$\times$28 pixels (grayscale)
 		\item $70,000$ total images
-		\item $80\%$ training, $10\%$ validation, $10\%$ testing images 
+		\item $80\%$ training, $10\%$ validation, $10\%$ testing  
 	\end{itemize}
-    \medskip
-	\pause
+	\vspace{.4cm}
+	CIFAR10
+	\begin{itemize}
+		\item 32$\times$32 pixels (color images converted to grayscale)
+		\item 10 classes: airplane, automobile, bird, cat, deer, dog, frog, horse, ship, and
+		truck 
+		\item $60,000$ total images
+		\item $80\%$ training, $10\%$ validation, $10\%$ testing  
+	\end{itemize}
+	
+    %\medskip
+	%\pause
 %	\textbf{Approach:}
 %	\begin{enumerate}
 %		\item Resize MNIST digits to $23 \times 23$ pixels \pause
@@ -228,78 +268,139 @@ where $G$ is the decoding pattern.
 %		\item Convolve images with aperture using $2D$ Fast Fourier Transforms (FFT) and $2D$ inverse FFT to get coded observations  \pause
 %		\item Train  a $2$-layer CNN 
 %	\end{enumerate}
-	\begin{figure}
-		\includegraphics[width = 0.96\textwidth]{images/encoded_original_examples.png}
-	\end{figure}
+
 \end{frame}
 \begin{frame}{Experiments}
-	\only<1->{\textbf{Experiment 1:} Classify original MNIST images\\}
-	\only<1>{
-	\vspace{3em}
+	\only<1->{\textbf{Experiment 1:} Classify original  images $\mathbf{S}$ for baseline comparison\\}
+	\only<2->{\textbf{Experiment 2:} Classify encoded  images $\mathbf{D}$ (\textcolor{forestgreen}{Method I})\\}
+	\only<3->{\textbf{Experiment 3:} Classify reconstructed  images $\mathbf{\hat{S}}$ (\textcolor{red}{Method II})\\}
+	\only<2->{
+	%\vspace{3em}
 	\begin{figure}
-		\includegraphics[width = 0.8\textwidth]{images/classify_original.png}
+		\includegraphics[width = 0.8\textwidth]{images/CNN_architecture.png}
 	\end{figure}
 	}
-	\only<2->{\textbf{Experiment 2:} Classify encoded MNIST images\\}
-	\only<2>{
-	\vspace{3em}
-	\begin{figure}
-		\includegraphics[width = 0.8\textwidth]{images/classify_encoded.png}
-	\end{figure}
-	}
-	\only<3->{\textbf{Experiment 3:} Reconstruct encoded MNIST images, then classify from reconstructions\\}
-	\only<3>{
-	\vspace{3em}
-	\begin{figure}
-		\includegraphics[width = 0.9\textwidth]{images/reconstruct.png}
-	\end{figure}
-	}
+
+%	\only<3>{
+%	\vspace{3em}
+%	\begin{figure}
+%		\includegraphics[width = 0.9\textwidth]{images/reconstruct.png}
+%	\end{figure}
+%	}
 	
 \end{frame}
     
-\begin{frame}{Preliminary Results: Classification of original images}
+\begin{frame}{Results: MNIST Dataset}
+	\begin{table} [h]
+		\centering
+		\resizebox{\textwidth}{!}{\begin{tabular}{*{9}{l}}
+				\toprule
+				\multicolumn{1}{c}{} & \multicolumn{8}{c}{Testing Data} \\
+				\cmidrule(lr){2-9}
+				& \multicolumn{2}{c}{Noiseless} & \multicolumn{2}{c}{10dB}
+				& \multicolumn{2}{c}{5dB} & \multicolumn{2}{c}{1dB}\\
+				\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+				
+				Training data & \textcolor{forestgreen}{I}& \textcolor{red}{II}     &  \textcolor{forestgreen}{I} &  \textcolor{red}{II}  &  \textcolor{forestgreen}{I} & \textcolor{red}{II}    &  \textcolor{forestgreen}{I} & \textcolor{red}{II}           \\ %& V & I      & V & I      & V & I 
+				\midrule
+				Noiseless & 97.53 & 99.29 &96.53 & 98.90 & 93.81 & 97.14  & 82.73 & 88.80 \\
+				\midrule
+				10dB & 97.94 &99.09 & 97.61 &99.03 &95.93 &98.60 &88.17 &95.77 \\
+				\midrule
+				5dB &97.77 &99.09 &97.44 &99.14 &96.44 &98.93 &91.91 &97.17  \\
+				\midrule
+				1dB &96.70 &98.80 &96.54 &98.84 &95.91 &98.63 &93.86 &97.94  \\
+				\midrule
+				Original & - &96.36 &- &86.86 & - &64.04 & - &36.90  \\
+				\bottomrule
+		\end{tabular}}
+	\caption{\normalsize{MNIST dataset classification accuracy using encoded data (\textcolor{forestgreen}{Method I}) and reconstructed data (\textcolor{red}{Method II}). Rows indicate the training noise level, and columns indicate the testing noise level.}}
+	\label{tab:accuracy_mnist} 
+	\end{table}
 %	CNN performance on coded observations test set.\\
 %	Accuracy: $\mathbf{95.35\%}$
 %		\begin{figure}
 %		\includegraphics[width = 0.7\textwidth]{images/conf_mat.png}
 %	\end{figure}
-Classification accuracy of \textbf{original images}: $98.99\%$ \\
-\pause 
-\begin{figure}
-	\includegraphics[width = 0.8\textwidth]{images/misclassifications_counts_original_mnist.png}
-\end{figure}
-The most common misclassified digits: $9,4,6,7, 3$
+%Classification accuracy of \textbf{original images}: $98.99\%$ \\
+%\pause 
+%\begin{figure}
+%	\includegraphics[width = 0.8\textwidth]{images/misclassifications_counts_original_mnist.png}
+%\end{figure}
+%The most common misclassified digits: $9,4,6,7, 3$
 
 \end{frame}
-\begin{frame}{Preliminary Results: Misclassification of original images}
-	\begin{figure}
-		\includegraphics[width = 0.96\textwidth]{images/misclass_original_mnist_examples.png}
-		\caption{Examples of misclassified original MNIST images}
-	\end{figure}
-\end{frame}
-\begin{frame}{Preliminary Results: Classification of encoded images}
-	Classification accuracy of \textbf{encoded images}: $95.35\%$\\
-	\pause 
-	\begin{figure}
-		\includegraphics[width = 0.8\textwidth]{images/misclassifications_counts_encoded_mnist.png}
-	\end{figure}
-	The most common misclassified digits: $5,7,3,8,9$
-\end{frame}
 
-\begin{frame}{Preliminary Results: Misclassification of encoded MNIST images}
-		\begin{figure}
-			\includegraphics[width = 0.96\textwidth]{images/misclass_encoded_mnist_examples.png}
-			\caption{Examples of misclassified encoded images}
-		\end{figure}
-\end{frame}
 
-\begin{frame}{Preliminary Results: Classification from reconstructed images}
+%\begin{frame}{Preliminary Results: Misclassification of original images}
+%	\begin{figure}
+%		\includegraphics[width = 0.96\textwidth]{images/misclass_original_mnist_examples.png}
+%		\caption{Examples of misclassified original MNIST images}
+%	\end{figure}
+%\end{frame}
+%\begin{frame}{Preliminary Results: Classification of encoded images}
+%	Classification accuracy of \textbf{encoded images}: $95.35\%$\\
+%	\pause 
+%	\begin{figure}
+%		\includegraphics[width = 0.8\textwidth]{images/misclassifications_counts_encoded_mnist.png}
+%	\end{figure}
+%	The most common misclassified digits: $5,7,3,8,9$
+%\end{frame}
+%
+%\begin{frame}{Preliminary Results: Misclassification of encoded MNIST images}
+%		\begin{figure}
+%			\includegraphics[width = 0.96\textwidth]{images/misclass_encoded_mnist_examples.png}
+%			\caption{Examples of misclassified encoded images}
+%		\end{figure}
+%\end{frame}
+
+\begin{frame}{Results: CIFAR10 Dataset}
+% ------------ CIFAR10 ACCURACY -----------------
+\begin{table} 	
 	\centering
-	\vspace{0.2\framewidth}
-	\Large{COMING SOON}
+	\resizebox{\textwidth}{!}{\begin{tabular}{*{9}{l}}
+			\toprule
+			\multicolumn{1}{c}{} & \multicolumn{8}{c}{Testing Data} \\
+			\cmidrule(lr){2-9}
+			& \multicolumn{2}{c}{Noiseless} & \multicolumn{2}{c}{10dB}
+			& \multicolumn{2}{c}{5dB} & \multicolumn{2}{c}{1dB}\\
+			\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+			
+			Training data & \textcolor{forestgreen}{I}& \textcolor{red}{II}     &  \textcolor{forestgreen}{I} &  \textcolor{red}{II}  &  \textcolor{forestgreen}{I} & \textcolor{red}{II}    &  \textcolor{forestgreen}{I} & \textcolor{red}{II}            \\ %& V & I      & V & I      & V & I 
+			\midrule
+			Noiseless &40.30 &55.78 &27.72 &36.18 &15.38 &17.48 &\textbf{11.93} &11.65  \\
+			\midrule
+			10dB &37.97 &50.25 &36.55 &48.78 &33.33 &38.85 &\textbf{26.37}&21.77  \\
+			\midrule
+			5dB&36.33 &44.00 &35.97 &43.25 &34.22 &40.98 &30.65 &35.52  \\
+			\midrule
+			1dB&33.25 &40.38 &33.07 &40.17 &33.05 &38.67 &31.75 &34.87  \\
+			\midrule
+			Original & - &54.43 & - &34.75 & - &17.75 & - &11.90  \\
+			\bottomrule
+	\end{tabular}}
+	\caption{\normalsize{CIFAR10 dataset classification accuracy using encoded data (\textcolor{forestgreen}{Method I}) and reconstructed data (\textcolor{red}{Method II}). Rows indicate the training noise level, and columns indicate the testing noise level.}}
+\label{tab:accuracy_cifar} 
+\end{table}
 \end{frame}
 
+\begin{frame}{Why are the CIFAR10 results not great?}
+	\begin{figure}
+		\includegraphics[width=\textwidth]{images/t-sne_all_cifar.png}
+		\caption{t-SNE visualization of CIFAR data.}
+		\label{fig:tsne_all_cifar}
+	\end{figure}
+The t-SNE visualization did not exhibit distinct separability. Thus, the classification problem may pose a greater challenge.  
+\end{frame}
 
+\begin{frame}{Summary}
+	\begin{itemize}
+		\item \textcolor{red}{Method II} often yields better classification results compared \textcolor{forestgreen}{Method I}, but it is not directly applicable when the decoder $\mathbf{G}$ is unknown.
+		\item \textcolor{forestgreen}{Method I} provides reasonable classification results \textcolor{blue}{\textbf{without  reconstruction}} or knowledge of the encoding and decoding arrays.
+		\item Dimensionality reduction allows us to \textcolor{blue}{\textbf{infer the difficulty}} of classification
+		\item More \textcolor{blue}{\textbf{sophisticated models}} may be better suited to "difficult" data
+	\end{itemize}
+\end{frame}
 \begin{frame}
 	\centering
 	\vspace{0.3\framewidth}
