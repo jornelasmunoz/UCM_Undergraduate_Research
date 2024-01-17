@@ -46,6 +46,8 @@ class Normalize_01(object):
     def __call__(self, tensor):
         normalized_tensor = (tensor - tensor.min()) / (tensor.max() - tensor.min())
         return normalized_tensor
+    def __repr__(self):
+        return self.__class__.__name__ + '([0,1])'
 
 class Noise(object):
     def __init__(self, mean=0, dev=1):
