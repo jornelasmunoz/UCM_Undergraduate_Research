@@ -2,84 +2,49 @@ import os, sys
 import torch
 import numpy as np
 
-
-
-
-class reconstruction_cnn(torch.nn.Module):
+class RECON_CNN(torch.nn.Module):
     '''
-    Define a model with only one convolutional layer and sigmoid activation function
+    Define a model with only one convolutional layer, NO activation function, and NO bias
     '''
     def __init__(self, params):
         super().__init__() 
         
-        # Define model basic info
+        # Define model basic info -- gets model/data parameters from dictionary params
         self.params = params
         self.img_size = self.params['image_size']
-        self.kernel_size = self.params['kernel_size']
+        self.kernel_size = self.params['image_size'] if self.params['image_size'] is not None else self.params['kernel_size']
+        self.params["kernel_size"] = self.kernel_size
         self.criterion = torch.nn.MSELoss() if self.params.get('loss') is None else torch.nn.L1Loss() #
-        # self.optimizer = torch.optim.Adam(self.parameters(), lr = self.params['learning_rate']) 
-        self.params['model_save_path'] = f'../models/{params["kind"]}/{params["model"]}.pth'
+        self.RUN_DIR = f'../runs/{params["model"]}/'
+        self.params['model_save_path'] = self.RUN_DIR + f'{params["model"]}.pth'
+    
         
         # Define model architecture elements
-        self.conv  = torch.nn.Conv2d(1,1,kernel_size=self.kernel_size, padding=(self.kernel_size-1)//2)
-        #self.convT = torch.nn.ConvTranspose2d(1,1,kernel_size=self.kernel_size,padding=(self.kernel_size-1)//2) 
+        # Padding is circular -- mathematical motivation
+        self.conv  = torch.nn.Conv2d(1,1,kernel_size=self.kernel_size, padding='same', padding_mode='circular', bias=False)#(self.kernel_size-1)//2)
         print("Using the following parameters:")
         for key, val in self.params.items():
             print(f"{key}: {val}")
         
-    def forward(self, x):
-        if "activation" in self.params['model']:
-            output = torch.sigmoid(self.conv(x))
+        # Create dir for model or load weights if they already exist
+        if not os.path.exists(self.RUN_DIR):
+            os.mkdir(self.RUN_DIR)
         else:
-            # 03.20.23 Trying out a model with no activation function -- update 03.28.23 Didnt work if it's just no activation :( 
-            # 04.12.23 Trying no activation function with l_1 penalty
-            #output = self.conv(x)
-            
-            # Trying convolution transpose as test
-            output = self.conv(x)
+            self.load_state_dict(torch.load(self.RUN_DIR+f"{self.params['model']}.pth"))
+            print("Weights loaded from {}".format(self.RUN_DIR+f"{self.params['model']}.pth"))
+        
+        self.optimizer = torch.optim.Adam(self.parameters(), lr = self.params['learning_rate'])
+        self.scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(self.optimizer, 'min',patience=self.params['scheduler_patience'], verbose=True)
+        self.total_params = sum(p.numel() for p in self.parameters())
+        
+    def forward(self, x):
+        output = self.conv(x)
         return output
-    
-#     @staticmethod
-#     def load_data(params):
-#         # Load reconstructed data 
-#         filename_train = f"../data/MNIST/training_{params['dataset']}"
-#         filename_eval = f"../data/MNIST/validation_{params['dataset']}"
-#         filename_test = f"../data/MNIST/testing_{params['dataset']}"
 
-#         mura_train_data = torch.load(filename_train)
-#         mura_eval_data = torch.load(filename_eval)
-#         mura_test_data = torch.load(filename_test)
-#         print(f"Number of elements in each dataset \nTraining: {len(mura_train_data)} \nValidation: {len(mura_eval_data)} \nTesting: {len(mura_test_data)}")
-
-#         # Create DataLoaders for each set
-#         loaders = {
-#             'train' : torch.utils.data.DataLoader(mura_train_data, 
-#                                                   batch_size=params['batch_size'], 
-#                                                   shuffle=True, 
-#                                                   num_workers=0),
-
-#             'eval'  : torch.utils.data.DataLoader(mura_eval_data, 
-#                                                   batch_size=params['batch_size'], 
-#                                                   shuffle=True, 
-#                                                   num_workers=0),
-
-#             'test'  : torch.utils.data.DataLoader(mura_test_data, 
-#                                                   batch_size=params['batch_size'], 
-#                                                   shuffle=False, 
-#                                                   num_workers=0),
-#         }
-        
-#         return mura_train_data, mura_eval_data, mura_test_data, loaders
+    def weights_init(self, m):
+        classname = m.__class__.__name__
+        if classname.find('Conv') != -1:
+            torch.nn.init.ones_(m.weight.data) #normal_(m.weight.data, 0.0, 0.02)
+            # torch.nn.init.uniform_(m.weight.data, a=-1, b=1) #uniform
 
 
-#     def _get_dataset():
-        
-#         # Load encoded data 
-#         filename_train = "../data/training_MNIST_mura"
-#         filename_eval  = "../data/validation_MNIST_mura"
-#         filename_test  = "../data/testing_MNIST_mura"
-
-#         mura_train_data = torch.load(filename_train)
-#         mura_eval_data = torch.load(filename_eval)
-#         mura_test_data = torch.load(filename_test)
-#         print(f"Number of elements in each dataset \nTraining: {len(mura_train_data)} \nValidation: {len(mura_eval_data)} \nTesting: {len(mura_test_data)}")
