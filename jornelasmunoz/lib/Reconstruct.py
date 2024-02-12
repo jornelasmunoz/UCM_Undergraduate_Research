@@ -15,6 +15,7 @@ class RECON_CNN(torch.nn.Module):
         self.kernel_size = self.params['image_size'] if self.params['image_size'] is not None else self.params['kernel_size']
         self.params["kernel_size"] = self.kernel_size
         self.criterion = torch.nn.MSELoss() if self.params.get('loss') is None else torch.nn.L1Loss() #
+        self.params['loss'] = self.criterion
         self.RUN_DIR = f'../runs/{params["model"]}/'
         self.params['model_save_path'] = self.RUN_DIR + f'{params["model"]}.pth'
     

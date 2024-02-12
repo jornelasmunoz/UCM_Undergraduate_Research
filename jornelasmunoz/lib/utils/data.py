@@ -8,9 +8,11 @@ def load_data(params):
     Loads a dataset based on the dictionary of params passed. Also defines list of transformations for model training.
     '''
     # Read in dictionary of params
-    dataset = 'MNIST' if 'MNIST'.lower() in params.get('dataset') else 'FashionMNIST'
+    dataset = 'MNIST' if 'MNIST'.upper() in params.get('dataset') else 'FashionMNIST'
     snr = params.get('snr')
-    
+    print("Using the following parameters:")
+    for key, val in params.items():
+        print(f"{key}: {val}")
     # Define transforms 
     train_transform_list =[transforms.Grayscale(),
                            transforms.ToTensor(),
