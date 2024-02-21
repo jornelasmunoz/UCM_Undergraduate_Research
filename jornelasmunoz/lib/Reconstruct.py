@@ -16,7 +16,9 @@ class RECON_CNN(torch.nn.Module):
         self.params["kernel_size"] = self.kernel_size
         self.criterion = torch.nn.MSELoss() if self.params.get('loss') is None else torch.nn.L1Loss() #
         self.params['loss'] = self.criterion
-        self.RUN_DIR = f'../runs/{params["model"]}/'
+        self.RUN_DIR = f'../runs/{params["model"]}'
+        while os.path.exists(self.RUN_DIR):
+            self.RUN_DIR = self.RUN_DIR + '2'
         self.params['model_save_path'] = self.RUN_DIR + f'{params["model"]}.pth'
     
         
