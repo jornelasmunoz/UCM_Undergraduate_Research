@@ -17,7 +17,7 @@ def load_data(params):
     train_transform_list =[transforms.Grayscale(),
                            # transforms.ToTensor(),
                            transforms.Resize(params['image_size'], antialias=True),
-                           transforms.Normalize(34.4834, 11.8608)
+                           # transforms.Normalize(34.4834, 11.8608)
                           ]
     # For noiseless data, just normalize values between [0,1]
     # If noise, add desired SNR noise

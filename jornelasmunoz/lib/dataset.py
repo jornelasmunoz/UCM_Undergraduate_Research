@@ -110,7 +110,7 @@ class MNIST_MURA(VisionDataset):
         # Resize data to prime number length and convolve with aperture
         data_resized = torchvision.transforms.functional.resize(data, [self.image_size,self.image_size], antialias=True)
         # normalize target data
-        data_resized = mura.normalize(data_resized)
+        data_resized =  mura.normalize(data_resized, a=0,b=0.1) #data_resized.to(torch.float32) #
         mura_data = torch.empty(data_resized.size())
         for idx, img in enumerate(data_resized):
             mura_data[idx] = mura.FFT_convolve(img.squeeze(0), self.A,self.image_size)

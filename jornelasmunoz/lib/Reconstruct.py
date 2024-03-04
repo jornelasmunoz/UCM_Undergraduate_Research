@@ -19,7 +19,7 @@ class RECON_CNN(torch.nn.Module):
         self.RUN_DIR = f'../runs/{params["model"]}'
         while os.path.exists(self.RUN_DIR):
             self.RUN_DIR = self.RUN_DIR + '2'
-        self.params['model_save_path'] = self.RUN_DIR + f'{params["model"]}.pth'
+        self.params['model_save_path'] = os.path.join(self.RUN_DIR,f'{params["model"]}.pth')
     
         
         # Define model architecture elements
@@ -33,8 +33,8 @@ class RECON_CNN(torch.nn.Module):
         if not os.path.exists(self.RUN_DIR):
             os.mkdir(self.RUN_DIR)
         else:
-            self.load_state_dict(torch.load(self.RUN_DIR+f"{self.params['model']}.pth"))
-            print("Weights loaded from {}".format(self.RUN_DIR+f"{self.params['model']}.pth"))
+            self.load_state_dict(torch.load(self.params['model_save_path']))
+            print("Weights loaded from {}".format(self.params['model_save_path']))
         
         self.optimizer = torch.optim.Adam(self.parameters(), lr = self.params['learning_rate'])
         self.scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(self.optimizer, 'min',patience=self.params['scheduler_patience'], verbose=True)

@@ -162,9 +162,12 @@ def legendre_symbol(a, p):
 
 
 # normalize 
-def normalize(data):
+def normalize(data, a=0, b=1):
+    '''
+    Normalize data between [a,b]
+    '''
     # data tensor
-    normalized_data = (data-data.min())/(data.max()-data.min())
+    normalized_data = a + ((b-a)*(data-data.min()))/(data.max()-data.min())
     return normalized_data
 
 def get_D(x):
