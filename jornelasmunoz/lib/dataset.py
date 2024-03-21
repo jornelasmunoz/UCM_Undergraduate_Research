@@ -109,11 +109,16 @@ class MNIST_MURA(VisionDataset):
         self.G = mura.create_decoding_arr(self.A)
         # Resize data to prime number length and convolve with aperture
         data_resized = torchvision.transforms.functional.resize(data, [self.image_size,self.image_size], antialias=True)
+        # normalize target data
+        data_resized =  mura.normalize(data_resized, a=0,b=0.1) #data_resized.to(torch.float32) #
         mura_data = torch.empty(data_resized.size())
         for idx, img in enumerate(data_resized):
-            mura_data[idx] = torch.tensor(
-                            mura.normalize(mura.FFT_convolve(
-                            np.squeeze(img.numpy()), self.A,self.image_size)), dtype= torch.float)
+            mura_data[idx] = mura.FFT_convolve(img.squeeze(0), self.A,self.image_size)
+                            #torch.tensor(
+                            # mura.normalize(
+                                # mura.FFT_convolve(img.squeeze(0), self.A,self.image_size)
+                            # )
+                            # dtype= torch.float)
             
         label_file = f"{'train' if self.train else 't10k'}-labels-idx1-ubyte"
         digits = read_label_file(os.path.join(self.raw_folder, label_file))
@@ -138,14 +143,17 @@ class MNIST_MURA(VisionDataset):
             tuple: (image, target) where target is index of the target class.
         """
         img, target, digit = self.data[index], self.targets[index], self.digits[index]
-        #Change img to numpy and range to [0,155]
-        img = np.uint8((img*255).numpy())
+        #Change img to numpy and range to [0,255] -- do this only if image is normalized
+        # img = np.uint8((img*255).numpy())
         
         #doing this so that it is consistent with all other datasets
         # to return a PIL Imagedata[torch.randperm(data.shape[0]),:,:]
-        img = Image.fromarray(img, mode='L')
-        target = Image.fromarray(target.numpy(), mode='L')
-
+        # img = Image.fromarray(img.numpy(), mode='L')
+        # target = Image.fromarray(target.numpy(), mode='L')
+        
+        img = torch.Tensor(img.unsqueeze(0))
+        target = torch.Tensor(target.unsqueeze(0))
+        
         if self.transform is not None:
             img = self.transform(img)
 
