@@ -112,13 +112,14 @@ class MNIST_MURA(VisionDataset):
         data_resized = torchvision.transforms.functional.resize(data, [self.image_size,self.image_size], antialias=True)
         
         # normalize target data
-        data_resized =  data_resized.to(torch.float32)/255
+        data_resized =  data_resized.to(torch.float32)/500
         mura_data = torch.empty(data_resized.size())
         for idx, img in enumerate(data_resized):
-            mura_data[idx] = torch.Tensor(mura.normalize(
-                                mura.FFT_convolve(img.squeeze(0), self.A,self.image_size)),
-                                dtype= torch.float)
-                            #mura.FFT_convolve(img.squeeze(0), self.A,self.image_size)
+            mura_data[idx] = mura.FFT_convolve(img.squeeze(0), self.A,self.image_size)
+                        # torch.Tensor(mura.normalize(
+                        #         mura.FFT_convolve(img.squeeze(0), self.A,self.image_size)),
+                        #         dtype= torch.float)
+                            
             
         label_file = f"{'train' if self.train else 't10k'}-labels-idx1-ubyte"
         digits = read_label_file(os.path.join(self.raw_folder, label_file))

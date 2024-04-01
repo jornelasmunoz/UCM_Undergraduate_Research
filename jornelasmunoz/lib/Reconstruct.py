@@ -49,5 +49,9 @@ class RECON_CNN(torch.nn.Module):
         if classname.find('Conv') != -1:
             torch.nn.init.ones_(m.weight.data) #normal_(m.weight.data, 0.0, 0.02)
             # torch.nn.init.uniform_(m.weight.data, a=-1, b=1) #uniform
-
+    # def weights_init_true_decoder(self, m):
+    #     classname = m.__class__.__name__
+    #     if classname.find('Conv') != -1:
+            
+        
 
