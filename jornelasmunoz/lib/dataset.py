@@ -113,10 +113,10 @@ class MNIST_MURA(VisionDataset):
         
         # normalize target data
         # dividing by 255 to normalize to [0,1] and then by 529 since it is the size of the aperture
-        data_resized =  data_resized.to(torch.float32)/255
+        data_resized =  data_resized.to(torch.float32)
         mura_data = torch.empty(data_resized.size())
         for idx, img in enumerate(data_resized):
-            mura_data[idx] = mura.FFT_convolve(img.squeeze(0), self.A,self.image_size)/255
+            mura_data[idx] = mura.FFT_convolve(img.squeeze(0), self.A,self.image_size)
                         # torch.Tensor(mura.normalize(
                         #         mura.FFT_convolve(img.squeeze(0), self.A,self.image_size)),
                         #         dtype= torch.float)
